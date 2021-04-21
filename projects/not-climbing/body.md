@@ -1,10 +1,11 @@
 # Body
 
-To facilitate [Techniques](techniques.md) I need to work on certain physical requirements.
+To facilitate [Techniques](techniques.md) I need to work on certain physical requirements. No fixed targets (except perhaps being able to do >10 pull-ups).
+
+As of spring 2021 I'm 57 and in fairly good physical health. Despite having been a smoker & relatively heavy drinker for more than 40 years.
 
 
 
-No fixed targets (except perhaps being able to do >10 pull-ups).
 
 
 ## Status
