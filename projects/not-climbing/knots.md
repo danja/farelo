@@ -20,3 +20,8 @@ I believe I need to become proficient in tying the following knots, hitches & be
 * Taut Line (tensioning)
 * Blake's Hitch (ascending, arborists)
 * Garda Hitch (progress capture with 2 carabiners)
+* Swiss Seat
+* Chest Harness
+* Constrictor
+* Marlinspike Hitch
+* Voodoo Tensioner
