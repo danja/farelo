@@ -16,3 +16,5 @@ http://www.vlf.it/minimal/minimal.htm
 http://www.vlf.it/feletti2/idealloop.html
 
 http://www.vlf.it/preOP27/op027a.htm
+
+http://www.vlf.it/feletti/around50hz.html
