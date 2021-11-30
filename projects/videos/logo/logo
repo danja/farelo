@@ -1,0 +1,16 @@
+cs
+pu
+lt 90
+fd 25
+pd
+fd 75
+rt 90
+fd 100
+lt 90
+fd 100
+rt 135
+fwd 150
+repeat 90 [
+   rt 1 
+   fd 1
+]
