@@ -1,3 +1,5 @@
+; first pass at logo
+
 cs
 pu
 lt 90
@@ -11,11 +13,11 @@ fd 100
 rt 135
 fd 150
 repeat 135 [
-   rt 1 
+   rt 1
    fd 1
 ]
 fd 125
-pu 
+pu
 fd 30
 pd
 fd 10

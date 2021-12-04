@@ -1,3 +1,4 @@
+; trying to make the drawing a function
 cs
 ht
 
@@ -25,11 +26,11 @@ fd :line4
 rt 135
 fd :line5
 repeat 135 [
-   rt 1 
+   rt 1
    fd :curveStep
 ]
 fd line6
-pu 
+pu
 fd line7
 pd
 fd line8

@@ -1,0 +1,65 @@
+cs
+ht
+
+to square
+fd 3
+rt 90
+fd 3
+rt 90
+fd 3
+rt 90
+fd 3
+rt 90
+end
+
+to squares :nsquares
+repeat :nsquares [
+   fd 1
+   square
+]
+end
+
+; Draws a logo given the appropriate line lengths
+; Carries overall structure
+;
+to logo :line1 :line2 :line3 :line4 :line5 :curveStep :line6 :line7 :line8
+pu
+lt 90
+fd :line1
+pd
+fd :line2
+rt 90
+fd :line3
+lt 90
+fd :line4
+rt 135
+fd :line5
+repeat 135 [
+   rt 1
+   fd :curveStep
+]
+;fd line6
+squares line6
+pu
+fd line7
+pd
+fd line8
+end
+
+; Scales proportions
+; carries overall dimension
+;
+to logoscale :scale
+make "line1 :scale * 5
+make "line2 :scale * 15
+make "line3 :scale * 20
+make "line4 :scale * 20
+make "line5 :scale * 30
+make "curveStep :scale / 5
+make "line6 :scale * 25
+make "line7 :scale * 6
+make "line8 :scale * 2
+logo line1 line2 line3 line4 line5 curveStep line6 line7 line8
+end
+
+logoscale 5

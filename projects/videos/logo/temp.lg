@@ -1,0 +1,18 @@
+
+to square
+fd 3
+rt 90
+fd 3
+rt 90
+fd 3
+rt 90
+fd 3
+rt 90
+end
+
+to squares :nsquares
+repeat :nsquares [
+   fd :1
+   square
+]
+end
