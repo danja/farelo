@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="css/project.css" />
+
+    <script src="../js/lib/jquery-3.6.0.min.js"></script>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/sparql-connector.js"></script>
+
+    <script src="js/sparql-templates.js"></script>
+    <script src="js/html-templates.js"></script>
+    <script src="js/project.js"></script>
+  </head>
+  <body>
+    <h3>Quick and Dirty Project instance data creator</h3>
+    <h4>Single</h4>
+    <ul>
+      <li>dc:title</li>
+      <li>dc:description</li>
+      <li>prj:owner</li>
+      <li>foaf:nick</li>
+      <li>foaf:Person url</li>
+    </ul>
+    <h4>Multiple</h4>
+    <ul>
+      <li>rdfs:seeAlso</li>
+      <li>prj:dependsOn, prj:Module, url/dc:title</li>
+      <li>prj:hasTask, prj:Task, url/dc:title</li>
+      <li>prj:hasGoal, prj:Goal, url/dc:title</li>
+      <li>prj:primaryGoal, prj:Goal, url/dc:title</li>
+      <li>prj:hasReport devlog</li>
+    </ul>
+    <div class="grid">
+
+      <div id="core-data">  
+<h3>Core Data</h3>        
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" class="single" />
+        <label for="description">Description</label>
+        <input type="text" id="description" class="single" />
+        <label for="nick">Owner Nick</label>
+        <input type="text" id="nick" class="single" />
+        <label for="owner-url">Owner URL</label>
+        <input
+          type="text"
+          id="owner-url"
+          class="single"
+          value="http://danny.ayers.name/#me"
+        />
+        <label for="see-also">See Also</label>
+        <input type="text" id="see-also" class="single" />
+        <label for="description">Description</label>
+        <input type="text" id="description" class="single" />
+
+      </div>
+  <div><h3>Modules</h3> </div>
+  <div><h3>Goals</h3> </div>
+  <div><h3>Tasks</h3> </div>
+  <div><h3>See Also</h3> </div>
+  <div id="button-bar">        <button type="button" id="submit-button">Submit</button></div>
+    </div>
+  </body>
+</html>
