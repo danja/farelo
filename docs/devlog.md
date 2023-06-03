@@ -34,6 +34,16 @@ might prefer npm
 
 has js & css files
 
+### JS
+
+n3-browser-slk.js is ?
+
+https://github.com/rdfjs/N3.js/
+
+
+---
+
+github.js - can't find
 
 
 
