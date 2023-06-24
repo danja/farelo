@@ -16,3 +16,11 @@ bin/pip install jupyterlite
 
 bin/jupyter-lite build --output-dir j
 
+...
+
+# from https://github.com/jupyterlite/p5-kernel
+
+bin/pip install jupyterlite-p5-kernel
+
+bin/jupyter-lite build --output-dir j
+
