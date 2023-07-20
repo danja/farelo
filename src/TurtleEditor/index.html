@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Split panels</title>
@@ -17,15 +18,17 @@
   <script src="js/config.js" defer></script>
   <script data-main="turtle-editor" src="js/lib/require.js" defer></script>
 </head>
+
 <body>
-<!-- div class="container" -->
+  <script id="replace_with_navbar" src="/share/nav.js"></script>
+  <!-- div class="container" -->
   <div class="split vertical">
     <div class="split horizontal">
       <div>
-                <div id="right-component" class="split-pane-component">
-                    <div class="form-group">
-                        <label for="input-contents">Content editor: <span class="current-filename"></span></label>
-                        <textarea id="input-contents" placeholder="File content will appear here" rows="24" wrap="hard">@prefix mv: <http://eccenca.com/mobivoc/> .
+        <div id="right-component" class="split-pane-component">
+          <div class="form-group">
+            <label for="input-contents">Content editor: <span class="current-filename"></span></label>
+            <textarea id="input-contents" placeholder="File content will appear here" rows="24" wrap="hard">@prefix mv: <http://eccenca.com/mobivoc/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -62,37 +65,37 @@ mv:hasNumberOfChargingStations
 	rdfs:domain mv:Country ; 
 rdfs:range rdfs:integer .
                         </textarea>
-                    </div>
-                    <div id="syntax-check">
-                        <p id="syntax-check-failed" style="display: none">
-                            <img src="img/red_orb.png" alt="A red orb." class="status-icon">
-                            <span class="status">Syntax Error</span>
-                        </p>
-                        <p id="syntax-check-working" style="display: none">
-                            <img src="img/yellow_orb.png" alt="A yellow orb." class="status-icon">
-                            <span class="status">Syntax checker working.</span>
-                        </p>
-                        <p id="syntax-check-pending">
-                            <img src="img/yellow_orb.png" alt="A yellow orb." class="status-icon">
-                            <span class="status">Syntax check pending...</span>
-                        </p>
-                        <p id="syntax-check-off" style="display: none">
-                            <img src="img/yellow_orb.png" alt="A yellow orb." class="status-icon">
-                            <span class="status">Syntax checking disabled. Click to enable.</span>
-                        </p>
-                        <p id="syntax-check-passed" style="display: none">
-                            <img src="img/green_orb.png" alt="A green orb." class="status-icon">
-                            <span class="status">Syntax OK</span>
-                        </p>
-                    </div>
-                    <!--
+          </div>
+          <div id="syntax-check">
+            <p id="syntax-check-failed" style="display: none">
+              <img src="img/red_orb.png" alt="A red orb." class="status-icon">
+              <span class="status">Syntax Error</span>
+            </p>
+            <p id="syntax-check-working" style="display: none">
+              <img src="img/yellow_orb.png" alt="A yellow orb." class="status-icon">
+              <span class="status">Syntax checker working.</span>
+            </p>
+            <p id="syntax-check-pending">
+              <img src="img/yellow_orb.png" alt="A yellow orb." class="status-icon">
+              <span class="status">Syntax check pending...</span>
+            </p>
+            <p id="syntax-check-off" style="display: none">
+              <img src="img/yellow_orb.png" alt="A yellow orb." class="status-icon">
+              <span class="status">Syntax checking disabled. Click to enable.</span>
+            </p>
+            <p id="syntax-check-passed" style="display: none">
+              <img src="img/green_orb.png" alt="A green orb." class="status-icon">
+              <span class="status">Syntax OK</span>
+            </p>
+          </div>
+          <!--
                     <div class="form-group">
                         <label for="input-message">Commit message</label>
                         <input type="text" class="form-control" id="input-message" value="Turtle file edited, just for testing the editor.">
                     </div>
                     -->
-                </div>
-                <!-- /.col-md-9 -->
+        </div>
+        <!-- /.col-md-9 -->
       </div>
       <div>
         <div id="left-component" class="split-pane-component"></div>
@@ -102,7 +105,8 @@ rdfs:range rdfs:integer .
       C
     </div>
   </div>
-<!-- /div -->
-  
+  <!-- /div -->
+
 </body>
+
 </html>
