@@ -11,4 +11,16 @@ This is the *Getting Things Done* part of [HKMS](https://github.com/danja/HKMS).
 
 A lot of the necessary dev is data wrangling so I've put versions of the utilities above online. I'm also tweaking those as I go along.
 
+    <ul>
+        <li><a href="/" class="here">Home</a></li>
+        <li><a href="https://hyperdata.it/blog" class="here">Blog</a></li>
+        <li><a href="https://elfquake.wordpress.com/" class="here">ELFQuake</a></li>
+        <li><a href="/foowiki/">FooWiki</a></li>
+        <li><a href="/trellis">Trellis</a></li>
+        <li><a href="/farelo/src/TurtleEditor/">TurtleEditor</a></li>
+        <li><a href="/farelo/jupyterlite/j/lab/index.html">jupyterlite</a></li>
+        <li><a href="/foowiki/gloss">Gloss</a></li>
+        <li><a href="/foolicious">foolicious</a></li>
+        <li style="float:right"><a href="https://github.com/danja/HKMS">GitHub</a></li>
+    </ul>
 
