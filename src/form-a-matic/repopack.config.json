@@ -1,0 +1,15 @@
+{
+    "output": {
+        "filePath": "./form-a-matic_repopack.txt",
+        "headerText": "form-a-matic repo",
+        "removeComments": true
+    },
+    "ignore": {
+        "useDefaultPatterns": true,
+        "customPatterns": [
+            "*.log",
+            "docs",
+            "**/*repopack*"
+        ]
+    }
+}
