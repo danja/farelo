@@ -1,0 +1,90 @@
+{
+  "ROOT": {
+    "properties": [
+      {
+        "term": "name",
+        "type": "LITERAL",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "mbox",
+        "type": "#URI",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "homepage",
+        "type": "#URI",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "nick",
+        "type": "LITERAL",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "depiction",
+        "type": "#URI",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "interest",
+        "type": "#URI",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "knows",
+        "type": "BNODE",
+        "namespace": "http://xmlns.com/foaf/0.1/",
+        "children": {
+          "properties": [
+            {
+              "term": "name",
+              "type": "LITERAL",
+              "namespace": "http://xmlns.com/foaf/0.1/"
+            }
+          ],
+          "namespace": "http://xmlns.com/foaf/0.1/",
+          "type": "Person"
+        }
+      },
+      {
+        "term": "maintainer-of",
+        "type": "BNODE",
+        "namespace": "http://usefulinc.com/ns/doap#",
+        "children": {
+          "properties": [
+            {
+              "term": "homepage",
+              "type": "#URI",
+              "namespace": "http://usefulinc.com/ns/doap#"
+            },
+            {
+              "term": "description",
+              "type": "LITERAL",
+              "namespace": "http://usefulinc.com/ns/doap#",
+              "subtype": "LANG"
+            }
+          ],
+          "namespace": "http://usefulinc.com/ns/doap#",
+          "type": "Project"
+        }
+      },
+      {
+        "term": "taskStatus",
+        "type": "LITERAL",
+        "namespace": "http://purl.org/stuff/prj/",
+        "subtype": "BOOLEAN"
+      },
+      {
+        "term": "priority",
+        "type": "LITERAL",
+        "namespace": "http://purl.org/stuff/prj/",
+        "subtype": "INTEGER"
+      }
+    ],
+    "namespace": "http://xmlns.com/foaf/0.1/",
+    "type": "Person"
+  },
+  "dataview": "http://purl.org/stuff/json-ldx",
+  "transformation": "https://hyperdata.it/2004/json-ldx.js"
+}

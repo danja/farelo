@@ -1,5 +1,9 @@
 ```
-node src/form-a-matic.js
+cd ~/github-danny/hyperdata/packages/farelo/src/form-a-matic
+
+node src/index.js
+
+node src/index.js > src/test-data/foaf-template.json
 ```
 
 ```

@@ -3,7 +3,7 @@
 import { Readable } from 'stream';
 import N3Parser from '@rdfjs/parser-n3';
 
-export class TurtleToJSON {
+class TurtleToJSON {
     constructor() {
         this.parser = new N3Parser();
         this.prefixes = {};
@@ -30,7 +30,9 @@ export class TurtleToJSON {
         const rootQuad = quads.find(q => q.subject.value === '#ROOT');
         if (!rootQuad) throw new Error('No #ROOT subject found');
 
-        this.result.ROOT = this.processNode(rootQuad.subject, quads);
+        this.result.ROOT = this.processNode(rootQuad.subject, quads)
+        this.result.dataview = 'http://purl.org/stuff/json-ldx'
+        this.result.transformation = 'https://hyperdata.it/2004/json-ldx.js'
         return this.result;
     }
 
@@ -52,51 +54,19 @@ export class TurtleToJSON {
 
         return node;
     }
-    /*
-    processNode(subject, quads) {
-        const node = { properties: [] };
-        const relevantQuads = quads.filter(q => q.subject.equals(subject));
 
-        for (const quad of relevantQuads) {
-            if (quad.predicate.value === 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type') {
-                const { namespace, term } = this.splitURI(quad.object.value);
-                node.namespace = namespace;
-                node.type = term;
-            } else {
-                const property = this.processProperty(quad, quads);
-                node.properties.push(property);
-            }
-        }
-
-        return node;
-    }
-*/
-
-    // Process a property of a node
-    /*
-    processProperty(quad, quads) {
-        const { term } = this.splitURI(quad.predicate.value);
-        const property = {
-            key: term,
-            type: this.getPropertyType(quad.object)
-        };
-
-        if (property.type === 'BNODE') {
-            property.children = this.processNode(quad.object, quads);
-        }
-
-        return property;
-    }
-        */
 
     processProperty(quad, quads) {
         const { namespace, term } = this.splitURI(quad.predicate.value);
+        const markerValues = this.getMarkerType(quad.object)
         const property = {
             term: term,
-            type: this.getPropertyType(quad.object),
+            type: markerValues.type,
             namespace: namespace
-        };
-
+        }
+        if (markerValues.subtype) {
+            property.subtype = markerValues.subtype
+        }
         if (property.type === 'BNODE') {
             property.children = this.processNode(quad.object, quads);
         }
@@ -106,17 +76,19 @@ export class TurtleToJSON {
 
 
     // Determine the type of a property value
-    getPropertyType(object) {
+    getMarkerType(object) {
+        const marker = this.splitMarker(object.value)
         if (object.termType === 'Literal') {
-            return object.value === 'LITERAL' ? 'LITERAL' : 'BNODE';
+            return marker
+            //  return object.value === 'LITERAL' ? 'LITERAL' : 'BNODE';
         } else if (object.termType === 'NamedNode') {
-            return object.value === '#URI' ? 'URI' : 'BNODE';
+            //  return object.value === '#URI' ? 'URI' : 'BNODE';
+            marker.type === '#URI' ? 'URI' : 'BNODE';
         } else {
-            return 'BNODE';
+            marker.type = 'BNODE';
         }
+        return marker
     }
-
-    // Add this method to the Fam class in turtle2json.js
 
     splitURI(uri) {
         // Find the last occurrence of '#' or '/'
@@ -137,9 +109,19 @@ export class TurtleToJSON {
 
         return { namespace, term };
     }
+
+    splitMarker(marker) {
+        const [type, subtype] = marker.split(':');
+        return {
+            type,
+            subtype: subtype || undefined
+        };
+    }
     // Main method to convert Turtle to JSON
     async turtle2json(turtleString) {
         const quads = await this.parse(turtleString);
         return this.processQuads(quads);
     }
 }
+
+export default TurtleToJSON
