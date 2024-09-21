@@ -83,7 +83,8 @@ class TurtleToJSON {
             //  return object.value === 'LITERAL' ? 'LITERAL' : 'BNODE';
         } else if (object.termType === 'NamedNode') {
             //  return object.value === '#URI' ? 'URI' : 'BNODE';
-            marker.type === '#URI' ? 'URI' : 'BNODE';
+            // marker.type === '#URI' ? 'URI' : 'BNODE';
+            marker.type = 'URI'
         } else {
             marker.type = 'BNODE';
         }
