@@ -1,0 +1,91 @@
+{
+  "ROOT": {
+    "properties": [
+      {
+        "term": "name",
+        "type": "LITERAL",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "mbox",
+        "type": "URI",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "homepage",
+        "type": "URI",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "nick",
+        "type": "LITERAL",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "depiction",
+        "type": "URI",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "interest",
+        "type": "URI",
+        "namespace": "http://xmlns.com/foaf/0.1/"
+      },
+      {
+        "term": "knows",
+        "type": "BNODE",
+        "namespace": "http://xmlns.com/foaf/0.1/",
+        "children": {
+          "properties": [
+            {
+              "term": "name",
+              "type": "LITERAL",
+              "namespace": "http://xmlns.com/foaf/0.1/"
+            }
+          ],
+          "namespace": "http://xmlns.com/foaf/0.1/",
+          "type": "Person"
+        }
+      },
+      {
+        "term": "maintainer-of",
+        "type": "BNODE",
+        "namespace": "http://usefulinc.com/ns/doap#",
+        "children": {
+          "properties": [
+            {
+              "term": "homepage",
+              "type": "URI",
+              "namespace": "http://usefulinc.com/ns/doap#"
+            },
+            {
+              "term": "description",
+              "type": "LITERAL",
+              "namespace": "http://usefulinc.com/ns/doap#",
+              "subtype": "LANG"
+            }
+          ],
+          "namespace": "http://usefulinc.com/ns/doap#",
+          "type": "Project"
+        }
+      },
+      {
+        "term": "taskStatus",
+        "type": "LITERAL",
+        "namespace": "http://purl.org/stuff/prj/",
+        "subtype": "BOOLEAN"
+      },
+      {
+        "term": "priority",
+        "type": "LITERAL",
+        "namespace": "http://purl.org/stuff/prj/",
+        "subtype": "INTEGER"
+      }
+    ],
+    "namespace": "http://xmlns.com/foaf/0.1/",
+    "type": "Person"
+  },
+  "dataview": "http://purl.org/stuff/json-ldx",
+  "transformation": "https://hyperdata.it/2004/json-ldx.js"
+}
+<!DOCTYPE html><html><head></head><body><form><label>name</label><textarea data-term="name" data-type="LITERAL" data-namespace="http://xmlns.com/foaf/0.1/"></textarea><br><label>mbox</label><textarea data-term="mbox" data-type="URI" data-namespace="http://xmlns.com/foaf/0.1/"></textarea><br><label>homepage</label><textarea data-term="homepage" data-type="URI" data-namespace="http://xmlns.com/foaf/0.1/"></textarea><br><label>nick</label><textarea data-term="nick" data-type="LITERAL" data-namespace="http://xmlns.com/foaf/0.1/"></textarea><br><label>depiction</label><textarea data-term="depiction" data-type="URI" data-namespace="http://xmlns.com/foaf/0.1/"></textarea><br><label>interest</label><textarea data-term="interest" data-type="URI" data-namespace="http://xmlns.com/foaf/0.1/"></textarea><br><label>knows</label><input type="text" data-term="knows" data-type="BNODE" data-namespace="http://xmlns.com/foaf/0.1/" data-children="{&quot;properties&quot;:[{&quot;term&quot;:&quot;name&quot;,&quot;type&quot;:&quot;LITERAL&quot;,&quot;namespace&quot;:&quot;http://xmlns.com/foaf/0.1/&quot;}],&quot;namespace&quot;:&quot;http://xmlns.com/foaf/0.1/&quot;,&quot;type&quot;:&quot;Person&quot;}"><br><fieldset><legend>knows</legend><label>name</label><textarea data-term="name" data-type="LITERAL" data-namespace="http://xmlns.com/foaf/0.1/"></textarea><br></fieldset><label>maintainer-of</label><input type="text" data-term="maintainer-of" data-type="BNODE" data-namespace="http://usefulinc.com/ns/doap#" data-children="{&quot;properties&quot;:[{&quot;term&quot;:&quot;homepage&quot;,&quot;type&quot;:&quot;URI&quot;,&quot;namespace&quot;:&quot;http://usefulinc.com/ns/doap#&quot;},{&quot;term&quot;:&quot;description&quot;,&quot;type&quot;:&quot;LITERAL&quot;,&quot;namespace&quot;:&quot;http://usefulinc.com/ns/doap#&quot;,&quot;subtype&quot;:&quot;LANG&quot;}],&quot;namespace&quot;:&quot;http://usefulinc.com/ns/doap#&quot;,&quot;type&quot;:&quot;Project&quot;}"><br><fieldset><legend>maintainer-of</legend><label>homepage</label><textarea data-term="homepage" data-type="URI" data-namespace="http://usefulinc.com/ns/doap#"></textarea><br><label>description</label><textarea data-term="description" data-type="LITERAL" data-namespace="http://usefulinc.com/ns/doap#" data-subtype="LANG"></textarea><br></fieldset><label>taskStatus</label><input type="checkbox" data-term="taskStatus" data-type="LITERAL" data-namespace="http://purl.org/stuff/prj/" data-subtype="BOOLEAN"><br><label>priority</label><input type="number" data-term="priority" data-type="LITERAL" data-namespace="http://purl.org/stuff/prj/" data-subtype="INTEGER"><br></form></body></html>

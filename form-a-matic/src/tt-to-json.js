@@ -3,7 +3,7 @@
 import { Readable } from 'stream';
 import N3Parser from '@rdfjs/parser-n3';
 
-class TurtleToJSON {
+class TurtleTemplateToJSON {
     constructor() {
         this.parser = new N3Parser();
         this.prefixes = {};
@@ -125,4 +125,4 @@ class TurtleToJSON {
     }
 }
 
-export default TurtleToJSON
+export default TurtleTemplateToJSON

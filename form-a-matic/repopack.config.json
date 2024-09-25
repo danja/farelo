@@ -8,8 +8,9 @@
         "useDefaultPatterns": true,
         "customPatterns": [
             "*.log",
-            "docs",
-            "**/*repopack*"
+            "**/*repopack*",
+            "**/*old*",
+            "**/*prompt*"
         ]
     }
 }

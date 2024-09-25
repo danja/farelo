@@ -2,6 +2,8 @@
 
 ## Form-a-matic
 
+take a sample Turtle file, convert it into a template
+
 ## Other
 
 - Publish at `https://hyperdata.it/2024/farelo`

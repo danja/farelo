@@ -9,3 +9,7 @@ node src/index.js > src/test-data/foaf-template.json
 ```
 repopack --verbose -c repopack.config.json src
 ```
+
+```
+repopack --verbose -c repopack.config.json .
+```
