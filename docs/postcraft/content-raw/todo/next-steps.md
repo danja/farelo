@@ -1,18 +1,30 @@
 # Farelo Next Steps
 
+## Form-a-matic
+
+## Other
+
 - Publish at `https://hyperdata.it/2024/farelo`
 
-http://localhost/GITHUB-DANNY/hyperdata/packages/farelo/src/form-a-matic/src/test-data/foaf-form.html
+http://localhost/GITHUB-DANNY/hyperdata/packages/farelo/form-a-matic/src/test-data/foaf-form.html
 
 ---
 
 Make JSON-LDX, MD-LDX, [GRDDL](https://www.w3.org/TR/grddl/)-style for JSON, Markdown.
 
+Gleaning Resource Linkages from Lightweight Representations
+Graph Rendering of Lightweight Linked Resources
+Generating RDF from Lightweight Language Resources
+Gleaning RDF from Lightweight Linguistic Representations
+Graph Resource Linking from Lightweight Renditions
+
+**Gleaning Resources from Lightweight Language Representations**
+
 Publish at :
 
 ```
-https://hyperdata.it/2024/xmlns/md-ldx
-https://hyperdata.it/2024/xmlns/json-ldx
+https://hyperdata.it/2024/xmlns/grllr/md-ldx
+https://hyperdata.it/2024/xmlns/grllr/json-ldx
 ```
 
 ```

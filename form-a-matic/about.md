@@ -1,5 +1,5 @@
 ```
-cd ~/github-danny/hyperdata/packages/farelo/src/form-a-matic
+cd ~/github-danny/hyperdata/packages/farelo/form-a-matic
 
 node src/index.js
 

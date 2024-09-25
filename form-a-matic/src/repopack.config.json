@@ -1,7 +1,7 @@
 {
     "output": {
-        "filePath": "form-a-matic-repopack.txt",
-        "headerText": "form-a-matic repo",
+        "filePath": "form-a-matic-src.txt",
+        "headerText": "form-a-matic src",
         "removeComments": true
     },
     "ignore": {
