@@ -13,3 +13,5 @@ repopack --verbose -c repopack.config.json src
 ```
 repopack --verbose -c repopack.config.json .
 ```
+
+danny@danny-desktop:~/github-danny/hyperdata/packages/farelo/form-a-matic$ node src/index.js

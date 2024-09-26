@@ -9,15 +9,17 @@ import JsonToHtmlForm from './json-to-html.js'
 
 
 async function main() {
-    const file = 'src/test-data/foaf-template.ttl'
-    const turtleString = await fs.readFile(file, 'utf-8')
+    const basePath = 'src/templates/'
+    const ttFile = path.join(basePath, 'foaf-template.ttl')
+    const jsonFile = path.join(basePath, 'foaf-template.json')
+    const htmlTemplate = path.join(basePath, 'html-template.html')
+    var htmlFile = path.join(basePath, '../public/foaf-form.html')
+
+    const turtleString = await fs.readFile(ttFile, 'utf-8')
     const tj = new TurtleTemplateToJSON()
     const result = await tj.turtle2json(turtleString)
 
-    const jsonFile = file.replace('.ttl', '.json')
-
     const jsonString = JSON.stringify(result, null, 2)
-    // console.log(JSON.stringify(result, null, 2))
 
     try {
         await fs.writeFile(jsonFile, jsonString, 'utf-8')
@@ -25,10 +27,6 @@ async function main() {
     } catch (error) {
         console.error(`Error saving JSON file: ${error.message}`)
     }
-
-    // const htmlTemplate = jsonFile.replace('.json', '.html')
-    const htmlTemplate = path.join(jsonFile, '../', 'html-template.html')
-    const htmlFile = jsonFile.replace('template.json', 'form.html')
 
     const converter = new JsonToHtmlForm()
     var htmlString = await converter.jsonFileToHtmlForm(htmlTemplate, jsonFile)

@@ -11,7 +11,6 @@ class JsonToHtmlForm {
     }
 
     async initDOM(templatePath) {
-        // <link rel="stylesheet" href="styles.css">
         const templateString = await fs.readFile(templatePath, 'utf-8')
         this.dom = new JSDOM(templateString)
         this.document = this.dom.window.document
@@ -72,12 +71,9 @@ class JsonToHtmlForm {
         const fragment = this.document.createDocumentFragment();
 
         properties.forEach(property => {
-            //  const { label, input } = this.createFormElement(property);
             const { formGroup, input } = this.createFormElement(property);
             fragment.appendChild(formGroup);
-            //  fragment.appendChild(label);
             fragment.appendChild(input);
-            //    fragment.appendChild(this.document.createElement('br'));
 
             // Handle nested properties
             if (property.children && property.children.properties) {
@@ -121,7 +117,7 @@ class JsonToHtmlForm {
     // Read JSON from file and transform to HTML form
     async jsonFileToHtmlForm(templatePath, filePath) {
         try {
-            await this.loadExtractRDFScript();
+            //   await this.loadExtractRDFScript();
 
             this.initDOM(templatePath)
 
@@ -149,10 +145,6 @@ class JsonToHtmlForm {
             outputTextarea.rows = 10;
             form.appendChild(outputTextarea);
 
-            // Add the extractRDF.js script to the document
-            const script = this.document.createElement('script');
-            script.textContent = this.extractRDFScript;
-            this.document.head.appendChild(script);
 
             this.document.body.appendChild(formElement);
             return this.dom.serialize();
