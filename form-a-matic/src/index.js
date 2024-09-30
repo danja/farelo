@@ -1,4 +1,10 @@
 // index.js
+
+if (typeof window !== 'undefined') {
+    window.process = window.process || {};
+    window.process.binding = function () { };
+}
+
 import fs from 'fs/promises'
 import path from 'path'
 import beautify from 'simply-beautiful'

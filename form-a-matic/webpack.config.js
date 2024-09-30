@@ -1,3 +1,7 @@
+import webpack from 'webpack';
+const { ProvidePlugin } = webpack
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
@@ -7,12 +11,26 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-    entry: './src/index.js',
+    entry: './src/browser-entry.js',
+    externals: {
+        'rdf-ext': 'rdf',
+        '@rdfjs/parser-n3': 'N3Writer'
+        // Add other libraries that can be loaded via <script> tags
+    },
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js', // dynamic name
+        path: path.resolve(__dirname, 'src/public/webpack'),
     },
     target: 'web',
+
+    plugins: [
+        new BundleAnalyzerPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new ProvidePlugin({
+            process: 'process/browser'
+        }),
+
+    ],
     resolve: {
         extensions: ['.js', '.json'],
         fallback: {
@@ -29,10 +47,10 @@ export default {
             "net": false,
             "tls": false,
             "child_process": false,
-            "crypto": require.resolve("crypto-browserify"), // Add this line
+            "crypto": require.resolve("crypto-browserify"),
+            "process": require.resolve("process/browser")
         },
     },
-    // Add this section to provide a mock for the 'canvas' module
     module: {
         rules: [
             {
@@ -40,5 +58,13 @@ export default {
                 use: 'null-loader'
             }
         ]
-    }
+    },
+    optimization: {
+        minimize: false,
+        splitChunks: {
+            chunks: 'all',
+            name: false, // Disable naming chunks to avoid conflicts
+        },
+    },
+    devtool: 'source-map',
 };

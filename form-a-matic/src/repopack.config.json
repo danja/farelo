@@ -1,7 +1,7 @@
 {
     "output": {
         "filePath": "form-a-matic-src.txt",
-        "headerText": "form-a-matic src",
+        "headerText": "form-a-matic code and docs",
         "removeComments": true
     },
     "ignore": {
@@ -9,6 +9,7 @@
         "customPatterns": [
             "*.log",
             "docs",
+            "prompts",
             "**/*repopack*"
         ]
     }
