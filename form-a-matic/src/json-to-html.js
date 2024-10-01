@@ -176,12 +176,10 @@ class JsonToHtmlForm {
     createClientScript() {
         const script = this.document.createElement('script');
         script.textContent = `
-            console.log('Script loaded');
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('DOM fully loaded');
                 console.log('window.extract:', window.extract);
                 var button = document.getElementById('submitButton');
-                console.log('Submit button:', button);
                 if (button) {
                     button.addEventListener('click', function() {
                         console.log('Button clicked');
@@ -189,12 +187,10 @@ class JsonToHtmlForm {
                             console.log('Calling extract function');
                             var output = window.extract(document);
                             document.getElementById('output').value = output;
-                            console.log('Output set');
                         } else {
                             console.error('window.extract is not a function. window.extract:', window.extract);
                         }
                     });
-                    console.log('Click event listener added');
                 } else {
                     console.error('Submit button not found');
                 }
@@ -223,6 +219,11 @@ class JsonToHtmlForm {
             formElement.appendChild(outputTextarea);
 
             this.document.body.appendChild(formElement);
+            const bundleScript = this.document.createElement('script');
+            bundleScript.src = "webpack/main.bundle.js";
+            this.document.head.appendChild(bundleScript);
+
+            // Add the client script after the bundle
             this.document.head.appendChild(this.createClientScript());
 
             return this.dom.serialize();

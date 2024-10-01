@@ -6,13 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Form</title>
         <link rel="stylesheet" href="styles.css">
+        <script src="webpack/main.bundle.js"></script>
         <script>
-            console.log('Script loaded');
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('DOM fully loaded');
                 console.log('window.extract:', window.extract);
                 var button = document.getElementById('submitButton');
-                console.log('Submit button:', button);
                 if (button) {
                     button.addEventListener('click', function() {
                         console.log('Button clicked');
@@ -20,12 +19,10 @@
                             console.log('Calling extract function');
                             var output = window.extract(document);
                             document.getElementById('output').value = output;
-                            console.log('Output set');
                         } else {
                             console.error('window.extract is not a function. window.extract:', window.extract);
                         }
                     });
-                    console.log('Click event listener added');
                 } else {
                     console.error('Submit button not found');
                 }
@@ -45,9 +42,22 @@
             <p>2024</p>
         </footer>
         <script src="webpack/main.bundle.js"></script>
+        <script src="webpack/main.bundle.js"></script>
         <script>
-            console.log('Inline script: window.extract is', typeof window.extract);
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof FormAMatic !== 'undefined' && typeof FormAMatic.extract === 'function') {
+                    // Your form submission logic here
+                    console.log('FormAMatic loaded successfully');
+                } else {
+                    console.error('FormAMatic not loaded correctly');
+                }
+            });
         </script>
+        <!-- <script>
+        console.log('Inline script: window.FormAMatic is', typeof window.FormAMatic);
+        console.log('Inline script: window.extract is', typeof window.extract);
+    </script>
+-->
         <!-- <script type="module">
         import rdf from 'https://cdn.jsdelivr.net/npm/rdf-ext@2.5.2/+esm'
     </script>
