@@ -7,7 +7,7 @@
   "scripts": {
     "fam": "node src/index.js",
     "build": "webpack --mode development",
-    "rp": "repopack --verbose -c repopack.config.json .",
+    "rp": "repopack -c repopack.config.json .",
     "test": "node src/fam-test.js"
   },
   "keywords": [],

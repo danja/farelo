@@ -13,18 +13,21 @@ const __dirname = path.dirname(__filename);
 export default {
     entry: './src/browser-entry.js',
     externals: {
-        'rdf-ext': 'rdf',
-        '@rdfjs/parser-n3': 'N3Writer'
+        'rdf': 'rdf-ext',
+        'N3Writer': '@rdfjs/parser-n3'
+        //          'rdf-ext': 'rdf',
+        // '@rdfjs/parser-n3': 'N3Writer'
         // Add other libraries that can be loaded via <script> tags
     },
     output: {
+        //filename: 'main.bundle.js',
         filename: '[name].bundle.js', // dynamic name
         path: path.resolve(__dirname, 'src/public/webpack'),
     },
     target: 'web',
 
     plugins: [
-        new BundleAnalyzerPlugin(),
+        //    new BundleAnalyzerPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new ProvidePlugin({
             process: 'process/browser'

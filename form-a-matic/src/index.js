@@ -36,6 +36,7 @@ async function main() {
 
     const converter = new JsonToHtmlForm()
     var htmlString = await converter.jsonFileToHtmlForm(htmlTemplate, jsonFile)
+
     htmlString = beautify.html(htmlString)
 
 

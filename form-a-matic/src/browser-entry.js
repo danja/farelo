@@ -1,5 +1,8 @@
 import { extract } from './public/extractor.js';
 
-// Any other browser-specific initialization code
+window.extract = extract;
 
-window.extract = extract; // Make extract available globally
+console.log('browser-entry.js loaded');
+window.extract = extract;
+console.log('Extract function assigned to window:', typeof window.extract);
+
