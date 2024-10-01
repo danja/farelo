@@ -2,7 +2,9 @@
 
 ## Form-a-matic
 
-take a sample Turtle file, convert it into a template
+* fix json-to-html.js
+* fix tests
+* add comments
 
 ## Other
 
