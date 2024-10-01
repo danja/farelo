@@ -178,19 +178,44 @@ class JsonToHtmlForm {
         script.textContent = `
             document.addEventListener('DOMContentLoaded', function() {
                 console.log('DOM fully loaded');
-                console.log('window.extract:', window.extract);
                 var button = document.getElementById('submitButton');
+                var outputElement = document.getElementById('output');
+                var loadingIndicator = document.createElement('div');
+                loadingIndicator.id = 'loadingIndicator';
+                loadingIndicator.textContent = 'Loading...';
+                loadingIndicator.style.display = 'none';
+                document.body.appendChild(loadingIndicator);
+    
+                function checkExtractFunction() {
+                    if (typeof window.extract === 'function') {
+                        button.disabled = false;
+                        loadingIndicator.style.display = 'none';
+                        console.log('Extract function is available');
+                    } else {
+                        setTimeout(checkExtractFunction, 100);
+                    }
+                }
+    
+                function handleExtract() {
+                    button.disabled = true;
+                    loadingIndicator.style.display = 'block';
+                    try {
+                        console.log('Calling extract function');
+                        var output = window.extract(document);
+                        outputElement.value = output;
+                    } catch (error) {
+                        console.error('Error during extraction:', error);
+                        outputElement.value = 'An error occurred: ' + error.message;
+                    } finally {
+                        button.disabled = false;
+                        loadingIndicator.style.display = 'none';
+                    }
+                }
+    
                 if (button) {
-                    button.addEventListener('click', function() {
-                        console.log('Button clicked');
-                        if (typeof window.extract === 'function') {
-                            console.log('Calling extract function');
-                            var output = window.extract(document);
-                            document.getElementById('output').value = output;
-                        } else {
-                            console.error('window.extract is not a function. window.extract:', window.extract);
-                        }
-                    });
+                    button.disabled = true;
+                    button.addEventListener('click', handleExtract);
+                    checkExtractFunction();
                 } else {
                     console.error('Submit button not found');
                 }

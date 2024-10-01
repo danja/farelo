@@ -54,7 +54,7 @@ class DatasetBuilder {
 class FormDataExtractor {
     extract(form) {
         const elements = form.querySelectorAll('input, textarea');
-        const data = Array.from(elements).map(this.extractElementData);
+        const data = Array.from(elements).map(element => this.extractElementData(element));
         return this.groupData(data);
     }
 
@@ -159,3 +159,4 @@ class RDFExtractor {
 
 const extractor = new RDFExtractor(rdf, N3Writer);
 export const extract = (document) => extractor.extract(document);
+export default extract;

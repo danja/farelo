@@ -1,4 +1,4 @@
-import extract from './public/extractor.js';
+import { extract } from '../public/extractor.js';
 
 const FormAMatic = {
     extract: extract

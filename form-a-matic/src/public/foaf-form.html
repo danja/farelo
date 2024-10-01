@@ -42,29 +42,18 @@
             <p>2024</p>
         </footer>
         <script src="webpack/main.bundle.js"></script>
-        <script src="webpack/main.bundle.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                if (typeof FormAMatic !== 'undefined' && typeof FormAMatic.extract === 'function') {
-                    // Your form submission logic here
+                console.log('DOM fully loaded');
+                console.log('window.FormAMatic:', window.FormAMatic);
+                if (typeof window.FormAMatic !== 'undefined' && typeof window.FormAMatic.extract === 'function') {
                     console.log('FormAMatic loaded successfully');
+                    window.extract = window.FormAMatic.extract;
                 } else {
                     console.error('FormAMatic not loaded correctly');
                 }
             });
         </script>
-        <!-- <script>
-        console.log('Inline script: window.FormAMatic is', typeof window.FormAMatic);
-        console.log('Inline script: window.extract is', typeof window.extract);
-    </script>
--->
-        <!-- <script type="module">
-        import rdf from 'https://cdn.jsdelivr.net/npm/rdf-ext@2.5.2/+esm'
-    </script>
-    <script type="module">
-        import N3 from 'https://cdn.jsdelivr.net/npm/@rdfjs/parser-n3@2.0.2/+esm'
-    </script>
-    -->
         <form>
             <div class="form-group">
                 <label>name</label>

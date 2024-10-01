@@ -8,11 +8,12 @@
     "fam": "node src/index.js",
     "build": "webpack --mode development",
     "rp": "repopack -c repopack.config.json .",
-    "test": "node src/fam-test.js"
+    "test": "node test-runner.js",
+    "testes": "node src/fam-test.js"
   },
   "keywords": [],
   "author": "Danny Ayers",
-  "license": "",
+  "license": "MIT",
   "dependencies": {
     "@rdfjs/parser-n3": "^2.0.2",
     "browserify-zlib": "^0.2.0",
