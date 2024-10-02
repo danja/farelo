@@ -2,7 +2,8 @@
   "name": "form-a-matic",
   "type": "module",
   "version": "1.0.0",
-  "description": "",
+  "homepage": "https://github.com/danja/farelo#readme",
+  "description": "A code/UI generator yielding simple HTML forms for RDF creation",
   "main": "index.js",
   "scripts": {
     "fam": "node src/index.js",
