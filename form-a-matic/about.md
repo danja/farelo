@@ -1,9 +1,15 @@
 ```
+./a
+
 cd ~/github-danny/hyperdata/packages/farelo/form-a-matic
 npm run build
 npm run fam
 npm run rp
+
+repopack --verbose -c repopack.config.json .
 ```
+
+http://localhost/FORM-A-MATIC/src/public/foaf-form.html
 
 in browser :
 
