@@ -244,12 +244,12 @@ class JsonToHtmlForm {
             formElement.appendChild(outputTextarea);
 
             this.document.body.appendChild(formElement);
-            const bundleScript = this.document.createElement('script');
-            bundleScript.src = "webpack/main.bundle.js";
-            this.document.head.appendChild(bundleScript);
+            //    const bundleScript = this.document.createElement('script');
+            //    bundleScript.src = "webpack/main.bundle.js";
+            //    this.document.head.appendChild(bundleScript);
 
             // Add the client script after the bundle
-            this.document.head.appendChild(this.createClientScript());
+            //  this.document.head.appendChild(this.createClientScript());
 
             return this.dom.serialize();
         } catch (error) {

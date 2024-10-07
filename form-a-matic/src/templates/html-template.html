@@ -19,6 +19,7 @@
         <p>2024</p>
     </footer>
 
+    <!-- template html body below content -->
     <script src="webpack/main.bundle.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -30,6 +31,14 @@
             } else {
                 console.error('FormAMatic not loaded correctly');
             }
+            // Get the button element by its ID
+            const button = document.getElementById('submitButton');
+
+            // Add a click event listener to the button
+            button.addEventListener('click', function () {
+                // Trigger a console message
+                console.log('Submit button clicked!');
+            });
         });
     </script>
 

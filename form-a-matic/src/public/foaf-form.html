@@ -6,53 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Form</title>
         <link rel="stylesheet" href="styles.css">
-        <script src="webpack/main.bundle.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                console.log('DOM fully loaded');
-                var button = document.getElementById('submitButton');
-                var outputElement = document.getElementById('output');
-                var loadingIndicator = document.createElement('div');
-                loadingIndicator.id = 'loadingIndicator';
-                loadingIndicator.textContent = 'Loading...';
-                loadingIndicator.style.display = 'none';
-                document.body.appendChild(loadingIndicator);
-
-                function checkExtractFunction() {
-                    if (typeof window.extract === 'function') {
-                        button.disabled = false;
-                        loadingIndicator.style.display = 'none';
-                        console.log('Extract function is available');
-                    } else {
-                        setTimeout(checkExtractFunction, 100);
-                    }
-                }
-
-                function handleExtract() {
-                    button.disabled = true;
-                    loadingIndicator.style.display = 'block';
-                    try {
-                        console.log('Calling extract function');
-                        var output = window.extract(document);
-                        outputElement.value = output;
-                    } catch (error) {
-                        console.error('Error during extraction:', error);
-                        outputElement.value = 'An error occurred: ' + error.message;
-                    } finally {
-                        button.disabled = false;
-                        loadingIndicator.style.display = 'none';
-                    }
-                }
-
-                if (button) {
-                    button.disabled = true;
-                    button.addEventListener('click', handleExtract);
-                    checkExtractFunction();
-                } else {
-                    console.error('Submit button not found');
-                }
-            });
-        </script>
     </head>
     
     <body>
@@ -66,6 +19,7 @@
         <footer>
             <p>2024</p>
         </footer>
+        <!-- template html body below content -->
         <script src="webpack/main.bundle.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -77,6 +31,14 @@
                 } else {
                     console.error('FormAMatic not loaded correctly');
                 }
+                // Get the button element by its ID
+                const button = document.getElementById('submitButton');
+
+                // Add a click event listener to the button
+                button.addEventListener('click', function() {
+                    // Trigger a console message
+                    console.log('Submit button clicked!');
+                });
             });
         </script>
         <form>

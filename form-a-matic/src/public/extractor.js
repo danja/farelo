@@ -70,17 +70,22 @@ class FormDataExtractor {
     }
 
     extractDataAttributes(element) {
+        console.log("element = " + element)
         const data = {};
         for (const attr of element.attributes) {
             if (attr.name.startsWith('data-')) {
                 const key = attr.name.slice(5);
-                data[key] = this.parseAttributeValue(attr.value);
+                console.log("key = " + key)
+                console.log("attr.value = " + attr.value)
+
+                data[key] = attr.value;
+                //   data[key] = this.parseAttributeValue(attr.value); broken below?
             }
         }
         return data;
     }
 
-    parseAttributeValue(value) {
+    parseAttributeValue(value) { // broken?
         try {
             return JSON.parse(value);
         } catch {
@@ -144,12 +149,22 @@ class RDFExtractor {
         this.turtleSerializer = new TurtleSerializer(N3Writer);
     }
 
+    /*
+    writable.js:268 Uncaught TypeError: The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Quad
+    */
+
     async extract(document) {
+        console.log('Extract called')
         try {
             const form = document.querySelector('form');
+            console.log('A')
             const data = this.formDataExtractor.extract(form);
+            console.log('B')
             const dataset = this.datasetBuilder.build(data);
-            return await this.turtleSerializer.serialize(dataset);
+            console.log('C')
+            const serialized = await this.turtleSerializer.serialize(dataset);
+            console.log('D')
+            return serialized
         } catch (error) {
             console.error('Extraction failed:', error);
             throw error;
