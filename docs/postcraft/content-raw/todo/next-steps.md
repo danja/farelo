@@ -2,9 +2,27 @@
 
 ## Form-a-matic
 
+more test, CI/CD bits in
+
+https://claude.ai/chat/3ddadbd1-f74c-4bdf-948e-16b29adc2684
+
+last bits of this has error handling bits :
+
+https://claude.ai/chat/f1beb06d-e2fe-44fa-93e6-07cf784429fd
+
 * fix json-to-html.js
 * fix tests
 * add comments
+
+writable.js:268 Uncaught TypeError: The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Quad
+    at _write (writable.js:268:13)
+    at Writable.write (writable.js:286:10)
+    at Readable.ondata (readable.js:705:22)
+    at Readable.emit (events.js:153:5)
+    at Readable.read (readable.js:505:10)
+    at flow (readable.js:929:34)
+    at resume_ (readable.js:913:3)
+    at Item.run (browser.js:153:14)
 
 ## Other
 

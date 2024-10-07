@@ -1,7 +1,7 @@
 import rdf from 'rdf-ext';
 import N3Writer from '@rdfjs/parser-n3';
 
-class RDFNodeCreator {
+export class RDFNodeCreator {
     constructor(rdf) {
         this.rdf = rdf;
     }
@@ -17,7 +17,7 @@ class RDFNodeCreator {
     }
 }
 
-class DatasetBuilder {
+export class DatasetBuilder {
     constructor(rdf, nodeCreator) {
         this.rdf = rdf;
         this.nodeCreator = nodeCreator;
@@ -51,7 +51,7 @@ class DatasetBuilder {
     }
 }
 
-class FormDataExtractor {
+export class FormDataExtractor {
     extract(form) {
         const elements = form.querySelectorAll('input, textarea');
         const data = Array.from(elements).map(element => this.extractElementData(element));
@@ -122,7 +122,7 @@ class FormDataExtractor {
     }
 }
 
-class TurtleSerializer {
+export class TurtleSerializer {
     constructor(N3Writer) {
         this.N3Writer = N3Writer;
     }
@@ -140,7 +140,7 @@ class TurtleSerializer {
     }
 }
 
-class RDFExtractor {
+export class RDFExtractor {
     constructor(rdf, N3Writer) {
         this.rdf = rdf;
         this.formDataExtractor = new FormDataExtractor();

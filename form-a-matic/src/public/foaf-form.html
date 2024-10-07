@@ -31,13 +31,19 @@
                 } else {
                     console.error('FormAMatic not loaded correctly');
                 }
-                // Get the button element by its ID
-                const button = document.getElementById('submitButton');
 
-                // Add a click event listener to the button
+                const button = document.getElementById('submitButton');
+                const outputElement = document.getElementById('output');
+
                 button.addEventListener('click', function() {
-                    // Trigger a console message
                     console.log('Submit button clicked!');
+                    try {
+                        const output = window.extract(document);
+                        outputElement.value = output;
+                    } catch (error) {
+                        console.error('Error during extraction:', error);
+                        outputElement.value = 'An error occurred: ' + error.message;
+                    }
                 });
             });
         </script>
