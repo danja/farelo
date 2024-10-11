@@ -25,6 +25,7 @@ export class DatasetBuilder {
 
     build(data, parentSubject = null) {
         const dataset = this.rdf.dataset();
+
         const subject = parentSubject || this.rdf.blankNode();
 
         data.forEach(item => {
@@ -129,7 +130,8 @@ export class TurtleSerializer {
 
     serialize(dataset) {
         return new Promise((resolve, reject) => {
-            const writer = new this.N3Writer();
+            const writer = new N3Writer();
+            // const writer = new this.N3Writer();
             let turtleString = '';
 
             writer.import(dataset.toStream())
@@ -140,6 +142,11 @@ export class TurtleSerializer {
     }
 }
 
+
+/*
+writable.js:268 Uncaught TypeError: The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Quad
+*/
+
 export class RDFExtractor {
     constructor(rdf, N3Writer) {
         this.rdf = rdf;
@@ -149,9 +156,7 @@ export class RDFExtractor {
         this.turtleSerializer = new TurtleSerializer(N3Writer);
     }
 
-    /*
-    writable.js:268 Uncaught TypeError: The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Quad
-    */
+
 
     async extract(document) {
         console.log('Extract called')
