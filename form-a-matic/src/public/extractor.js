@@ -7,15 +7,20 @@ export class RDFNodeCreator {
     }
 
     createNode(item) {
+        console.log('Creating node for item:', item);
+        let node;
         if (item.type === 'LITERAL') {
-            return this.rdf.literal(item.value);
+            node = this.rdf.literal(item.value);
         } else if (item.type === 'URI') {
-            return this.rdf.namedNode(item.value);
+            node = this.rdf.namedNode(item.value);
         } else {
-            return this.rdf.blankNode();
+            node = this.rdf.blankNode();
         }
+        console.log('Created node:', node.toString());
+        return node;
     }
 }
+
 
 export class DatasetBuilder {
     constructor(rdf, nodeCreator) {
@@ -25,48 +30,34 @@ export class DatasetBuilder {
 
     build(data, parentSubject = null) {
         const dataset = this.rdf.dataset();
-
         const subject = parentSubject || this.rdf.blankNode();
 
         data.forEach(item => {
             const predicate = this.rdf.namedNode(item.namespace + item.term);
-
-            if (item.entries) {
-                this.handleEntries(dataset, subject, predicate, item.entries);
-            } else {
-                const object = this.nodeCreator.createNode(item);
-                dataset.add(this.rdf.quad(subject, predicate, object));
-            }
+            const object = this.nodeCreator.createNode(item);
+            const quad = this.rdf.quad(subject, predicate, object);
+            console.log('Adding quad:', quad.toString());
+            dataset.add(quad);
         });
 
         return dataset;
-    }
-
-    handleEntries(dataset, subject, predicate, entries) {
-        entries.forEach(entry => {
-            const entrySubject = this.rdf.blankNode();
-            dataset.add(this.rdf.quad(subject, predicate, entrySubject));
-            const nestedDataset = this.build(Object.values(entry), entrySubject);
-            dataset.addAll(nestedDataset);
-        });
     }
 }
 
 export class FormDataExtractor {
     extract(form) {
         const elements = form.querySelectorAll('input, textarea');
+        console.log('Found form elements:', elements);
         const data = Array.from(elements).map(element => this.extractElementData(element));
+        console.log('Extracted form data:', data);
         return this.groupData(data);
     }
 
     extractElementData(element) {
         const data = this.extractDataAttributes(element);
         data.value = element.value;
-
-        if (element.tagName === 'FIELDSET') {
-            data.entries = this.extractFieldsetEntries(element);
-        }
-
+        data.type = element.type === 'number' ? 'LITERAL' : 'LITERAL';  // You might want to add more specific type handling here
+        console.log('Extracted element data:', data);
         return data;
     }
 
@@ -78,15 +69,13 @@ export class FormDataExtractor {
                 const key = attr.name.slice(5);
                 console.log("key = " + key)
                 console.log("attr.value = " + attr.value)
-
                 data[key] = attr.value;
-                //   data[key] = this.parseAttributeValue(attr.value); broken below?
             }
         }
         return data;
     }
 
-    parseAttributeValue(value) { // broken?
+    parseAttributeValue(value) {
         try {
             return JSON.parse(value);
         } catch {
@@ -124,28 +113,31 @@ export class FormDataExtractor {
 }
 
 export class TurtleSerializer {
-    constructor(N3Writer) {
-        this.N3Writer = N3Writer;
-    }
-
     serialize(dataset) {
         return new Promise((resolve, reject) => {
-            const writer = new N3Writer();
-            // const writer = new this.N3Writer();
-            let turtleString = '';
-
-            writer.import(dataset.toStream())
-                .on('data', (chunk) => { turtleString += chunk; })
-                .on('end', () => resolve(turtleString))
-                .on('error', reject);
+            let result = '';
+            dataset.forEach(quad => {
+                result += this.serializeQuad(quad) + '\n';
+            });
+            console.log('Serialized result:', result);
+            resolve(result);
         });
     }
+
+    serializeQuad(quad) {
+        return `${this.serializeTerm(quad.subject)} ${this.serializeTerm(quad.predicate)} ${this.serializeTerm(quad.object)} .`;
+    }
+
+    serializeTerm(term) {
+        if (term.termType === 'NamedNode') {
+            return `<${term.value}>`;
+        } else if (term.termType === 'BlankNode') {
+            return `_:${term.value}`;
+        } else if (term.termType === 'Literal') {
+            return `"${term.value}"`;
+        }
+    }
 }
-
-
-/*
-writable.js:268 Uncaught TypeError: The "chunk" argument must be of type string or an instance of Buffer or Uint8Array. Received an instance of Quad
-*/
 
 export class RDFExtractor {
     constructor(rdf, N3Writer) {
@@ -153,23 +145,21 @@ export class RDFExtractor {
         this.formDataExtractor = new FormDataExtractor();
         this.nodeCreator = new RDFNodeCreator(rdf);
         this.datasetBuilder = new DatasetBuilder(rdf, this.nodeCreator);
-        this.turtleSerializer = new TurtleSerializer(N3Writer);
+        this.turtleSerializer = new TurtleSerializer();
     }
 
-
-
     async extract(document) {
-        console.log('Extract called')
+        console.log('Extract called');
         try {
             const form = document.querySelector('form');
-            console.log('A')
+            console.log('Form found:', form);
             const data = this.formDataExtractor.extract(form);
-            console.log('B')
+            console.log('Extracted data:', data);
             const dataset = this.datasetBuilder.build(data);
-            console.log('C')
+            console.log('Built dataset:', dataset);
             const serialized = await this.turtleSerializer.serialize(dataset);
-            console.log('D')
-            return serialized
+            console.log('Serialized result:', serialized);
+            return serialized;
         } catch (error) {
             console.error('Extraction failed:', error);
             throw error;
