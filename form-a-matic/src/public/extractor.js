@@ -1,6 +1,10 @@
 import rdf from 'rdf-ext';
-import N3Writer from '@rdfjs/parser-n3';
+import N3Writer from '@rdfjs/parser-n3'; // TODO not needed?
+import formatsPretty from '@rdfjs/formats/pretty.js'
 
+/*
+/home/danny/github-other/rdf-ext/rdf-ext-examples/examples/browser/io-dataset.js
+*/
 export class RDFNodeCreator {
     constructor(rdf) {
         this.rdf = rdf;
@@ -112,8 +116,32 @@ export class FormDataExtractor {
     }
 }
 
+import Serializer from '@rdfjs/serializer-turtle'
+
+
+
 export class TurtleSerializer {
-    serialize(dataset) {
+    async serialize(dataset) {
+        /*
+        const serializer = new Serializer()
+        const output = serializer.import(dataset.stream)
+
+        output.pipe(process.stdout)
+        */
+        /////////////////////////////////////////////////////////
+        // clone the default environment
+        const rdfPretty = rdf.clone()
+
+        // import pretty print serializers
+        rdfPretty.formats.import(formatsPretty)
+
+        const ttl = await rdfPretty.io.dataset.toText('text/turtle', dataset)
+        console.log('**********************')
+        // console.log(ttl)
+        console.log('**********************')
+        return ttl
+
+        /*
         return new Promise((resolve, reject) => {
             let result = '';
             dataset.forEach(quad => {
@@ -122,6 +150,7 @@ export class TurtleSerializer {
             console.log('Serialized result:', result);
             resolve(result);
         });
+        */
     }
 
     serializeQuad(quad) {
@@ -158,8 +187,8 @@ export class RDFExtractor {
             const dataset = this.datasetBuilder.build(data);
             console.log('Built dataset:', dataset);
             const serialized = await this.turtleSerializer.serialize(dataset);
-            console.log('Serialized result:', serialized);
-            return serialized;
+            console.log('in extract(document), serialized = ', serialized);
+            return "boo" + serialized;
         } catch (error) {
             console.error('Extraction failed:', error);
             throw error;
@@ -167,6 +196,23 @@ export class RDFExtractor {
     }
 }
 
+
 const extractor = new RDFExtractor(rdf, N3Writer);
-export const extract = (document) => extractor.extract(document);
+
+
+//export const extract = (document) => extractor.extract(document);
+
+export const extract = async (document) => {
+    try {
+        /*
+        const result = await extractor.extract(document);
+        return result; */
+        await extractor.extract(document).then(result => {
+            return result + 'BUM!'
+        });
+    } catch (error) {
+        console.error('Error in extract:', error);
+        return `Error: ${error.message}`;
+    }
+};
 export default extract;

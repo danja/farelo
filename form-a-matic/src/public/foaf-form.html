@@ -35,16 +35,24 @@
                 const button = document.getElementById('submitButton');
                 const outputElement = document.getElementById('output');
 
-                button.addEventListener('click', function() {
-                    console.log('Submit button clicked!');
+                function extractRDF() {
                     try {
-                        const output = window.extract(document);
-                        outputElement.value = output;
+
+                        outputElement.value = window.extract(document)
+
+
+                        /*
+                    const output = await window.extract(document);
+                    outputElement.value = output;
+                    */
                     } catch (error) {
                         console.error('Error during extraction:', error);
                         outputElement.value = 'An error occurred: ' + error.message;
                     }
-                });
+                }
+
+                button.addEventListener('click', extractRDF);
+
             });
         </script>
         <form>
