@@ -136,6 +136,9 @@ export class TurtleSerializer {
         rdfPretty.formats.import(formatsPretty)
 
         const ttl = await rdfPretty.io.dataset.toText('text/turtle', dataset)
+
+
+
         console.log('**********************')
         // console.log(ttl)
         console.log('**********************')
@@ -187,8 +190,8 @@ export class RDFExtractor {
             const dataset = this.datasetBuilder.build(data);
             console.log('Built dataset:', dataset);
             const serialized = await this.turtleSerializer.serialize(dataset);
-            console.log('in extract(document), serialized = ', serialized);
-            return "boo" + serialized;
+            console.log('Serialized data:', serialized);
+            return serialized; // Make sure to return the serialized data
         } catch (error) {
             console.error('Extraction failed:', error);
             throw error;
@@ -196,23 +199,23 @@ export class RDFExtractor {
     }
 }
 
+/*
+export extract = extract(document){
+   
 
-const extractor = new RDFExtractor(rdf, N3Writer);
+    extractor.extract(document).then((value) => {
+        console.log(value);
+        return value
+        // Expected output: 123
+    });
+}
+    */
 
 
-//export const extract = (document) => extractor.extract(document);
+async function extract(document) {
+    const extractor = new RDFExtractor(rdf, N3Writer);
+    const turtle = await extractor.extract(document);
+    return turtle; // Make sure to return the result
+}
+export default extract
 
-export const extract = async (document) => {
-    try {
-        /*
-        const result = await extractor.extract(document);
-        return result; */
-        await extractor.extract(document).then(result => {
-            return result + 'BUM!'
-        });
-    } catch (error) {
-        console.error('Error in extract:', error);
-        return `Error: ${error.message}`;
-    }
-};
-export default extract;

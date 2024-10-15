@@ -2,7 +2,7 @@ import assert from 'assert';
 import { JSDOM } from 'jsdom';
 import TurtleTemplateToJSON from './src/tt-to-json.js';
 import JsonToHtmlForm from './src/json-to-html.js';
-import { extract } from './src/public/extractor.js';
+import extract from './src/public/extractor.js';
 import rdf from 'rdf-ext';
 
 // Import the extractor unit tests function
@@ -86,7 +86,7 @@ async function testExtractor() {
     `).window.document;
 
     const result = await extract(mockDocument);
-
+    console.log('RESULT = ' + result)
     assert(typeof result === 'string', 'Result should be a string');
     assert(result.includes('John Doe'), 'Result should contain the input value');
     assert(result.includes('http://xmlns.com/foaf/0.1/name'), 'Result should contain the full predicate URI');

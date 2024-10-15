@@ -36,23 +36,31 @@
             const outputElement = document.getElementById('output');
 
             function extractRDF() {
-                try {
-
-                    outputElement.value = window.extract(document)
-
-
-                    /*
-                    const output = await window.extract(document);
-                    outputElement.value = output;
-                    */
-                } catch (error) {
-                    console.error('Error during extraction:', error);
-                    outputElement.value = 'An error occurred: ' + error.message;
+                if (typeof window.extract !== 'function') {
+                    console.error('Extract function not available');
+                    outputElement.value = 'Extract function not available';
+                    return;
                 }
+
+                // Disable button and show loading state
+                button.disabled = true;
+                outputElement.value = 'Extracting data...';
+
+                window.extract(document)
+                    .then(function (result) {
+                        outputElement.value = result || 'No data extracted';
+                    })
+                    .catch(function (error) {
+                        console.error('Error during extraction:', error);
+                        outputElement.value = 'An error occurred: ' + error.message;
+                    })
+                    .finally(function () {
+                        // Re-enable button
+                        button.disabled = false;
+                    });
             }
 
             button.addEventListener('click', extractRDF);
-
         });
     </script>
 
