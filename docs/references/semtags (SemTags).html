@@ -1,0 +1,313 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>semtags
+          (SemTags)
+        </title>
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="semtags (SemTags)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>semtags</h2>
+<hr>
+<b>Standard Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;%@ taglib prefix="semtags" uri="http://www.inria.fr/2007/semtags#" %&gt;<br>
+</code>
+<br>
+<b>XML Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;anyxmlelement xmlns:semtags="http://www.inria.fr/2007/semtags#" /&gt;<br>
+</code>
+<hr>
+<pre>SemTags is a semantic web tags library that allows JSP developers to use (and work with) RDF/S and OWL ontologies and annotations in their JSP pages.</pre>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Version</td><td>1.1</td>
+</tr>
+<tr>
+<td>Short Name</td><td>semtags</td>
+</tr>
+<tr>
+<td>URI</td><td>http://www.inria.fr/2007/semtags#</td>
+</tr>
+</table>
+            &nbsp;
+            <p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="init.html">init</a></b></td><td>To create and initialize the engine. You can add attributes to declare namespaces used in your SPARQL queries in the form prefix="namespace" e.g. dc="http://purl.org/dc/elements/1.1/" This tag must be called before any other calls to the SPARQL engine is made. If no engine variable is specified, the default variable "defaultEngineWrapper" is used. NB: to delete an engine, use the remove tag of the JSTL.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="reload.html">reload</a></b></td><td>To re-initialize the engine reusing the parameters specified at initialization. NB: to delete an engine, use the remove tag of the JSTL.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="send-query.html">send-query</a></b></td><td>To send a SPARQL query to the engine and include the result directly in the current page. The query is specified either in attribute "query" or in the body of the tag. Namespaces declared at initialization may be used directly with out PREFIX declaration.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="store-result.html">store-result</a></b></td><td>To store the result of a SPARQL query into the context or write it in an xml external file. The query is specified either in attribute "query" or in the body of the tag. Namespaces declared at initialization may be used directly with out PREFIX declaration.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="for-each-result.html">for-each-result</a></b></td><td>A convenient loop tag to directly iterate over the results of a SPARQL query. Variables appearing in the SELECT clause are created and updated in the JSP context for each iteration e.g. SELECT ?name ?age { ... } means ${name} and ${age} can be used directly in the body of the tag.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="for-each-buffered-result.html">for-each-buffered-result</a></b></td><td>A convenient loop tag to directly iterate over the results of a SPARQL query. The result is buffered and if the tag is called again with the same query and reset="false", previous results are reused to save time. This can be useful for instance for paginated results. Variables appearing in the SELECT clause are created and updated in the JSP context for each iteration e.g. SELECT ?name ?age { ... } means ${name} and ${age} can be used directly in the body of the tag.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="if.html">if</a></b></td><td>To use a SPARQL query as test for a conditional statement IF-THEN.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="choose.html">choose</a></b></td><td>To use a SPARQL query as test for a conditional statement CHOOSE-WHEN-OTHERWISE.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="when.html">when</a></b></td><td>To evaluate if and only if a condition is true. Used within choose tag.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="otherwise.html">otherwise</a></b></td><td>To evaluate if and only if all other conditions are false. Used within choose tag.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="for-each-label.html">for-each-label</a></b></td><td>To iterate over the list of (rdfs) labels of a resource (class or property).</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="for-each-comment.html">for-each-comment</a></b></td><td>To iterate over the list of (rdfs) comments of a resource (class or property).</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="for-each-child.html">for-each-child</a></b></td><td>To iterate over the list of direct children (rdfs:subXXX) of a resource (class or property).</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="for-each-parent.html">for-each-parent</a></b></td><td>To iterate over the list of direct parents (rdfs:subXXX) of a resource (class or property).</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="for-each-root-concept.html">for-each-root-concept</a></b></td><td>To iterate over the list of root classes of the loaded ontologies.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="for-each-root-property.html">for-each-root-property</a></b></td><td>To iterate over the list of root properties of the loaded ontologies.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="select.html">select</a></b></td><td>Generate select XHTML tag for each child (rdfs:subXXX) of a resource (class or property).</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="input-list.html">input-list</a></b></td><td>Generate input checkbox or radio tags XHTML tag for each child (rdfs:subXXX) of a resource (class or property).</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="create-annot.html">create-annot</a></b></td><td>To create a new annotation file (e.g. "book.rdf") with its content.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="remove-annot.html">remove-annot</a></b></td><td>To remove an annotation file (e.g. "book.rdf") and its content.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="modify-annot.html">modify-annot</a></b></td><td>To modify an annotation file by re-writing one or more parts identified by an XPath e.g. xpath="//*[child::dc:title='the thing']". You can add attributes to declare namespaces used in the XPath expression in the form prefix="namespace" e.g. dc="http://purl.org/dc/elements/1.1/".</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="create-rule.html">create-rule</a></b></td><td>To create a new rule file.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="modify-rule.html">modify-rule</a></b></td><td>To modify a rule file by updating its condition and/or its conclusion.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="remove-rule.html">remove-rule</a></b></td><td>To remove a rule file.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="create-ontology.html">create-ontology</a></b></td><td>To create a new empty ontology file.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="modify-ontology.html">modify-ontology</a></b></td><td>To modify an ontology file by re-writing the ontology modified part.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="remove-ontology.html">remove-ontology</a></b></td><td>To remove an ontology file.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="create-concept.html">create-concept</a></b></td><td>To create a new formatted basic concept.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="create-property.html">create-property</a></b></td><td>To create a new formatted basic property.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="create-notion.html">create-notion</a></b></td><td>To create a new custom concept or property.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="remove-concept.html">remove-concept</a></b></td><td>To remove a concept (and optionally replace it by a substitute). All ontologies and annotations will be updated.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="remove-property.html">remove-property</a></b></td><td>To remove a property (and optionally replace it by a substitute). All ontologies and annotations will be updated.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="modify-concept.html">modify-concept</a></b></td><td>To modify a concept.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="modify-property.html">modify-property</a></b></td><td>To modify a concept.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="merge-concepts.html">merge-concepts</a></b></td><td>To merge two concepts. The URI of the new merged concept will be uri1. All ontologies and annotations will be updated.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="merge-properties.html">merge-properties</a></b></td><td>To merge two properties. The URI of the new merged property will be uri1. All ontologies and annotations will be updated.</td>
+</tr>
+</table>
+              &nbsp;
+              <p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="3"><font size="+2"><b>Function Summary</b></font></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="validateQuery.fn.html">validateQuery</a></b>( javax.servlet.jsp.PageContext, java.lang.String)</code></td><td>To validate a query or a set of triples. Arguments are : the SPARQL query. Default engine instance is used. Because of '}' in SPARQL query, the query must be set as a variable before.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="detailedValidateQuery.fn.html">detailedValidateQuery</a></b>( javax.servlet.jsp.PageContext, java.lang.String, fr.inria.semtags.EngineWrapper)</code></td><td>To validate a query or a set of triples. Arguments are : the SPARQL query. The specified engine instance is used. Default engine instance is used. Because of '}' in SPARQL query, the query must be set as a variable before.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="quickQuery.fn.html">quickQuery</a></b>( javax.servlet.jsp.PageContext, java.lang.String)</code></td><td>To get the first result of the first binding of a query. Arguments are : the SPARQL query. Default engine instance is used.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="detailedQuickQuery.fn.html">detailedQuickQuery</a></b>( javax.servlet.jsp.PageContext, java.lang.String, fr.inria.semtags.EngineWrapper)</code></td><td>To get the first result of the first binding of a query. Arguments are : the SPARQL query. The specified engine instance is used.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="label.fn.html">label</a></b>( javax.servlet.jsp.PageContext, java.lang.String, java.lang.String, boolean)</code></td><td>To display label(s) of a notion. Arguments are : notion's URI, language, all labels or one only.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="detailedLabel.fn.html">detailedLabel</a></b>( javax.servlet.jsp.PageContext, java.lang.String, java.lang.String, boolean, fr.inria.semtags.EngineWrapper)</code></td><td>To display a label of a notion. Arguments are : notion's URI, language, all labels or one only, and the engine instance to use.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="comment.fn.html">comment</a></b>( javax.servlet.jsp.PageContext, java.lang.String, java.lang.String, boolean)</code></td><td>To display a comment of a notion. Arguments are : notion's URI, language, all comments or one only.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="detailedComment.fn.html">detailedComment</a></b>( javax.servlet.jsp.PageContext, java.lang.String, java.lang.String, boolean, fr.inria.semtags.EngineWrapper)</code></td><td>To display a comment of a notion. Arguments are : notion's URI, language, all comments or one only, and the engine instance to use.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>int</code></td><td width="15%" nowrap><code><b><a href="instanceNb.fn.html">instanceNb</a></b>( javax.servlet.jsp.PageContext, java.lang.String)</code></td><td>To display the number of direct instances of a concept. Arguments are : concept's URI.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>int</code></td><td width="15%" nowrap><code><b><a href="detailedInstanceNb.fn.html">detailedInstanceNb</a></b>( javax.servlet.jsp.PageContext, java.lang.String, fr.inria.semtags.EngineWrapper)</code></td><td>To display the number of direct instances of a concept. Arguments are : concept's URI, and the engine instance to use.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>int</code></td><td width="15%" nowrap><code><b><a href="allInstanceNb.fn.html">allInstanceNb</a></b>( javax.servlet.jsp.PageContext, java.lang.String)</code></td><td>To display the number of instances of a concept or its descendants. Arguments are : concept's URI.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>int</code></td><td width="15%" nowrap><code><b><a href="detailedAllInstanceNb.fn.html">detailedAllInstanceNb</a></b>( javax.servlet.jsp.PageContext, java.lang.String, fr.inria.semtags.EngineWrapper)</code></td><td>To display the number of instances of a concept or its descendants. Arguments are : concept's URI, and the engine instance to use.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="file.fn.html">file</a></b>( javax.servlet.jsp.PageContext, java.lang.String)</code></td><td>Return the relative file's name where the specified URI is defined.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="detailedFile.fn.html">detailedFile</a></b>( javax.servlet.jsp.PageContext, java.lang.String, fr.inria.semtags.EngineWrapper)</code></td><td>Return the relative file's name where the specified URI is defined. Arguments are : concept's or property's URI and the engine instance to use.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.util.List</code></td><td width="15%" nowrap><code><b><a href="sources.fn.html">sources</a></b>( javax.servlet.jsp.PageContext, java.lang.String)</code></td><td>Returns the sources URIs as a list where the specified SPARQL pattern is defined.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.util.List</code></td><td width="15%" nowrap><code><b><a href="detailedSources.fn.html">detailedSources</a></b>( javax.servlet.jsp.PageContext, java.lang.String, fr.inria.semtags.EngineWrapper)</code></td><td>Returns the sources URIs as a list where the specified SPARQL pattern is defined. Arguments are : pattern and the engine instance to use.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>boolean</code></td><td width="15%" nowrap><code><b><a href="isConcept.fn.html">isConcept</a></b>( javax.servlet.jsp.PageContext, java.lang.String)</code></td><td>Return true if the specified URI is a concept, false otherwise.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="detailedIsConcept.fn.html">detailedIsConcept</a></b>( javax.servlet.jsp.PageContext, java.lang.String, fr.inria.semtags.EngineWrapper)</code></td><td>Return true if the specified URI is a concept, false otherwise. Arguments are : an URI and the engine instance to use.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>boolean</code></td><td width="15%" nowrap><code><b><a href="isProperty.fn.html">isProperty</a></b>( javax.servlet.jsp.PageContext, java.lang.String)</code></td><td>Return true if the specified URI is a property, false otherwise.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="detailedIsProperty.fn.html">detailedIsProperty</a></b>( javax.servlet.jsp.PageContext, java.lang.String, fr.inria.semtags.EngineWrapper)</code></td><td>Return true if the specified URI is a property, false otherwise. Arguments are : an URI and the engine instance to use.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="today.fn.html">today</a></b>( java.lang.String)</code></td><td>Display today's date. Arguments are : the locale for formatting display date.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="customToday.fn.html">customToday</a></b>( java.lang.String)</code></td><td>Display today's date. Arguments are : the pattern for formatting display date.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="generateID.fn.html">generateID</a></b>( )</code></td><td>Generate an ID.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="encode.fn.html">encode</a></b>( java.lang.String)</code></td><td><i>No Description</i></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="decode.fn.html">decode</a></b>( java.lang.String)</code></td><td><i>No Description</i></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="namespace.fn.html">namespace</a></b>( java.lang.String)</code></td><td>Return the namespace of the specified URI.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap align="right"><code>java.lang.String</code></td><td width="15%" nowrap><code><b><a href="id.fn.html">id</a></b>( java.lang.String)</code></td><td>Return the ID (without the namespace) of the specified URI.</td>
+</tr>
+</table>
+              &nbsp;
+              <p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Java, JSP, and JavaServer Pages are trademarks or registered 
+            trademarks of Sun Microsystems, Inc. in the US and other countries.
+            Copyright 2002-3 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>

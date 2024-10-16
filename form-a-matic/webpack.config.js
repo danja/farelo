@@ -2,6 +2,8 @@ import webpack from 'webpack';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 const require = createRequire(import.meta.url);
 
 const __filename = fileURLToPath(import.meta.url);
@@ -31,8 +33,18 @@ export default {
         new webpack.ProvidePlugin({
             process: 'process/browser',
             Buffer: ['buffer', 'Buffer']
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/public/foaf-form.html',
         })
     ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'src/public'),
+        },
+        open: true,
+        port: 9000,
+    },
     module: {
         rules: [
             {
