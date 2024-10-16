@@ -1,13 +1,21 @@
-/* styles.css */
-
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.column {
+    flex: 1;
 }
 
 form {
@@ -17,10 +25,18 @@ form {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.form-group {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
 label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #2c3e50;
 }
 
 input[type="text"],
@@ -28,62 +44,46 @@ input[type="number"],
 textarea {
     width: 100%;
     padding: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
 input[type="checkbox"] {
-    margin-bottom: 15px;
-}
-
-fieldset {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-legend {
-    font-weight: bold;
-    padding: 0 10px;
-}
-
-/* Add some color to make it more visually appealing */
-label {
-    color: #2c3e50;
-}
-
-input:focus,
-textarea:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.nested-entry {
-    border: 1px solid #ddd;
-    padding: 10px;
     margin-bottom: 10px;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
     border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-fieldset button {
-    margin-top: 10px;
+button:hover {
+    background-color: #2980b9;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    
-    form {
-        padding: 15px;
+.add-button {
+    background-color: #2ecc71;
+}
+
+.add-button:hover {
+    background-color: #27ae60;
+}
+
+#output {
+    width: 100%;
+    height: calc(100vh - 140px);
+    resize: vertical;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
     }
 }

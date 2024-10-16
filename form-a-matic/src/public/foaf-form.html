@@ -9,17 +9,104 @@
     </head>
     
     <body>
-        <header>
-             <h1>Form</h1>
-
-        </header>
-        <main>
-            <!-- Your form content will go here -->
-        </main>
-        <footer>
-            <p>2024</p>
-        </footer>
-        <!-- template html body below content -->
+        <div class="container">
+            <div class="column">
+                <form id="inputForm">
+                    <!-- Form elements will be inserted here -->
+                    <div class="form-group">
+                        <label>name</label>
+                        <textarea data-term="name" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>mbox</label>
+                        <textarea data-term="mbox" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>homepage</label>
+                        <textarea data-term="homepage" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>nick</label>
+                        <textarea data-term="nick" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>depiction</label>
+                        <textarea data-term="depiction" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>interest</label>
+                        <textarea data-term="interest" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>knows</label>
+                        <fieldset>
+                            <legend>knows</legend>
+                            <div class="nested-entry">
+                                <div class="form-group">
+                                    <label>name</label>
+                                    <textarea data-term="name" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
+                                </div>
+                                <button type="button">Remove</button>
+                            </div>
+                            <button type="button">Add knows</button>
+                        </fieldset>
+                    </div>
+                    <fieldset>
+                        <legend>knows</legend>
+                        <div class="form-group">
+                            <label>name</label>
+                            <textarea data-term="name" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
+                        </div>
+                        <button type="button">Add knows</button>
+                    </fieldset>
+                    <div class="form-group">
+                        <label>maintainer-of</label>
+                        <fieldset>
+                            <legend>maintainer-of</legend>
+                            <div class="nested-entry">
+                                <div class="form-group">
+                                    <label>homepage</label>
+                                    <textarea data-term="homepage" data-namespace="http://usefulinc.com/ns/doap#"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>description</label>
+                                    <textarea data-term="description" data-namespace="http://usefulinc.com/ns/doap#"></textarea>
+                                </div>
+                                <button type="button">Remove</button>
+                            </div>
+                            <button type="button">Add maintainer-of</button>
+                        </fieldset>
+                    </div>
+                    <fieldset>
+                        <legend>maintainer-of</legend>
+                        <div class="form-group">
+                            <label>homepage</label>
+                            <textarea data-term="homepage" data-namespace="http://usefulinc.com/ns/doap#"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>description</label>
+                            <textarea data-term="description" data-namespace="http://usefulinc.com/ns/doap#"></textarea>
+                        </div>
+                        <button type="button">Add maintainer-of</button>
+                    </fieldset>
+                    <div class="form-group">
+                        <label>taskStatus</label>
+                        <input type="checkbox" data-term="taskStatus" data-namespace="http://purl.org/stuff/prj/">
+                    </div>
+                    <div class="form-group">
+                        <label>priority</label>
+                        <input type="number" data-term="priority" data-namespace="http://purl.org/stuff/prj/">
+                    </div>
+                </form>
+            </div>
+            <div class="column">
+                <form id="outputForm">
+                    <label for="output">Output</label>
+                    <textarea id="output" rows="20"></textarea>
+                    <button type="button" id="submitButton">Submit</button>
+                </form>
+            </div>
+        </div>
         <script src="webpack/main.bundle.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -65,93 +152,6 @@
                 button.addEventListener('click', extractRDF);
             });
         </script>
-        <form>
-            <div class="form-group">
-                <label>name</label>
-                <textarea data-term="name" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
-            </div>
-            <div class="form-group">
-                <label>mbox</label>
-                <textarea data-term="mbox" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
-            </div>
-            <div class="form-group">
-                <label>homepage</label>
-                <textarea data-term="homepage" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
-            </div>
-            <div class="form-group">
-                <label>nick</label>
-                <textarea data-term="nick" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
-            </div>
-            <div class="form-group">
-                <label>depiction</label>
-                <textarea data-term="depiction" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
-            </div>
-            <div class="form-group">
-                <label>interest</label>
-                <textarea data-term="interest" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
-            </div>
-            <div class="form-group">
-                <label>knows</label>
-                <fieldset>
-                    <legend>knows</legend>
-                    <div class="nested-entry">
-                        <div class="form-group">
-                            <label>name</label>
-                            <textarea data-term="name" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
-                        </div>
-                        <button type="button">Remove</button>
-                    </div>
-                    <button type="button">Add knows</button>
-                </fieldset>
-            </div>
-            <fieldset>
-                <legend>knows</legend>
-                <div class="form-group">
-                    <label>name</label>
-                    <textarea data-term="name" data-namespace="http://xmlns.com/foaf/0.1/"></textarea>
-                </div>
-            </fieldset>
-            <div class="form-group">
-                <label>maintainer-of</label>
-                <fieldset>
-                    <legend>maintainer-of</legend>
-                    <div class="nested-entry">
-                        <div class="form-group">
-                            <label>homepage</label>
-                            <textarea data-term="homepage" data-namespace="http://usefulinc.com/ns/doap#"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>description</label>
-                            <textarea data-term="description" data-namespace="http://usefulinc.com/ns/doap#"></textarea>
-                        </div>
-                        <button type="button">Remove</button>
-                    </div>
-                    <button type="button">Add maintainer-of</button>
-                </fieldset>
-            </div>
-            <fieldset>
-                <legend>maintainer-of</legend>
-                <div class="form-group">
-                    <label>homepage</label>
-                    <textarea data-term="homepage" data-namespace="http://usefulinc.com/ns/doap#"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>description</label>
-                    <textarea data-term="description" data-namespace="http://usefulinc.com/ns/doap#"></textarea>
-                </div>
-            </fieldset>
-            <div class="form-group">
-                <label>taskStatus</label>
-                <input type="checkbox" data-term="taskStatus" data-namespace="http://purl.org/stuff/prj/">
-            </div>
-            <div class="form-group">
-                <label>priority</label>
-                <input type="number" data-term="priority" data-namespace="http://purl.org/stuff/prj/">
-            </div>
-            <button type="button" id="submitButton">Submit</button>
-            <label for="output">Output</label>
-            <textarea id="output" rows="10"></textarea>
-        </form>
     </body>
 
 </html>

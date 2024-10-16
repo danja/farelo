@@ -9,7 +9,7 @@ class FormElementFactory {
     createElement(property) {
         const label = this.createLabel(property.term);
         const input = this.createInput(property);
-        return this.wrapInFormGroup(label, input);
+        return { label, input };
     }
 
     createLabel(text) {
@@ -87,11 +87,17 @@ class FormElementFactory {
         entryDiv.classList.add('nested-entry');
 
         property.children.properties.forEach(childProp => {
-            const { formGroup } = this.createElement(childProp);
+            const { label, input } = this.createElement(childProp);
+            const formGroup = this.document.createElement('div');
+            formGroup.classList.add('form-group');
+            formGroup.appendChild(label);
+            formGroup.appendChild(input);
             entryDiv.appendChild(formGroup);
         });
 
-        entryDiv.appendChild(this.createRemoveButton(fieldset, entryDiv));
+        const removeButton = this.createRemoveButton(fieldset, entryDiv);
+        entryDiv.appendChild(removeButton);
+
         fieldset.insertBefore(entryDiv, fieldset.lastElementChild);
     }
 
@@ -129,7 +135,11 @@ class JsonToHtmlForm {
     createFormElements(properties) {
         const fragment = this.document.createDocumentFragment();
         properties.forEach(property => {
-            const { formGroup } = this.formElementFactory.createElement(property);
+            const formGroup = this.document.createElement('div');
+            formGroup.classList.add('form-group');
+            const { label, input } = this.formElementFactory.createElement(property);
+            formGroup.appendChild(label);
+            formGroup.appendChild(input);
             fragment.appendChild(formGroup);
 
             if (property.children && property.children.properties) {
@@ -140,17 +150,36 @@ class JsonToHtmlForm {
         return fragment;
     }
 
+
     createNestedFieldset(property) {
         const fieldset = this.document.createElement('fieldset');
-        fieldset.appendChild(this.formElementFactory.createLegend(property.term));
-        fieldset.appendChild(this.createFormElements(property.children.properties));
+        const legend = this.document.createElement('legend');
+        legend.textContent = property.term;
+        fieldset.appendChild(legend);
+
+        property.children.properties.forEach(childProp => {
+            const formGroup = this.document.createElement('div');
+            formGroup.classList.add('form-group');
+            const { label, input } = this.formElementFactory.createElement(childProp);
+            formGroup.appendChild(label);
+            formGroup.appendChild(input);
+            fieldset.appendChild(formGroup);
+        });
+
+        const addButton = this.formElementFactory.createAddButton(property);
+        fieldset.appendChild(addButton);
+
         return fieldset;
     }
 
     jsonToHtmlForm(jsonData) {
-        const form = this.document.createElement('form');
-        form.appendChild(this.createFormElements(jsonData.ROOT.properties));
-        return form;
+        const inputForm = this.document.getElementById('inputForm');
+        if (!inputForm) {
+            console.error('Input form not found');
+            return;
+        }
+        const formElements = this.createFormElements(jsonData.ROOT.properties);
+        inputForm.appendChild(formElements);
     }
 
     createSubmitButton() {
@@ -173,7 +202,7 @@ class JsonToHtmlForm {
         return { outputLabel, outputTextarea };
     }
 
-    createClientScript() {
+    createClientScript() { // not used
         const script = this.document.createElement('script');
         script.textContent = `
             document.addEventListener('DOMContentLoaded', function() {
@@ -235,33 +264,13 @@ class JsonToHtmlForm {
                 throw new Error('Invalid JSON structure: ROOT.properties array is missing');
             }
 
-            const formElement = this.jsonToHtmlForm(jsonData);
-
-            formElement.appendChild(this.createSubmitButton());
-
-            const { outputLabel, outputTextarea } = this.createOutputElements();
-            formElement.appendChild(outputLabel);
-            formElement.appendChild(outputTextarea);
-
-            this.document.body.appendChild(formElement);
-            //    const bundleScript = this.document.createElement('script');
-            //    bundleScript.src = "webpack/main.bundle.js";
-            //    this.document.head.appendChild(bundleScript);
-
-            // Add the client script after the bundle
-            //  this.document.head.appendChild(this.createClientScript());
+            this.jsonToHtmlForm(jsonData);
+            //    this.document.body.appendChild(this.createClientScript());
 
             return this.dom.serialize();
         } catch (error) {
             console.error('Error in jsonFileToHtmlForm:', error);
-
-            if (error instanceof SyntaxError) {
-                throw new Error(`Invalid JSON in file ${filePath}: ${error.message}`);
-            } else if (error.code === 'ENOENT') {
-                throw new Error(`File not found: ${error.path}`);
-            } else {
-                throw new Error(`Failed to process form: ${error.message}`);
-            }
+            throw error;
         }
     }
 }
