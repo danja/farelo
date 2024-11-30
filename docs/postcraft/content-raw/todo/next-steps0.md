@@ -1,19 +1,6 @@
 # Farelo Next Steps
 
-**2024-11-30**
-
-## SQUIRT
-
-* server - put Fuseki in #:tbox
-
-* vocab : map mcp to rdf
-
-### Form-a-matic
-
-
----
-
-*previously...*
+sorry, I'd like the test runner to be vanilla js. In fact there's already something from earlier in place, please add the new bits to that.  check the code in the project knowledge files.
 
 ## Form-a-matic
 
