@@ -1,4 +1,11 @@
-// Generate unique node ID based on date and content hash
+export const namespaces = {
+  rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+  rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
+  dc: 'http://purl.org/dc/terms/',
+  foaf: 'http://xmlns.com/foaf/0.1/',
+  squirt: 'http://purl.org/stuff/squirt/'
+};
+
 export function generateNid(content) {
   const date = new Date().toISOString().split('T')[0];
   const hash = hashContent(content);
@@ -13,11 +20,3 @@ function hashContent(content) {
     .toString(16)
     .slice(0, 4);
 }
-
-export const namespaces = {
-  rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-  rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
-  dc: 'http://purl.org/dc/terms/',
-  foaf: 'http://xmlns.com/foaf/0.1/',
-  squirt: 'http://purl.org/stuff/squirt/'
-};

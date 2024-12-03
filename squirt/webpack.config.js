@@ -4,25 +4,29 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export default {
     entry: {
-        main: ['./src/js/app.js', './src/css/styles.css', './src/css/form-styles.css']
+        main: ['./src/js/app.js', './src/css/styles.css']
     },
     output: {
         path: path.resolve('public'),
         filename: '[name].bundle.js',
         clean: true
     },
-    mode: 'development',
     module: {
         rules: [
             {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
                 test: /\.css$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '/'
-                        }
-                    },
+                    MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
             }
@@ -36,15 +40,15 @@ export default {
             filename: '[name].[contenthash].css'
         })
     ],
+    resolve: {
+        extensions: ['.js', '.json']
+    },
     devServer: {
         static: {
             directory: path.join(process.cwd(), 'public')
         },
         compress: true,
         hot: true,
-        port: 9000,
-        devMiddleware: {
-            writeToDisk: true
-        }
+        port: 9000
     }
-};
+}

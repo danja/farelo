@@ -1,8 +1,7 @@
-// Main application logic
 import { setupForms } from './forms.js';
 import { initializeRouter } from './router.js';
+import { SettingsManager } from './settings.js';
 
-// View IDs
 const VIEWS = {
   POST: 'post-view',
   DEVELOPER: 'developer-view',
@@ -10,16 +9,18 @@ const VIEWS = {
   SETTINGS: 'settings-view'
 };
 
-// Initialize app
 document.addEventListener('DOMContentLoaded', () => {
   setupViews();
   setupNavigation();
   setupForms();
   initializeRouter();
+
+  const settingsManager = new SettingsManager();
+  settingsManager.initialize();
+  settingsManager.startStatusChecks();
 });
 
 function setupViews() {
-  // Ensure all view containers exist
   Object.values(VIEWS).forEach(viewId => {
     if (!document.getElementById(viewId)) {
       const view = document.createElement('div');
@@ -31,7 +32,6 @@ function setupViews() {
 }
 
 function setupNavigation() {
-  // Handle navigation clicks
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -44,7 +44,6 @@ function setupNavigation() {
 }
 
 function showView(viewId) {
-  // Hide all views
   Object.values(VIEWS).forEach(id => {
     const view = document.getElementById(id);
     if (view) {
@@ -52,7 +51,6 @@ function showView(viewId) {
     }
   });
 
-  // Show selected view
   const selectedView = document.getElementById(viewId);
   if (selectedView) {
     selectedView.classList.remove('hidden');

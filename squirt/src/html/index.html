@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Squirt</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <!-- link rel="stylesheet" href="/css/styles.css" -->
-    <!-- link rel="stylesheet" href="/css/form-styles.css" -->
 </head>
 
 <body>
@@ -31,6 +29,19 @@
                 <textarea id="content-field" name="content" required></textarea>
                 <button type="submit">Post</button>
             </form>
+        </div>
+
+        <div id="settings-view" class="view hidden">
+            <h2>Settings</h2>
+            <div class="settings-section">
+                <h3>SPARQL Endpoints</h3>
+                <div id="endpoints-list"></div>
+                <form id="endpoint-form" class="form-group">
+                    <input type="text" id="endpoint-label" placeholder="Endpoint Label" required>
+                    <input type="url" id="endpoint-url" placeholder="Enter SPARQL endpoint URL" required>
+                    <button type="submit">Add Endpoint</button>
+                </form>
+            </div>
         </div>
     </main>
 </body>
