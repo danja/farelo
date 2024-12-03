@@ -1,5 +1,5 @@
 import rdf from 'rdf-ext';
-import N3Writer from '@rdfjs/parser-n3'; // TODO not needed?
+import N3Writer from '@rdfjs/parser-n3';
 import formatsPretty from '@rdfjs/formats/pretty.js'
 
 /*
@@ -201,7 +201,7 @@ export class RDFExtractor {
 
 /*
 export extract = extract(document){
-   
+
 
     extractor.extract(document).then((value) => {
         console.log(value);

@@ -1,0 +1,53 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prj: <http://purl.org/stuff/prj/> .
+
+[
+    a prj:Pivot, prj:Handover ;
+    dcterms:title "Squirt PWA Initial Implementation" ;
+    dcterms:description "Progressive Web App for posting content to SPARQL endpoints with form-based and chat interfaces" ;
+    prj:version "0.1.0" ;
+    prj:hasGoal [
+        a prj:Goal;
+        rdfs:label "Create modular PWA framework for posting content via multiple protocols"
+    ] ;
+    prj:hasTask (
+        [ a prj:Task ;
+          rdfs:label "Configure WebPack and npm for development" ;
+          prj:status "Complete" ]
+        [ a prj:Task ;
+          rdfs:label "Implement PWA shell with menu" ;
+          prj:status "Complete" ]
+        [ a prj:Task ;
+          rdfs:label "Create form generation system" ;
+          prj:status "Complete" ]
+        [ a prj:Task ;
+          rdfs:label "Add RDF extraction" ;
+          prj:status "Complete" ]
+        [ a prj:Task ;
+          rdfs:label "Implement SPARQL posting" ;
+          prj:status "Complete" ]
+        [ a prj:Task ;
+          rdfs:label "Add tests" ;
+          prj:status "Pending" ]
+    ) ;
+    dcterms:creator <http://purl.org/stuff/agents/ClaudeAI>, <http://danny.ayers.name/me> ;
+    prj:status "Initial Implementation" ;
+    prj:keywords "PWA, RDF, SPARQL, Forms" ;
+    prj:deliverables (
+        "src/js/app.js"
+        "src/js/forms.js" 
+        "src/js/rdf-extractor.js"
+        "src/js/sparql.js"
+        "src/js/utils.js"
+        "public/sw.js"
+        "public/manifest.json"
+    ) ;
+    prov:wasGeneratedBy [
+        a prov:Activity ;
+        prj:includes <http://hyperdata.it/prompts/system-prompt>
+    ]
+] .

@@ -1,0 +1,12 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix : <http://xmlns.com/foaf/0.1/> .
+
+[]
+    doap:maintainer-of [
+        doap:homepage <http://usefulinc.com/doap> ;
+        a doap:Project
+    ] ;
+    a :Person ;
+    :homepage <http://usefulinc.com/edd> ;
+    :name "Edd Dumbill" .

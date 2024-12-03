@@ -7,9 +7,10 @@
     "ignore": {
         "useDefaultPatterns": true,
         "customPatterns": [
+            "**/_*",
             "*.log",
             "docs",
-            "prompts",
+            "**/*prompt*",
             "**/*repopack*"
         ]
     }

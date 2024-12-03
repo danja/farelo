@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squirt</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- link rel="stylesheet" href="/css/styles.css" -->
+    <!-- link rel="stylesheet" href="/css/form-styles.css" -->
+</head>
+
+<body>
+    <header>
+        <h1>Squirt</h1>
+        <nav>
+            <a href="#" data-view="post-view">Post</a>
+            <a href="#" data-view="developer-view">Developer</a>
+            <a href="#" data-view="profile-view">Profile</a>
+            <a href="#" data-view="settings-view">Settings</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="post-view" class="view">
+            <form id="post-form">
+                <select name="post-type" required>
+                    <option value="entry">Entry</option>
+                    <option value="link">Link</option>
+                </select>
+                <textarea id="content-field" name="content" required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,15 +1,19 @@
 {
     "output": {
-        "filePath": "./form-a-matic_repopack.txt",
-        "headerText": "form-a-matic repo",
+        "filePath": "./squirt_repomix.txt",
+        "headerText": "Squirt repo",
         "removeComments": true
     },
     "ignore": {
         "useDefaultPatterns": true,
         "customPatterns": [
+            ".env",
+            "knowledge",
+            "**/_*",
             "**/webpack/*",
             "*.log",
             "**/*repopack*",
+            "**/*repomix*",
             "**/*old*",
             "**/*prompt*"
         ]

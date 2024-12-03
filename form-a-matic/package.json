@@ -8,7 +8,7 @@
   "scripts": {
     "build": "webpack --mode development",
     "fam": "node src/index.js",
-    "rp": "repopack -c repopack.config.json .",
+    "rp": "repomix -c repomix.config.json .",
     "test": "node test-runner.js",
     "testes": "node src/fam-test.js",
     "show": "webpack serve --mode development",

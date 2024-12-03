@@ -9,5 +9,7 @@
   "keywords": [],
   "author": "Danny Ayers",
   "license": "MIT",
-  "dependencies": {}
+  "devDependencies": {
+    "repomix": "^0.2.5"
+  }
 }
