@@ -79,8 +79,8 @@ export class SettingsManager {
         const checkedPred = rdf.namedNode(`${namespaces.squirt}lastChecked`);
         const timestamp = new Date().toISOString();
 
-        this.dataset.removeMatches(endpoint, statusPred);
-        this.dataset.removeMatches(endpoint, checkedPred);
+        this.dataset.deleteMatches(endpoint, statusPred);
+        this.dataset.deleteMatches(endpoint, checkedPred);
         this.dataset.add(rdf.quad(endpoint, statusPred, rdf.literal(isActive ? 'active' : 'inactive')));
         this.dataset.add(rdf.quad(endpoint, checkedPred, rdf.literal(timestamp)));
 
@@ -111,7 +111,7 @@ export class SettingsManager {
 
     removeEndpoint(url) {
         const endpoint = rdf.namedNode(url);
-        this.dataset.removeMatches(endpoint);
+        this.dataset.deleteMatches(endpoint);
         this.saveToStorage();
         this.renderEndpoints();
     }
@@ -120,7 +120,7 @@ export class SettingsManager {
         const endpoint = rdf.namedNode(url);
         const rdfsLabel = rdf.namedNode(`${namespaces.rdfs}label`);
 
-        this.dataset.removeMatches(endpoint, rdfsLabel);
+        this.dataset.deleteMatches(endpoint, rdfsLabel);
         this.dataset.add(rdf.quad(endpoint, rdfsLabel, rdf.literal(newLabel)));
         this.saveToStorage();
         this.renderEndpoints();
