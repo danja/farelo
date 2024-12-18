@@ -1,5 +1,5 @@
 import rdf from 'rdf-ext';
-import { namespaces } from './utils.js';
+import { namespaces } from '../../utils.js';
 import { showSuccess, showError } from './notification.js';
 
 export class SettingsManager {

@@ -8,6 +8,7 @@
         "useDefaultPatterns": true,
         "customPatterns": [
             "public/main.bundle.js",
+            "docs",
             ".env",
             "knowledge",
             "**/_*",

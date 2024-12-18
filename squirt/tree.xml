@@ -1,15 +1,21 @@
 .
 ├── about.md
+├── docs
+│   ├── favicon.svg
+│   ├── handover_2024-12-03.md
+│   ├── handover_2024-12-03.ttl
+│   ├── icon.svg
+│   └── todo
+│       └── next-steps.md
+├── jasmine.json
 ├── _notes.md
 ├── package.json
 ├── package-lock.json
 ├── public
 │   ├── index.html
-│   ├── main.0d70436069cecaf7ab8b.css
-│   ├── main.15234deafd4c47b82282.hot-update.js
-│   ├── main.15234deafd4c47b82282.hot-update.json
+│   ├── main.7c68100857cf953737ab.css
 │   ├── main.bundle.js
-│   └── main.c075615bcc74303d55cd.css
+│   └── main.bundle.js.LICENSE.txt
 ├── repomix.config.json
 ├── squirt_repomix.txt
 ├── src
@@ -20,15 +26,38 @@
 │   │   └── index.html
 │   └── js
 │       ├── app.js
-│       ├── forms.js
-│       ├── notification.js
-│       ├── rdf-extractor.js
+│       ├── core
+│       │   ├── errors.js
+│       │   └── state.js
 │       ├── router.js
-│       ├── sparql.js
-│       └── utils.js
+│       ├── services
+│       │   ├── rdf
+│       │   │   └── rdf-extractor.js
+│       │   └── sparql
+│       │       ├── endpoints.js
+│       │       ├── sparql.js
+│       │       └── test
+│       │           └── spec
+│       │               └── sparql.spec.js
+│       ├── ui
+│       │   ├── components
+│       │   │   ├── endpoints-list.js
+│       │   │   ├── forms.js
+│       │   │   └── notifications.js
+│       │   └── views
+│       │       └── settings.js
+│       └── utils
+│           └── utils.js
 ├── test
 │   └── spec
+│       ├── about.md
+│       ├── sparql.spec.js
+│       └── src
+│           └── js
+│               └── services
+│                   └── sparql
+│                       └── sparql.js
 ├── tree.xml
 └── webpack.config.js
 
-8 directories, 24 files
+24 directories, 37 files

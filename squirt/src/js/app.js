@@ -1,32 +1,50 @@
-import { setupForms } from './forms.js';
+import { setupForms } from './ui/components/forms.js';
 import { initializeRouter } from './router.js';
-import { SettingsManager } from './settings.js';
+import { EndpointManager } from './services/sparql/endpoints.js';
+import { state } from './core/state.js';
+import { ErrorHandler } from './core/errors.js';
 
-const VIEWS = {
+export const VIEWS = {
   POST: 'post-view',
   DEVELOPER: 'developer-view',
   PROFILE: 'profile-view',
   SETTINGS: 'settings-view'
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await initializeApp();
+  } catch (error) {
+    ErrorHandler.handle(error);
+  }
+});
+
+async function initializeApp() {
   setupViews();
   setupNavigation();
   setupForms();
   initializeRouter();
 
-  const settingsManager = new SettingsManager();
-  settingsManager.initialize();
-  settingsManager.startStatusChecks();
-});
+  const endpointManager = new EndpointManager();
+  await endpointManager.initialize();
+}
 
 function setupViews() {
+  const main = document.querySelector('main');
+  if (!main) {
+    throw new Error('Main element not found');
+  }
+
   Object.values(VIEWS).forEach(viewId => {
+    if (typeof viewId !== 'string' || !viewId.endsWith('-view')) {
+      throw new Error(`Invalid view ID format: ${viewId}`);
+    }
+
     if (!document.getElementById(viewId)) {
       const view = document.createElement('div');
       view.id = viewId;
       view.classList.add('view', 'hidden');
-      document.querySelector('main').appendChild(view);
+      main.appendChild(view);
     }
   });
 }
@@ -37,22 +55,8 @@ function setupNavigation() {
       e.preventDefault();
       const viewId = e.target.getAttribute('data-view');
       if (viewId) {
-        showView(viewId);
+        window.location.hash = viewId.replace('-view', '');
       }
     });
   });
-}
-
-function showView(viewId) {
-  Object.values(VIEWS).forEach(id => {
-    const view = document.getElementById(id);
-    if (view) {
-      view.classList.add('hidden');
-    }
-  });
-
-  const selectedView = document.getElementById(viewId);
-  if (selectedView) {
-    selectedView.classList.remove('hidden');
-  }
 }
