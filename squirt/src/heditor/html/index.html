@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heditor - Markdown Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="editor-container">
+        <div class="editor-pane">
+            <div class="title-bar">
+                <span class="document-title">Untitled</span>
+                <span class="document-uri"></span>
+                <button class="save-btn">Save</button>
+            </div>
+            <textarea id="editor1"></textarea>
+        </div>
+        <div class="editor-pane">
+            <div class="title-bar">
+                <span class="document-title">Untitled</span>
+                <span class="document-uri"></span>
+                <button class="save-btn">Save</button>
+            </div>
+            <textarea id="editor2"></textarea>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/markdown/markdown.min.js"></script>
+    <script type="module" src="editor.js"></script>
+</body>
+</html>

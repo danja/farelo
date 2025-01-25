@@ -1,0 +1,39 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix status: <http://example.org/status/> .
+@prefix tech: <http://example.org/tech/> .
+@prefix : <http://example.org/heditor/> .
+
+:Heditor
+    rdf:type :WebApplication ;
+    dc:title "Heditor - Markdown Editor with Semantic Tags" ;
+    dc:creator "Development Team" ;
+    dc:description "Browser-based dual-pane markdown editor with semantic tag linking" ;
+    dcterms:created "2025-01-25"^^xsd:date ;
+    status:current "Implementation Complete" ;
+    :keywords "markdown", "editor", "semantic-tags", "codemirror", "express" ;
+    tech:clientFramework :CodeMirror ;
+    tech:serverFramework :Express ;
+    tech:architecture :ClientServer ;
+    :features :DualPane,
+              :SemanticTagging,
+              :CrossPaneInteraction,
+              :FileStorage .
+
+:DualPane
+    rdf:type :Feature ;
+    rdfs:label "Dual Pane Interface" ;
+    :implements :MarkdownEditing .
+
+:SemanticTagging
+    rdf:type :Feature ;
+    rdfs:label "Semantic Tag Support" ;
+    :syntax "#:[a-zA-Z0-9]+\\S*" .
+
+:CrossPaneInteraction
+    rdf:type :Feature ;
+    rdfs:label "Cross Pane Interaction" ;
+    :trigger :DoubleClick ;
+    :action :LoadContent .
