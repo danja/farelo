@@ -1,12 +1,14 @@
 {
   "output": {
-    "filePath": "./form-a-matic_repomix.txt",
-    "headerText": "form-a-matic repo",
+    "filePath": "./assessor_repomix.txt",
+    "headerText": "Assessor app repo",
     "removeComments": true
   },
   "ignore": {
     "useDefaultPatterns": true,
     "customPatterns": [
+      "**/_*",
+      "**/node_modules",
       "**/webpack/*",
       "*.log",
       "**/*repomix*",

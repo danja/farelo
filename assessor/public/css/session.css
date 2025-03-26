@@ -1,0 +1,292 @@
+/* Session Management Styles */
+
+/* Session warning overlay */
+.session-warning {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(255, 152, 0, 0.95);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-width: 300px;
+}
+
+.warning-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.warning-content p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.time-remaining {
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.btn-warning {
+  align-self: flex-end;
+  padding: 6px 12px;
+  background-color: white;
+  color: #e65100;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-warning:hover {
+  background-color: #f5f5f5;
+}
+
+/* Timeout message overlay */
+.timeout-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(33, 33, 33, 0.95);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  max-width: 80%;
+}
+
+.timeout-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.timeout-spinner {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Session expired overlay */
+.session-expired {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.timeout-row {
+  max-width: 500px;
+  margin: 2rem auto;
+  background-color: var(--secondary-bg);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  animation: fade-in 0.4s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.time-outer-header {
+  padding: 1rem;
+  background-color: var(--primary-bg);
+  text-align: center;
+}
+
+.time-outer-header img {
+  max-height: 40px;
+}
+
+.session-timeout {
+  padding: 2rem;
+}
+
+.timeout h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.timeout-footer {
+  text-align: center;
+}
+
+.btn-ok {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-ok:hover {
+  background-color: rgba(70, 130, 180, 0.8);
+}
+
+.btn-ok:active {
+  transform: scale(0.98);
+}
+
+/* Connection status indicator */
+.connection-status {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  z-index: 900;
+  opacity: 0.8;
+  transition: opacity 0.3s, background-color 0.3s;
+}
+
+.status-connected {
+  background-color: #43a047;
+}
+
+.status-disconnected {
+  background-color: #e53935;
+}
+
+.status-connecting {
+  background-color: #fb8c00;
+  animation: pulse 1.5s infinite;
+}
+
+.status-warning {
+  background-color: #ff9800;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Notifications */
+.notification {
+  position: fixed;
+  max-width: 350px;
+  padding: 12px 15px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  color: white;
+}
+
+.notification-bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.notification-bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.notification-top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.notification-top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.notification-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.notification-info {
+  background-color: #2196f3;
+}
+
+.notification-success {
+  background-color: #4caf50;
+}
+
+.notification-warning {
+  background-color: #ff9800;
+}
+
+.notification-error {
+  background-color: #f44336;
+}
+
+.notification-timeout {
+  background-color: rgba(33, 33, 33, 0.95);
+}
+
+.notification-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.notification-message {
+  font-size: 0.9rem;
+}
+
+.notification-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.notification-action {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.notification-action:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.notification-spinner {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
