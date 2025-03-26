@@ -35,23 +35,45 @@ class ChatController {
    * Register session-related event handlers
    */
   registerSessionEvents() {
-    if (!this.eventBus) return;
+    if (!this.eventBus) {
+      console.error('EventBus not available');
+      return;
+    }
+    
+    console.log('Registering session events');
     
     // Handle session created
     this.eventBus.on('session:created', (data) => {
+      console.log('Session created event received:', data);
+      
+      if (!data || !data.sessionData || !data.sessionData.questions) {
+        console.error('Invalid session data received:', data);
+        return;
+      }
+      
       this.questions = data.sessionData.questions;
       this.currentQuestionIndex = 0;
       this.userResponses = [];
       
+      // Clear any existing content
+      if (this.chatContainer) {
+        this.chatContainer.innerHTML = '';
+      }
+      
+      console.log('Loading first question');
       // Load first question
       this.loadCurrentQuestion();
     });
     
     // Handle session recovered
     this.eventBus.on('session:recovered', async (data) => {
+      console.log('Session recovered event received:', data);
+      
       try {
         // Get full session state including questions and responses
+        console.log('Getting session state for', data.sessionId);
         const sessionData = await this.sessionManager.api.getSessionState(data.sessionId);
+        console.log('Retrieved session state:', sessionData);
         
         // Update local state
         this.questions = sessionData.questions;
@@ -69,38 +91,65 @@ class ChatController {
         console.error('Failed to recover chat state:', error);
         
         // Fallback: Start from beginning
-        this.questions = data.sessionData.questions;
-        this.currentQuestionIndex = 0;
-        this.userResponses = [];
-        
-        this.loadCurrentQuestion();
+        if (data && data.sessionData && data.sessionData.questions) {
+          this.questions = data.sessionData.questions;
+          this.currentQuestionIndex = 0;
+          this.userResponses = [];
+          
+          this.loadCurrentQuestion();
+        } else {
+          console.error('No fallback data available');
+        }
       }
     });
+    
+    // Removing force initialization to prevent duplicate welcome message
+    /*
+    if (this.sessionManager && this.sessionManager.isActive()) {
+      console.log('Session is already active, manually triggering first question');
+      setTimeout(() => {
+        if (this.questions && this.questions.length > 0) {
+          console.log('Loading first question from init');
+          this.loadCurrentQuestion();
+        } else {
+          console.error('No questions available for initialization');
+        }
+      }, 1000);
+    }
+    */
   }
   
   /**
    * Set up chat interaction event handlers
    */
   setupEventHandlers() {
+    console.log('Setting up chat event handlers');
+    
     // Use event delegation for dynamic elements
     document.addEventListener('click', (event) => {
+      console.log('Click event:', event.target);
+      
       // Option button clicks
       if (event.target.classList.contains('option-buttons')) {
+        console.log('Option button clicked:', event.target);
         this.handleOptionSelection(event.target);
       }
       
       // Checkbox handling
       if (event.target.classList.contains('check-option')) {
+        console.log('Checkbox clicked:', event.target);
         this.handleCheckboxChange(event.target);
       }
       
       // Send button for text inputs
       if (event.target.classList.contains('option-buttons-icon')) {
+        console.log('Send button clicked:', event.target);
         this.handleCustomInput(event.target);
       }
       
       // Arrow down indicator click (scroll to bottom)
       if (event.target.closest('.arrow-downs')) {
+        console.log('Arrow down clicked');
         this.scrollToBottom();
       }
     });
@@ -108,12 +157,15 @@ class ChatController {
     // Form validation for text inputs
     document.addEventListener('keyup', (event) => {
       if (event.target.classList.contains('validateFields')) {
+        console.log('Validating input:', event.target);
         this.validateInput(event.target);
         
         // Handle enter key for text inputs
         if (event.key === 'Enter' && !event.target.classList.contains('invalid-value')) {
-          const sendButton = event.target.closest('.input-block').querySelector('.option-buttons-icon');
+          console.log('Enter key pressed in valid input');
+          const sendButton = event.target.closest('.input-block')?.querySelector('.option-buttons-icon');
           if (sendButton) {
+            console.log('Triggering send button click');
             sendButton.click();
           }
         }
@@ -122,25 +174,43 @@ class ChatController {
     
     // Scroll detection for UI indicators
     document.addEventListener('scroll', () => this.checkVisibility());
+    
+    // Debug the chat container
+    console.log('Chat container:', this.chatContainer);
   }
   
   /**
    * Load and display the current question
    */
   loadCurrentQuestion() {
+    console.log('Loading current question. Index:', this.currentQuestionIndex, 'Total questions:', this.questions?.length);
+    
+    if (!this.questions || this.questions.length === 0) {
+      console.error('No questions available to load');
+      return;
+    }
+    
     if (this.currentQuestionIndex >= this.questions.length) {
       console.log('Assessment complete');
       return;
     }
     
     const question = this.questions[this.currentQuestionIndex];
+    console.log('Displaying question:', question);
+    
+    if (!question) {
+      console.error('Question not found at index:', this.currentQuestionIndex);
+      return;
+    }
     
     // Create the message container and render question
     this.messageRenderer.renderQuestion(question);
     
     // Add the question options with a slight delay
     if (!question.isCustomInput) {
+      console.log('Setting timeout to render options for question:', question.id);
       setTimeout(() => {
+        console.log('Rendering options for question:', question.id);
         this.messageRenderer.renderOptions(question);
       }, 1000);
     }

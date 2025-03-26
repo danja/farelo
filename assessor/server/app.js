@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // In-memory session storage
 const sessions = new Map();
@@ -103,30 +103,7 @@ const questionBank = [
   }
 ];
 
-/**
- * Create a new user session
- */
-app.post('/api/session/create', (req, res) => {
-  const sessionId = uuidv4();
-  
-  // Create a new session with initial data
-  const sessionData = {
-    id: sessionId,
-    startTime: new Date(),
-    responses: [],
-    currentQuestionIndex: 0,
-    completedAt: null
-  };
-  
-  // Store session
-  sessions.set(sessionId, sessionData);
-  
-  // Return session ID and first set of questions
-  res.json({
-    sessionId,
-    questions: questionBank
-  });
-});
+// Session creation endpoint moved to end of file
 
 /**
  * Save user response and determine next question
@@ -325,10 +302,8 @@ function generateHealthRecommendations(responses) {
   return recommendations;
 }
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Export the app so it can be started by server.js
+module.exports = app;
 
 /**
  * Session management API endpoints for Express server
@@ -424,7 +399,7 @@ function cleanupExpiredSessions() {
 setInterval(cleanupExpiredSessions, 60 * 60 * 1000);
 
 /**
- * Update the session object to include more fields
+ * Create a session object with full data
  */
 function createSession(sessionId) {
   return {
@@ -439,8 +414,11 @@ function createSession(sessionId) {
   };
 }
 
-// Modify the session creation endpoint to use this function
+/**
+ * Create a new session - primary endpoint
+ */
 app.post('/api/session/create', (req, res) => {
+  console.log('Creating new session');
   const sessionId = uuidv4();
   
   // Create a new session with enhanced data
@@ -457,6 +435,9 @@ app.post('/api/session/create', (req, res) => {
   
   // Store session
   sessions.set(sessionId, sessionData);
+  
+  // Log questions being returned
+  console.log(`Session created with ID: ${sessionId}, returning ${questionBank.length} questions`);
   
   // Return session ID and first set of questions
   res.json({

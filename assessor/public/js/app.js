@@ -17,9 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
  * Initialize the application
  */
 async function initApplication() {
+  console.log('Initializing application...');
+  
   // Configuration from DOM
   const baseUrl = document.getElementById('baseUrl').value || window.location.origin;
   const sessionTimeoutMinutes = parseInt(document.getElementById('sessionTimeout').value, 10) || 30;
+  
+  console.log('Configuration:', { baseUrl, sessionTimeoutMinutes });
   
   // Show loading indicator
   document.getElementById('body-loader').style.display = 'block';
@@ -28,6 +32,7 @@ async function initApplication() {
   const eventBus = new EventBus();
   const notificationManager = new NotificationManager();
   
+  console.log('Initializing session manager');
   // Initialize session manager
   const sessionManager = new SessionManager({
     baseUrl,
@@ -36,6 +41,7 @@ async function initApplication() {
     eventBus
   });
   
+  console.log('Initializing chat controller');
   // Initialize chat controller
   const chatController = new ChatController({
     sessionManager,
@@ -48,8 +54,10 @@ async function initApplication() {
   setupEventHandlers(eventBus, sessionManager, notificationManager);
   
   try {
+    console.log('Starting session initialization');
     // Initialize session
-    await sessionManager.initialize();
+    const sessionResult = await sessionManager.initialize();
+    console.log('Session initialized:', sessionResult);
     
     // Hide loader after successful initialization
     document.getElementById('body-loader').style.display = 'none';
@@ -57,6 +65,19 @@ async function initApplication() {
     
     // Initialize UI state
     updateConnectionStatus('connected');
+    
+    // Force update only if we didn't get initial load from events
+    // (removing this to prevent duplicate welcome message)
+    /* 
+    if (sessionResult && !sessionResult.isRecovered && chatController) {
+      console.log('Forcing chat controller to load first question');
+      setTimeout(() => {
+        if (chatController.questions && chatController.questions.length > 0) {
+          chatController.loadCurrentQuestion();
+        }
+      }, 500);
+    }
+    */
   } catch (error) {
     console.error('Failed to initialize application:', error);
     notificationManager.showError('Failed to initialize application. Please refresh the page.');

@@ -97,6 +97,9 @@ class SessionManager {
       this.startTimers();
       this.startPinging();
       
+      // Add console logging for debugging
+      console.log('Session created:', data);
+      
       this.eventBus.emit('session:created', {
         sessionId: this.sessionId,
         sessionData: data
@@ -108,6 +111,7 @@ class SessionManager {
         sessionData: data
       };
     } catch (error) {
+      console.error('Failed to create session:', error);
       this.eventBus.emit('session:error', {
         error,
         message: 'Failed to create new session'

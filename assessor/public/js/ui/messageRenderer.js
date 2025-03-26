@@ -10,7 +10,8 @@ class MessageRenderer {
   constructor(options = {}) {
     this.chatContainer = options.container || document.getElementById('chat-section');
     this.avatarUrl = options.avatarUrl || 'img/avatar.png';
-    this.animationClass = options.animationClass || 'animate__animated animate__fadeInUp';
+    // Fix: Split animation classes to avoid spaces in classList.add()
+    this.animationClasses = (options.animationClass || 'animate__animated animate__fadeInUp').split(' ');
   }
   
   /**
@@ -19,30 +20,40 @@ class MessageRenderer {
    * @returns {HTMLElement} Message container element
    */
   createMessageContainer(question) {
+    console.log('Creating container for question:', question);
     const questionId = question.id;
     
     const container = document.createElement('div');
     container.classList.add('test');
+    container.id = `question-container-${questionId}`;
+    
+    // Fix: Use animationClasses joined with space for innerHTML template
+    const animationClassStr = this.animationClasses.join(' ');
+    
     container.innerHTML = `
       <div class="msg-gird-container">
         <div class="avatar-grid">
           <figure>
             <img src="${this.avatarUrl}" alt="Avatar">
           </figure>
-          <div class="avatar-load-wrap position-relative ${this.animationClass} avatar-loading">
+          <div class="avatar-load-wrap position-relative ${animationClassStr} avatar-loading">
             <div class="avatar-loader dot-pulse"></div>
           </div>
         </div>
-        <div class="msg-bubble-container message-container-${questionId}"></div>
+        <div class="msg-bubble-container message-container-${questionId}">
+        </div>
       </div>
-      <div class="msg-gird-container ${this.animationClass} option-div option-div-${questionId}">
+      <div class="msg-gird-container ${animationClassStr} option-div option-div-${questionId}">
         <div class="input-buttons w-100 option-choose-${questionId} mob-option-choose">
-          <div class="input-button-holder option-container-${questionId} ${question.tagClass || ''}"></div>
+          <div class="input-button-holder option-container-${questionId} ${question.tagClass || ''}">
+          </div>
         </div>
       </div>
     `;
     
+    console.log('Appending container to chat container');
     this.chatContainer.appendChild(container);
+    console.log('Container created and appended');
     return container;
   }
   
@@ -51,9 +62,15 @@ class MessageRenderer {
    * @param {Object} question - Question data
    */
   renderQuestion(question) {
+    console.log('Rendering question:', question);
     const questionId = question.id;
     const container = this.createMessageContainer(question);
     const messageContainer = container.querySelector(`.message-container-${questionId}`);
+    
+    if (!messageContainer) {
+      console.error(`Message container for question ${questionId} not found`);
+      return container;
+    }
     
     // Remove any existing loading indicator
     const loadingIndicator = container.querySelector('.avatar-loading');
@@ -63,10 +80,13 @@ class MessageRenderer {
     
     // Create the message bubble
     const messageBubble = document.createElement('div');
-    messageBubble.classList.add('msg-bubble-row', this.animationClass);
+    messageBubble.classList.add('msg-bubble-row');
+    // Fix: Add animation classes individually
+    this.animationClasses.forEach(cls => messageBubble.classList.add(cls));
+    
     messageBubble.innerHTML = `
       <div class="msg-bubble-content msg-bubble-content-msg">
-        <p>${question.text}</p>
+        <p style="color: #fff; font-weight: bold;">${question.text}</p>
         ${this.createCustomInputElement(question)}
       </div>
     `;
@@ -75,10 +95,14 @@ class MessageRenderer {
     
     // Add loading indicator for next content
     const loadingDots = document.createElement('div');
-    loadingDots.classList.add('avatar-load-wrap', 'position-relative', this.animationClass, 'msg-loading');
+    loadingDots.classList.add('avatar-load-wrap', 'position-relative', 'msg-loading');
+    // Fix: Add animation classes individually
+    this.animationClasses.forEach(cls => loadingDots.classList.add(cls));
+    
     loadingDots.innerHTML = '<div class="dot-pulse"></div>';
     messageContainer.appendChild(loadingDots);
     
+    console.log('Question render complete');
     return container;
   }
   
@@ -146,7 +170,10 @@ class MessageRenderer {
    * @param {Object} question - Question data
    */
   renderOptions(question) {
+    console.log('Rendering options for question:', question);
+    
     if (!question.options || question.options.length === 0) {
+      console.warn('No options available for this question');
       return;
     }
     
@@ -155,6 +182,8 @@ class MessageRenderer {
     
     if (!optionContainer) {
       console.error(`Option container for question ${questionId} not found`);
+      // Try to debug by listing all containers
+      console.log('Available containers:', Array.from(this.chatContainer.querySelectorAll('[class*=option-container]')).map(el => el.className));
       return;
     }
     
@@ -166,6 +195,9 @@ class MessageRenderer {
     
     let optionsHtml = '';
     let optionCountClass = '';
+    
+    // Fix: Create animation class string for templates
+    const animationClassStr = this.animationClasses.join(' ');
     
     // Determine the button class based on option count
     if (question.options.length === 1) {
@@ -194,7 +226,7 @@ class MessageRenderer {
       // Add skip/next button for checkboxes
       const buttonText = question.buttonText || 'Skip';
       optionsHtml += `
-        <button class="btn rply-btns ${this.animationClass} option-buttons skip-check-btn" 
+        <button class="btn rply-btns ${animationClassStr} option-buttons skip-check-btn" 
           questionid="${questionId}" 
           optionid="" 
           btn-type="skip-check">${buttonText}</button>
@@ -210,16 +242,22 @@ class MessageRenderer {
           buttonAttributes = `onclick="window.open('${option.url}', '_blank')"`;
         }
         
+        // Fix alignment of option buttons
         optionsHtml += `
-          <button class="btn rply-btns ${this.animationClass} option-buttons ${optionCountClass}" 
+          <button class="btn rply-btns ${animationClassStr} option-buttons ${optionCountClass}" 
             questionid="${questionId}" 
             optionid="${option.id}" 
-            ${buttonAttributes}>${option.text}</button>
+            ${buttonAttributes}
+            style="background-color: #4682B4; margin: 5px 0; display: inline-block; min-width: 120px; text-align: center;">
+            ${option.text}
+          </button>
         `;
       });
     }
     
+    console.log('Setting option HTML:', optionsHtml);
     optionContainer.innerHTML = optionsHtml;
+    console.log('Options render complete');
   }
   
   /**

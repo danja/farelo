@@ -20,6 +20,8 @@ class ApiClient {
   async request(endpoint, options = {}) {
     const url = `${this.baseUrl}${endpoint}`;
     
+    console.log(`API Request: ${options.method || 'GET'} ${url}`);
+    
     // Default options
     const defaultOptions = {
       headers: {
@@ -51,8 +53,11 @@ class ApiClient {
         data = await response.text();
       }
       
+      console.log(`API Response: ${url}`, data);
+      
       // Handle error responses
       if (!response.ok) {
+        console.error(`API Error: ${url}`, data);
         const error = new Error(data.error || 'API request failed');
         error.status = response.status;
         error.data = data;
@@ -62,6 +67,7 @@ class ApiClient {
       return data;
     } catch (error) {
       // Enhance error with request details
+      console.error(`API Exception: ${url}`, error);
       error.endpoint = endpoint;
       error.request = options;
       throw error;

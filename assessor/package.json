@@ -6,9 +6,13 @@
   "scripts": {
     "start": "node server/server.js",
     "dev": "nodemon server/server.js",
-    "test": "jest",
-        "rp": "repomix -c repomix.config.json ."
-        },
+    "test": "node server/test-server.js",
+    "rp": "repomix -c repomix.config.json .",
+    "stop": "pkill -f 'node server/server.js' || true",
+    "restart": "npm run stop && npm run dev",
+    "stop:test": "pkill -f 'node server/test-server.js' || true",
+    "restart:test": "npm run stop:test && npm run test"
+  },
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
