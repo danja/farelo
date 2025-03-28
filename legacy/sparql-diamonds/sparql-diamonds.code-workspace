@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../foowiki"
+		},
+		{
+			"path": "../danja.github.io/tutorials/browser-sparql-apps"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "sparql-diamonds"
+	}
+}

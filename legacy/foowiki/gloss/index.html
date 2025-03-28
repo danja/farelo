@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gloss</title>
+
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link href="../css/jquery.tagit.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/tagit.ui-zendesk.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+
+    <link rel="stylesheet" href="../css/flex-columns.css" />
+    <link rel="stylesheet" href="../css/gloss.css" />
+
+
+    <script src="../js/lib/jquery-1.10.2.js"></script>
+    <script src="../js/lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- from https://github.com/aehlke/tag-it -->
+    <script src="../js/lib/tag-it.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- markdown processor -->
+    <script src="../js/lib/marked.js"></script>
+
+    <!-- mustache template compiler -->
+    <script src="../js/lib/hogan-3.0.2.js"></script>
+
+    <!-- script src="../js/jquery-ui.js"></script>
+    <script src="../js/jquery.fileupload.js"></script>
+    <script src="../js/jquery.iframe-transport.js"></script -->
+
+    <!-- date formatting -->
+    <script src="../js/lib/moment.js"></script>
+
+    <!-- FooWiki scripts -->
+    <script src="config.js"></script>
+
+    <!------------------------------------------->
+
+    <script src="../js/foowiki/sparql-templates.js"></script>
+    <script src="../js/foowiki/html-templates.js"></script>
+
+    <!-------------------------------------->
+    <script src="../js/foowiki/utils.js"></script>
+    <script src="../js/foowiki/core.js"></script>
+    <!-- script src="../js/foowiki/index.js"></script -->
+    <script src="../js/foowiki/sparql-connector.js"></script>
+
+    <script>
+        var showingDef = false
+
+        function showDefn(concept) {
+            const getTermsWithInitialSparql = sparqlTemplater(getDefnSparqlTemplate, {
+                "glossURI": FooWiki.glossURI,
+                "concept": concept
+            });
+
+            var doneCallback = function (json) {
+
+                const newDef = "<div id='definition'>" + json[0]['definition'] + "</div>" // TODO refactor
+                $("#definition").replaceWith(newDef);
+
+                location.hash = 'defn';
+                // showingDef = true
+                //   setupTagsPanel("#tagsPanelTagsContainer");
+            };
+
+            var getDefnUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getTermsWithInitialSparql) + "&output=xml"; // json???
+            getJsonForSparqlURL(getDefnUrl, doneCallback);
+        }
+
+        function primeTermLinks() {
+            var termsLinks = document.querySelectorAll(".term-link");
+            termsLinks.forEach(termsLink => {
+                termsLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.target.setAttribute('style', 'color:#F00')
+                    showDefn(event.target.getAttribute('href'))
+                });
+            });
+        }
+
+        function showTermsAlpha(firstLetter) {
+            var getTermsWithInitialSparql = sparqlTemplater(getTermsFromInitialSparqlTemplate, {
+                "glossURI": FooWiki.glossURI,
+                "initial": firstLetter
+            });
+            var getTermsWithInitialUrl = FooWiki.sparqlQueryEndpoint + encodeURIComponent(getTermsWithInitialSparql) + "&output=xml"; // json???
+
+            //   document.addEventListener('DOMContentLoaded', function () {
+            $(function () {
+                setupErrorHandling();
+                spinner();
+
+                $("#graphName").attr("value", FooWiki.glossURI);
+                // setupButtons();
+
+                var doneCallback = function (json) {
+
+                    var rows = makeGlossListHTML(json, false);
+                    $("#terms").replaceWith(rows);
+                    location.hash = 'term-list';
+                    primeTermLinks()
+                };
+
+                getJsonForSparqlURL(getTermsWithInitialUrl, doneCallback);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const lettersList = document.getElementById('letters');
+
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                const listItem = document.createElement('li');
+                const anchor = document.createElement('a');
+                anchor.href = '';
+                anchor.textContent = letter;
+
+                anchor.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    showTermsAlpha(event.target.textContent)
+                });
+
+                listItem.appendChild(anchor);
+                lettersList.appendChild(listItem);
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <!-- div id="container" -->
+    <script id="replace_with_navbar" src="/share/nav.js"></script>
+    <div id="errorbox"></div>
+
+    <div id="header">
+        <h1>AI Glossary</h1>
+    </div>
+    <p>
+    <ol>
+        <li>Click on a letter to see terms</li>
+        <li>Click on a term to see it's definition</li>
+    </ol>
+    </p>
+
+    <!----------------------------------------------------------------------->
+
+    <section class="one-column">
+        <div class="alpha">
+            <ul id="letters"></ul>
+        </div>
+    </section>
+
+    <section class="three-column">
+        <a name="term-list"></a>
+        <div>
+            <ul id="terms"></ul>
+        </div>
+
+        <div>
+            <a name="defn"></a>
+            <p id="definition"></p>
+        </div>
+        <div>
+            <p>something</p>
+        </div>
+    </section>
+
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+
+    <!----------------------------------------------------------------------->
+
+
+
+    <div id="middle" class="column">
+
+        <table id="pagesTable">
+            <!-- refactor to use entryTableTemplate -->
+            <tr>
+                <th colspan="3"><a href="index.html">All</a> Pages</th>
+            </tr>
+            <tr>
+                <th class="center">Term</th>
+                <th class="center">Date</th>
+                <th class="center">Scheme</th>
+            </tr>
+            <tr id="entries"></tr>
+        </table>
+        <p>
+
+
+            <!-- form id="upload-form" enctype="multipart/form-data">
+                <input type="file" id="upload-file" name="upload" />
+                <button type="submit" id="upload-button">Upload Turtle</button>
+            </form -->
+        <h3>Upload RDF</h3>
+        <form action="/foowiki/upload" enctype="multipart/form-data" method="post">
+            <!-- TODO move to config (bypass Fuseki) -->
+            <!-- onsubmit="window.location.href = 'index.html'; return false;" -->
+            <input id="filename" type="file" name="UNSET FILE NAME" size="40" multiple="">
+            <label for='graphName'>Graph</label>
+            <input name="graph" id="graphName" size="20" value="default" />
+            <br />
+            <input type="submit" value="Upload">
+        </form>
+        <h3>Export Turtle</h3>
+        <button id="turtle">Export</button>
+        </p>
+
+    </div>
+
+    <!-- div id="left" class="column">
+
+        <!-- div class="tab"><a href="page.html?uri=http://hyperdata.it/wiki/">Home Page</a>
+        </div -->
+    <div class="tab"><a href="resources.html">Resource List</a>
+    </div>
+    <div class="tab"><a href="yasgui.html">SPARQL</a>
+    </div>
+
+    <div id="newPage">
+        <button id="newPageButton">Create New Page</button>
+        <label for='newPageName'>Title</label>
+        <input id="newPageName" type="text" />
+    </div>
+    </div -->
+
+    <!-- div id="right" class="column">
+        <div id='searchContainer'>
+            <button id='searchButton'>Search</button>
+            <!-- label for='searchText'>Search Text</label -->
+    <input id='searchText' type='text' value=''></input>
+    <div id='tagButtons'></div>
+    <ul id="results"></ul>
+    </div>
+    </div -->
+
+    <div id="footer">hyperdata.it -Danny Ayers 2017<em><a href="index-static.html">static</a></em>
+    </div>
+
+    </div>
+    <div id="spinner" class="spinner"></div>
+</body>
+
+</html>

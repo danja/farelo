@@ -1,0 +1,18 @@
+{
+  "head" : {
+    "vars" : [ "link" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "link" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Knot"
+      }
+    }, {
+      "link" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Knot"
+      }
+    } ]
+  }
+}

@@ -1,8 +1,8 @@
 {
     "output": {
-        "filePath": "./squirt_repomix.txt",
+        "filePath": "./squirt_repomix.md",
         "headerText": "Squirt repo",
-        "removeComments": true
+        "removeComments": false
     },
     "ignore": {
         "useDefaultPatterns": true,
@@ -11,7 +11,7 @@
             "docs",
             ".env",
             "knowledge",
-            "**/_*",
+            "**/_*/**",
             "**/webpack/*",
             "*.log",
             "**/*repopack*",

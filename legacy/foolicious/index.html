@@ -1,0 +1,153 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Foolicious</title>
+  <meta name="description" content="Foolicious Bookmarker">
+  <meta name="author" content="danja">
+
+  <link rel="stylesheet" href="css/columns.css" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/common.css" />
+  <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="css/tagit.ui-zendesk.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+
+  <script src="js/lib/jquery-1.10.2.js"></script>
+  <script src="js/lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <!-- from https://github.com/aehlke/tag-it -->
+  <script src="js/lib/tag-it.js" type="text/javascript" charset="utf-8"></script>
+
+  <!-- markdown processor -->
+  <script src="js/lib/marked.js"></script>
+  <!-- link rel="stylesheet" href="css/styles.css?v=1.0" -->
+
+  <script>
+    $(document).ready(function () {
+      $('#submit').click(function () {
+        alert("click!");
+        postData(formToTurtle());
+      });
+    });
+
+    function formToTurtle() {
+      var url = $('#url').val();
+      var bookmarkUri = url.replace(/\//g, "_");
+
+      var title = $('#title').val();
+      var description = $('#description').val();
+      var tagString = $('#tags').val();
+      var tags = tagString.split(",");
+      var nick = $('#nick').val();
+      var created = (new Date()).toISOString();
+
+      // "GRAPH <http://hyperdata.it/wiki/> {\n";
+
+      var turtle = "prefix w: <http://hyperdata.it/wiki/> \n";
+      turtle += "prefix tag: <http://hyperdata.it/tags/> \n";
+      turtle += "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> \n";
+      turtle += "prefix dc: <http://purl.org/dc/terms/> \n";
+      turtle += "prefix foaf: <http://xmlns.com/foaf/0.1/> \n";
+      turtle += "INSERT DATA { GRAPH <http://hyperdata.it/wiki/> { \n";
+
+      turtle += "<" + bookmarkUri + "> a w:Bookmark ; \n";
+      turtle += "w:url <" + url + "> ; \n";
+      turtle += "dc:title " + "\"" + title + "\"; \n";
+      turtle += "dc:description " + "\"\"\"" + description + "\"\"\"; \n";
+      turtle += "foaf:nick " + "\"" + nick + "\"; \n";
+      for (var i = 0; i < tags.length; i++) {
+        tags[i] = tags[i].trim();
+        turtle += "dc:topic " + "tag:" + tags[i] + " ; \n";
+      }
+      turtle += "dc:created \"" + created + "\" . \n";
+      for (var i = 0; i < tags.length; i++) {
+        turtle += "tag:" + tags[i] + " rdfs:label \"" + tags[i] + "\". \n";
+      }
+      turtle += "}}";
+      console.log(turtle);
+      return turtle;
+    }
+
+
+
+
+    // http://192.168.0.102:3030/foolicious/update http://localhost:4040/
+    function postData(turtle) {
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3030/foolicious/update",
+        data: ({
+          update: turtle
+        })
+      }).done(function () {
+        //      var fliptoViewPage = function () {
+        //          window.location.href = window.location.href.replace("edit.html", "page.html");
+        //      };
+        alert("done"); // use error banner
+      }).fail(function () {
+        alert("error posting data"); // use error banner
+      });
+    }
+
+
+    /*
+  POST /rdf-graph-store?graph=..graph_uri.. HTTP/1.1
+Host: example.com
+Content-Type: text/turtle
+
+... RDF payload ...
+
+equivalent to:
+
+    INSERT DATA { GRAPH <graph_uri> { .. RDF payload .. } }
+
+    GRAPH <http://hyperdata.it/wiki/> {
+     <http://example/book1>  ns:price  42
+   }
+
+   function hashCode(str) {
+     return str.split('').reduce((prevHash, currVal) =>
+       (((prevHash << 5) - prevHash) + currVal.charCodeAt(0))|0, 0);
+   }
+
+   // Test
+   console.log("hashCode(\"Hello!\"): ", hashCode('Hello!'));
+
+  str.replace(/\//g, "_");
+*/
+  </script>
+
+</head>
+
+<body>
+
+  <script id="replace_with_navbar" src="/share/nav.js"></script>
+
+  <!-- page URL, title, description, tags, user nickname, date -->
+
+  <form id="submit">
+    <label>URL</label>
+    <input type="text" name="url" id="url" value="http://test2">
+    <br />
+    <label>Title</label>
+    <input type="text" name="title" id="title" value="the title">
+    <br />
+    <label>Description</label>
+    <textarea id="description" name="description" rows="6" cols="50">some description</textarea>
+    <br />
+    <label>Tags</label>
+    <input type="text" name="tags" id="tags" value="tag1, tag2, tag3">
+    <br />
+    <label>Nickname</label>
+    <input type="text" name="nick" id="nick" value="danja">
+    <br />
+    <br />
+    <button type="button" id="submit">Click Me!</button>
+  </form>
+</body>
+
+</html>

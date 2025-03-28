@@ -1,0 +1,86 @@
+_:Be130488bX2Dc5a7X2D45f9X2D9645X2D4d4ac06a23ce <http://xmlns.com/foaf/0.1/nick> "danja" .
+_:B693c63bbX2DbaaeX2D4baaX2Db0a6X2D0a3bd0c2e9fb <http://xmlns.com/foaf/0.1/nick> "danja" .
+_:B41fe4b9dX2Dbdd2X2D44d0X2Dad98X2D6882f1441335 <http://xmlns.com/foaf/0.1/nick> "danja" .
+<http://hyperdata.it/bookmarks/7fb1f9c3> <http://purl.org/stuff/tag> "tag2" .
+<http://hyperdata.it/bookmarks/7fb1f9c3> <http://purl.org/stuff/tag> "tag1" .
+<http://hyperdata.it/bookmarks/7fb1f9c3> <http://xmlns.com/foaf/0.1/maker> _:B41fe4b9dX2Dbdd2X2D44d0X2Dad98X2D6882f1441335 .
+<http://hyperdata.it/bookmarks/7fb1f9c3> <http://purl.org/dc/terms/created> "2021-09-27T18:57:10.570Z" .
+<http://hyperdata.it/bookmarks/7fb1f9c3> <http://purl.org/dc/terms/description> "this is b3" .
+<http://hyperdata.it/bookmarks/7fb1f9c3> <http://purl.org/dc/terms/title> "b3" .
+<http://hyperdata.it/bookmarks/7fb1f9c3> <http://purl.org/stuff/url> <http://hyperdata.it/bookmarks/b3sdfsdf> .
+<http://hyperdata.it/bookmarks/7fb1f9c3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/stuff/Bookmark> .
+_:Bf0602160X2D1597X2D4b72X2D9a1bX2Dcf36fce5d86a <http://xmlns.com/foaf/0.1/nick> "danja" .
+<http://hyperdata.it/bookmarks/127f32f8> <http://purl.org/stuff/tag> "tag2" .
+<http://hyperdata.it/bookmarks/127f32f8> <http://purl.org/stuff/tag> "tag1" .
+<http://hyperdata.it/bookmarks/127f32f8> <http://xmlns.com/foaf/0.1/maker> _:Be130488bX2Dc5a7X2D45f9X2D9645X2D4d4ac06a23ce .
+<http://hyperdata.it/bookmarks/127f32f8> <http://purl.org/dc/terms/created> "2021-09-27T18:56:36.172Z" .
+<http://hyperdata.it/bookmarks/127f32f8> <http://purl.org/dc/terms/description> "this is b3" .
+<http://hyperdata.it/bookmarks/127f32f8> <http://purl.org/dc/terms/title> "b3" .
+<http://hyperdata.it/bookmarks/127f32f8> <http://purl.org/stuff/url> <http://hyperdata.it/bookmarks/b3sdf> .
+<http://hyperdata.it/bookmarks/127f32f8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/stuff/Bookmark> .
+_:B076ecc0aX2D7489X2D4323X2D9d55X2Db8229776521a <http://xmlns.com/foaf/0.1/nick> "danja" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/created> "2021-09-27T18:56:27.714Z" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/created> "2021-09-27T18:57:02.196Z" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/stuff/url> <http://hyperdata.it/bookmarks/b3> .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/stuff/Bookmark> .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/title> "b3zxcz" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://xmlns.com/foaf/0.1/maker> _:B71bfccadX2D0b70X2D405fX2D95e9X2Dc4a2cee2a744 .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/stuff/tag> "tag3" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://xmlns.com/foaf/0.1/maker> _:B076ecc0aX2D7489X2D4323X2D9d55X2Db8229776521a .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/stuff/tag> "tag2" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/created> "2021-09-13T18:33:25.256Z" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/created> "2021-09-27T19:02:31.330Z" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/created> "2021-09-27T18:54:56.908Z" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/stuff/tag> "tag1" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/description> "this is b3sdf" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://xmlns.com/foaf/0.1/maker> _:Bf0602160X2D1597X2D4b72X2D9a1bX2Dcf36fce5d86a .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://xmlns.com/foaf/0.1/maker> _:B0e020068X2Dad21X2D4a7cX2D8d73X2D8a4c3ef2e2bd .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://xmlns.com/foaf/0.1/maker> _:Bd6046098X2D9cc0X2D45feX2D9ed4X2D0c5d46c0c143 .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/created> "2021-09-27T18:56:11.308Z" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/title> "b3" .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://xmlns.com/foaf/0.1/maker> _:B498cedc6X2Dd2e7X2D4828X2Db71eX2D8598f48e424c .
+<http://hyperdata.it/bookmarks/6b4b47e3> <http://purl.org/dc/terms/description> "this is b3" .
+_:B0e020068X2Dad21X2D4a7cX2D8d73X2D8a4c3ef2e2bd <http://xmlns.com/foaf/0.1/nick> "danja" .
+_:Bd21efa08X2D3cdbX2D4157X2D8637X2Df1ad881d8fbd <http://xmlns.com/foaf/0.1/nick> "danja" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/stuff/tag> "tag1" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/dc/terms/description> "this is b4" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://xmlns.com/foaf/0.1/maker> _:B256ac682X2D8903X2D487aX2D9392X2D5e9933c8e4ab .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/dc/terms/title> "b44444" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/dc/terms/description> "this is b3" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://xmlns.com/foaf/0.1/maker> _:B46567219X2D4835X2D4909X2D8f22X2Df2ba4dd36758 .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/stuff/url> <http://hyperdata.it/bookmarks/b4> .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/stuff/tag> "tag2" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/dc/terms/created> "2021-09-30T18:06:09.109Z" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/dc/terms/title> "b3" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://purl.org/dc/terms/created> "2021-09-30T18:06:38.710Z" .
+<http://hyperdata.it/bookmarks/6b4b47e2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/stuff/Bookmark> .
+_:B46567219X2D4835X2D4909X2D8f22X2Df2ba4dd36758 <http://xmlns.com/foaf/0.1/nick> "danja" .
+<http://hyperdata.it/bookmarks/4ef67ca4> <http://purl.org/stuff/tag> "tag2" .
+<http://hyperdata.it/bookmarks/4ef67ca4> <http://purl.org/stuff/tag> "tag1" .
+<http://hyperdata.it/bookmarks/4ef67ca4> <http://xmlns.com/foaf/0.1/maker> _:B693c63bbX2DbaaeX2D4baaX2Db0a6X2D0a3bd0c2e9fb .
+<http://hyperdata.it/bookmarks/4ef67ca4> <http://purl.org/dc/terms/created> "2021-09-30T18:13:49.655Z" .
+<http://hyperdata.it/bookmarks/4ef67ca4> <http://purl.org/dc/terms/description> "this is s" .
+<http://hyperdata.it/bookmarks/4ef67ca4> <http://purl.org/dc/terms/title> "s" .
+<http://hyperdata.it/bookmarks/4ef67ca4> <http://purl.org/stuff/url> <https://hyperdata.it/bookmarks/s> .
+<http://hyperdata.it/bookmarks/4ef67ca4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/stuff/Bookmark> .
+_:B71bfccadX2D0b70X2D405fX2D95e9X2Dc4a2cee2a744 <http://xmlns.com/foaf/0.1/nick> "danja" .
+<http://hyperdata.it/bookmarks/3a59832a> <http://purl.org/stuff/tag> "tag2" .
+<http://hyperdata.it/bookmarks/3a59832a> <http://purl.org/stuff/tag> "tag1" .
+<http://hyperdata.it/bookmarks/3a59832a> <http://xmlns.com/foaf/0.1/maker> _:Becb41501X2D79dfX2D493bX2Dabd3X2D2656fe3068a5 .
+<http://hyperdata.it/bookmarks/3a59832a> <http://purl.org/dc/terms/created> "2021-09-30T18:07:53.425Z" .
+<http://hyperdata.it/bookmarks/3a59832a> <http://purl.org/dc/terms/description> "this is Bnew" .
+<http://hyperdata.it/bookmarks/3a59832a> <http://purl.org/dc/terms/title> "BNew" .
+<http://hyperdata.it/bookmarks/3a59832a> <http://purl.org/stuff/url> <http://hyperdata.it/bookmarks/Bnew> .
+<http://hyperdata.it/bookmarks/3a59832a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/stuff/Bookmark> .
+_:Becb41501X2D79dfX2D493bX2Dabd3X2D2656fe3068a5 <http://xmlns.com/foaf/0.1/nick> "danja" .
+_:Bd6046098X2D9cc0X2D45feX2D9ed4X2D0c5d46c0c143 <http://xmlns.com/foaf/0.1/nick> "danja" .
+_:B498cedc6X2Dd2e7X2D4828X2Db71eX2D8598f48e424c <http://xmlns.com/foaf/0.1/nick> "danja" .
+<http://hyperdata.it/bookmarks/736811a6> <http://purl.org/stuff/tag> "tag2" .
+<http://hyperdata.it/bookmarks/736811a6> <http://purl.org/stuff/tag> "tag1" .
+<http://hyperdata.it/bookmarks/736811a6> <http://xmlns.com/foaf/0.1/maker> _:Bd21efa08X2D3cdbX2D4157X2D8637X2Df1ad881d8fbd .
+<http://hyperdata.it/bookmarks/736811a6> <http://purl.org/dc/terms/created> "2021-09-27T18:55:06.249Z" .
+<http://hyperdata.it/bookmarks/736811a6> <http://purl.org/dc/terms/description> "this is b3" .
+<http://hyperdata.it/bookmarks/736811a6> <http://purl.org/dc/terms/title> "b3ghdgfhdfgh" .
+<http://hyperdata.it/bookmarks/736811a6> <http://purl.org/stuff/url> <http://hyperdata.it/bookmarks/b3dfghdfh> .
+<http://hyperdata.it/bookmarks/736811a6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/stuff/Bookmark> .
+_:B256ac682X2D8903X2D487aX2D9392X2D5e9933c8e4ab <http://xmlns.com/foaf/0.1/nick> "danja" .

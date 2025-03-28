@@ -1,0 +1,64 @@
+.
+├── about.md
+├── babel.config.json
+├── endpoint.json
+├── jasmine.json
+├── jest.config.js
+├── package.json
+├── package-lock.json
+├── public
+│   ├── demo.html
+│   ├── icons
+│   │   ├── icon-192x192.png
+│   │   └── icon-512x512.png
+│   ├── index.html
+│   ├── main.5e2c985a614e3bf02320.css
+│   ├── main.bundle.js
+│   ├── main.bundle.js.LICENSE.txt
+│   ├── manifest.json
+│   └── service-worker.js
+├── repomix.config.json
+├── requirements_2025-03-28.md
+├── squirt_repomix.md
+├── src
+│   ├── css
+│   │   ├── form-styles.css
+│   │   └── styles.css
+│   ├── html
+│   │   └── index.html
+│   └── js
+│       ├── app.js
+│       ├── core
+│       │   ├── errors.js
+│       │   └── state.js
+│       ├── router.js
+│       ├── services
+│       │   ├── rdf
+│       │   │   ├── rdf-extractor.js
+│       │   │   └── rdf-model.js
+│       │   └── sparql
+│       │       ├── endpoints.js
+│       │       ├── sparql.js
+│       │       └── test
+│       │           └── spec
+│       │               └── sparql.spec.js
+│       ├── ui
+│       │   ├── components
+│       │   │   ├── endpoints-list.js
+│       │   │   ├── forms.js
+│       │   │   └── notifications.js
+│       │   └── views
+│       │       ├── settings.js
+│       │       └── wiki-editor.js
+│       └── utils
+│           └── utils.js
+├── storage
+├── test
+│   ├── setup.js
+│   └── spec
+│       ├── about.md
+│       └── sparql.spec.js
+├── tree.xml
+└── webpack.config.js
+
+20 directories, 42 files

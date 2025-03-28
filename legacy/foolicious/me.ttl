@@ -1,0 +1,10 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<https://danny.ayers.name/me.ttl> a foaf:PersonalProfileDocument;
+      foaf:primaryTopic <https://danny.ayers.name/me> .
+
+<https://danny.ayers.name/me> a foaf:Person;
+      foaf:nick "danja" .
+
+
+ <https://danny.ayers.name/me.ttl> <http://www.w3.org/ns/solid/terms#oidcIssuerRegistrationToken> "8b6d1d64-893c-4abb-8c99-45adaec074fb". 

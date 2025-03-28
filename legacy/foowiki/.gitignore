@@ -1,0 +1,11 @@
+# foowiki
+var/*
+
+# generic
+archive/*
+
+# backups
+*~
+*.bak
+backups
+utils/geckodriver.log
