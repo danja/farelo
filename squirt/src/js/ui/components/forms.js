@@ -227,37 +227,7 @@ function addFormField(container, field) {
   container.appendChild(wrapper);
 }
 
-function setupEndpointForm() {
-  const form = document.getElementById('endpoint-form');
-  if (!form) return;
-  
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    try {
-      const url = document.getElementById('endpoint-url').value;
-      const label = document.getElementById('endpoint-label').value;
-      const type = 'query'; // Default to query, can be extended with dropdown
-      
-      // Import required here to avoid circular dependencies
-      const { EndpointManager } = await import('../../services/sparql/endpoints.js');
-      const endpointManager = new EndpointManager();
-      
-      endpointManager.addEndpoint(url, label, type);
-      form.reset();
-      
-      showNotification('Endpoint added successfully', 'success');
-      
-      // Refresh the endpoint list if the component exists
-      if (typeof updateEndpointsList === 'function') {
-        updateEndpointsList();
-      }
-    } catch (error) {
-      ErrorHandler.handle(error);
-      showNotification('Failed to add endpoint: ' + error.message, 'error');
-    }
-  });
-}
+// This function is defined above, so removed here
 
 function showNotification(message, type = 'info') {
   // Check if notifications module is available
