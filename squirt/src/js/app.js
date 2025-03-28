@@ -1,26 +1,15 @@
-// Import dependencies with require
-const formsModule = require('./ui/components/forms');
-const routerModule = require('./router');
-const endpointsModule = require('./services/sparql/endpoints');
-const stateModule = require('./core/state');
-const errorsModule = require('./core/errors');
-const rdfModelModule = require('./services/rdf/rdf-model');
-const notificationsModule = require('./ui/components/notifications');
-const settingsModule = require('./ui/views/settings');
+// Import dependencies with ES module syntax
+import { setupForms } from './ui/components/forms.js';
+import { initializeRouter } from './router.js';
+import { EndpointManager } from './services/sparql/endpoints.js';
+import { state } from './core/state.js';
+import { ErrorHandler } from './core/errors.js';
+import { rdfModel } from './services/rdf/rdf-model.js';
+import { initializeNotifications } from './ui/components/notifications.js';
+import { initializeSettingsView } from './ui/views/settings.js';
 
 // Import wiki editor to ensure its event listeners are registered
-// Note: This file uses ES modules, but Webpack will handle the interop
-require('./ui/views/wiki-editor');
-
-// Destructure imported modules
-const { setupForms } = formsModule;
-const { initializeRouter } = routerModule;
-const { EndpointManager } = endpointsModule;
-const { state } = stateModule;
-const { ErrorHandler } = errorsModule;
-const { rdfModel } = rdfModelModule;
-const { initializeNotifications } = notificationsModule;
-const { initializeSettingsView } = settingsModule;
+import './ui/views/wiki-editor.js';
 
 // Define application views
 export const VIEWS = {
