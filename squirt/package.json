@@ -12,6 +12,7 @@
     "@rdfjs/data-model": "^2.0.1",
     "@rdfjs/namespace": "^2.0.0",
     "@rdfjs/parser-n3": "^2.0.1",
+    "cors": "^2.8.5",
     "rdf-ext": "^2.5.0"
   },
   "devDependencies": {
