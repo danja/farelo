@@ -1,224 +1,271 @@
-import rdf from 'rdf-ext';
-import { namespaces } from '../../utils.js';
-import { showSuccess, showError } from './notification.js';
+import { state } from '../../core/state.js';
+import { setupEndpointsList } from '../components/endpoints-list.js';
+import { showNotification, initializeNotifications } from '../components/notifications.js';
+import { rdfModel } from '../../services/rdf/rdf-model.js';
 
-export class SettingsManager {
-    constructor() {
-        this.dataset = rdf.dataset();
-        this.STORAGE_KEY = 'squirt_settings';
-        this.DEFAULT_ENDPOINTS = [
-            { url: 'http://localhost:3030/squirt/sparql', label: 'Local Query Endpoint' },
-            { url: 'http://localhost:3030/squirt/update', label: 'Local Update Endpoint' }
-        ];
-        this.statusCheckInterval = 60000;
+/**
+ * Initialize the settings view
+ */
+export function initializeSettingsView() {
+    const view = document.getElementById('settings-view');
+    if (!view) {
+        console.warn('Settings view not found');
+        return;
     }
+    
+    // Setup components
+    setupEndpointsList();
+    initializeNotifications();
+    
+    // Setup theme selector if it exists
+    setupThemeSelector();
+    
+    // Setup storage management
+    setupStorageManagement();
+}
 
-    async initialize() {
-        await this.loadFromStorage();
-        this.renderEndpoints();
-        this.setupEventListeners();
+/**
+ * Setup theme selector component
+ */
+function setupThemeSelector() {
+    const themeSelector = document.getElementById('theme-selector');
+    if (!themeSelector) return;
+    
+    // Get current theme from localStorage or use default
+    const currentTheme = localStorage.getItem('squirt_theme') || 'light';
+    
+    // Set initial value
+    themeSelector.value = currentTheme;
+    
+    // Apply theme to document
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Listen for changes
+    themeSelector.addEventListener('change', () => {
+        const theme = themeSelector.value;
+        localStorage.setItem('squirt_theme', theme);
+        document.documentElement.setAttribute('data-theme', theme);
+        showNotification(`Theme changed to ${theme}`, 'info');
+    });
+}
+
+/**
+ * Setup storage management section
+ */
+function setupStorageManagement() {
+    const storageSection = document.querySelector('.storage-section');
+    if (!storageSection) return;
+    
+    // Create export button if it doesn't exist
+    if (!document.getElementById('export-data')) {
+        const exportBtn = document.createElement('button');
+        exportBtn.id = 'export-data';
+        exportBtn.textContent = 'Export Data';
+        exportBtn.addEventListener('click', exportData);
+        storageSection.appendChild(exportBtn);
     }
-
-    async saveToStorage() {
-        try {
-            const quads = [...this.dataset];
-            const serialized = quads.map(quad => ({
-                subject: quad.subject.value,
-                predicate: quad.predicate.value,
-                object: quad.object.value,
-                graph: quad.graph.value
-            }));
-            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(serialized));
-        } catch (error) {
-            console.error('Error saving settings:', error);
-        }
+    
+    // Create import button if it doesn't exist
+    if (!document.getElementById('import-data')) {
+        const importBtn = document.createElement('button');
+        importBtn.id = 'import-data';
+        importBtn.textContent = 'Import Data';
+        importBtn.addEventListener('click', () => {
+            // Create a hidden file input
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = '.ttl,.json';
+            fileInput.style.display = 'none';
+            document.body.appendChild(fileInput);
+            
+            // Listen for file selection
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    importData(file);
+                }
+                document.body.removeChild(fileInput);
+            });
+            
+            // Trigger file dialog
+            fileInput.click();
+        });
+        storageSection.appendChild(importBtn);
     }
+    
+    // Create clear data button if it doesn't exist
+    if (!document.getElementById('clear-data')) {
+        const clearBtn = document.createElement('button');
+        clearBtn.id = 'clear-data';
+        clearBtn.className = 'danger';
+        clearBtn.textContent = 'Clear All Data';
+        clearBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
+                clearAllData();
+            }
+        });
+        storageSection.appendChild(clearBtn);
+    }
+    
+    // Add storage usage info
+    updateStorageUsage();
+}
 
-    async loadFromStorage() {
-        const stored = localStorage.getItem(this.STORAGE_KEY);
-        if (!stored) {
-            this.DEFAULT_ENDPOINTS.forEach(({ url, label }) => this.addEndpoint(url, label));
+/**
+ * Export all application data
+ */
+async function exportData() {
+    try {
+        // Get RDF dataset
+        const dataset = state.get('rdfDataset');
+        
+        if (!dataset || dataset.size === 0) {
+            showNotification('No data to export', 'warning');
             return;
         }
-        try {
-            const serialized = JSON.parse(stored);
-            this.dataset = rdf.dataset(serialized.map(quad =>
-                rdf.quad(
-                    rdf.namedNode(quad.subject),
-                    rdf.namedNode(quad.predicate),
-                    quad.object.startsWith('http') ? rdf.namedNode(quad.object) : rdf.literal(quad.object)
-                )
-            ));
-        } catch (error) {
-            console.error('Error loading settings:', error);
-            this.DEFAULT_ENDPOINTS.forEach(({ url, label }) => this.addEndpoint(url, label));
-        }
+        
+        // Convert to Turtle format
+        const turtle = dataset.toString();
+        
+        // Create a download link
+        const blob = new Blob([turtle], { type: 'text/turtle' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const date = new Date().toISOString().split('T')[0];
+        a.href = url;
+        a.download = `squirt_export_${date}.ttl`;
+        a.style.display = 'none';
+        
+        // Trigger download
+        document.body.appendChild(a);
+        a.click();
+        
+        // Clean up
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 100);
+        
+        showNotification('Data exported successfully', 'success');
+    } catch (error) {
+        console.error('Error exporting data:', error);
+        showNotification('Failed to export data', 'error');
     }
+}
 
-    async checkEndpointStatus(url) {
-        try {
-            const response = await fetch(url, {
-                method: 'OPTIONS',
-                headers: { 'Accept': 'application/sparql-query' }
-            });
-            return response.ok;
-        } catch {
-            return false;
-        }
-    }
-
-    async updateEndpointStatus(url) {
-        const statusEl = document.querySelector(`[data-url="${url}"] .endpoint-status`);
-        if (statusEl) {
-            statusEl.className = 'endpoint-status checking';
-        }
-
-        const isActive = await this.checkEndpointStatus(url);
-        const endpoint = rdf.namedNode(url);
-        const statusPred = rdf.namedNode(`${namespaces.squirt}status`);
-        const checkedPred = rdf.namedNode(`${namespaces.squirt}lastChecked`);
-        const timestamp = new Date().toISOString();
-
-        this.dataset.deleteMatches(endpoint, statusPred);
-        this.dataset.deleteMatches(endpoint, checkedPred);
-        this.dataset.add(rdf.quad(endpoint, statusPred, rdf.literal(isActive ? 'active' : 'inactive')));
-        this.dataset.add(rdf.quad(endpoint, checkedPred, rdf.literal(timestamp)));
-
-        if (statusEl) {
-            statusEl.className = `endpoint-status ${isActive ? 'active' : 'inactive'}`;
-            statusEl.title = `Status: ${isActive ? 'Active' : 'Inactive'}\nLast checked: ${new Date(timestamp).toLocaleString()}`;
-        }
-    }
-
-    startStatusChecks() {
-        this.getEndpoints().forEach(({ url }) => this.updateEndpointStatus(url));
-        setInterval(() => {
-            this.getEndpoints().forEach(({ url }) => this.updateEndpointStatus(url));
-        }, this.statusCheckInterval);
-    }
-
-    addEndpoint(url, label) {
-        const endpoint = rdf.namedNode(url);
-        const type = rdf.namedNode(`${namespaces.rdf}type`);
-        const endpointClass = rdf.namedNode(`${namespaces.squirt}SparqlEndpoint`);
-        const rdfsLabel = rdf.namedNode(`${namespaces.rdfs}label`);
-
-        this.dataset.add(rdf.quad(endpoint, type, endpointClass));
-        this.dataset.add(rdf.quad(endpoint, rdfsLabel, rdf.literal(label || url)));
-        this.saveToStorage();
-        this.renderEndpoints();
-    }
-
-    removeEndpoint(url) {
-        const endpoint = rdf.namedNode(url);
-        this.dataset.deleteMatches(endpoint);
-        this.saveToStorage();
-        this.renderEndpoints();
-    }
-
-    editEndpoint(url, newLabel) {
-        const endpoint = rdf.namedNode(url);
-        const rdfsLabel = rdf.namedNode(`${namespaces.rdfs}label`);
-
-        this.dataset.deleteMatches(endpoint, rdfsLabel);
-        this.dataset.add(rdf.quad(endpoint, rdfsLabel, rdf.literal(newLabel)));
-        this.saveToStorage();
-        this.renderEndpoints();
-    }
-
-    getEndpoints() {
-        const endpoints = [];
-        const endpointClass = rdf.namedNode(`${namespaces.squirt}SparqlEndpoint`);
-        const rdfsLabel = rdf.namedNode(`${namespaces.rdfs}label`);
-
-        const matches = [...this.dataset].filter(quad =>
-            quad.predicate.value === `${namespaces.rdf}type` &&
-            quad.object.equals(endpointClass)
-        );
-
-        for (const quad of matches) {
-            const url = quad.subject.value;
-            const labelQuad = [...this.dataset].find(q =>
-                q.subject.equals(quad.subject) &&
-                q.predicate.equals(rdfsLabel)
-            );
-            endpoints.push({
-                url,
-                label: labelQuad ? labelQuad.object.value : url
-            });
-        }
-        return endpoints;
-    }
-
-    renderEndpoints() {
-        const container = document.getElementById('endpoints-list');
-        if (!container) return;
-
-        container.innerHTML = '';
-        this.getEndpoints().forEach(({ url, label }) => {
-            const div = document.createElement('div');
-            div.className = 'endpoint-item';
-            div.dataset.url = url;
-            div.innerHTML = `
-                <div class="endpoint-info">
-                    <div class="endpoint-header">
-                        <strong class="endpoint-label" contenteditable="true">${label}</strong>
-                        <div class="endpoint-status" title="Checking status..."></div>
-                    </div>
-                    <div class="endpoint-url">${url}</div>
-                </div>
-                <div class="endpoint-actions">
-                    <button type="button" class="check-endpoint">Check</button>
-                    <button type="button" class="save-endpoint hidden">Save</button>
-                    <button type="button" class="remove-endpoint">Remove</button>
-                </div>
-            `;
-
-            const labelEl = div.querySelector('.endpoint-label');
-            const saveBtn = div.querySelector('.save-endpoint');
-            const checkBtn = div.querySelector('.check-endpoint');
-
-            labelEl.addEventListener('focus', () => {
-                saveBtn.classList.remove('hidden');
-            });
-
-            labelEl.addEventListener('blur', () => {
-                if (!labelEl.textContent.trim()) {
-                    labelEl.textContent = label;
+/**
+ * Import data from file
+ * @param {File} file - The file to import
+ */
+async function importData(file) {
+    try {
+        const reader = new FileReader();
+        
+        reader.onload = async (e) => {
+            try {
+                const content = e.target.result;
+                
+                // Try to parse as Turtle
+                try {
+                    const dataset = await rdfModel.parseFromString(content);
+                    
+                    // Merge with existing dataset
+                    const currentDataset = state.get('rdfDataset');
+                    dataset.forEach(quad => {
+                        currentDataset.add(quad);
+                    });
+                    
+                    // Update state
+                    state.update('rdfDataset', currentDataset);
+                    
+                    // Save to cache
+                    rdfModel.saveToCache(currentDataset);
+                    
+                    showNotification('Data imported successfully', 'success');
+                } catch (parseError) {
+                    console.error('Error parsing imported data:', parseError);
+                    showNotification('Invalid data format', 'error');
                 }
-            });
-
-            saveBtn.addEventListener('click', () => {
-                const newLabel = labelEl.textContent.trim();
-                this.editEndpoint(url, newLabel);
-                showSuccess('Endpoint updated');
-            });
-
-            checkBtn.addEventListener('click', async () => {
-                checkBtn.disabled = true;
-                await this.updateEndpointStatus(url);
-                checkBtn.disabled = false;
-            });
-
-            div.querySelector('.remove-endpoint').addEventListener('click', () => {
-                this.removeEndpoint(url);
-            });
-
-            container.appendChild(div);
-            this.updateEndpointStatus(url);
-        });
+            } catch (processError) {
+                console.error('Error processing imported data:', processError);
+                showNotification('Failed to import data', 'error');
+            }
+        };
+        
+        reader.onerror = () => {
+            showNotification('Failed to read file', 'error');
+        };
+        
+        reader.readAsText(file);
+    } catch (error) {
+        console.error('Error importing data:', error);
+        showNotification('Failed to import data', 'error');
     }
+}
 
-    setupEventListeners() {
-        const form = document.getElementById('endpoint-form');
-        if (form) {
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const url = form.querySelector('#endpoint-url').value;
-                const label = form.querySelector('#endpoint-label').value;
-                this.addEndpoint(url, label);
-                form.reset();
-            });
+/**
+ * Clear all application data
+ */
+function clearAllData() {
+    try {
+        // Clear RDF dataset
+        state.update('rdfDataset', rdfModel.createEmptyDataset());
+        
+        // Clear localStorage except for settings
+        const themeSettings = localStorage.getItem('squirt_theme');
+        const endpointSettings = localStorage.getItem('squirt_endpoints');
+        
+        localStorage.clear();
+        
+        // Restore settings
+        if (themeSettings) {
+            localStorage.setItem('squirt_theme', themeSettings);
+        }
+        
+        if (endpointSettings) {
+            localStorage.setItem('squirt_endpoints', endpointSettings);
+        }
+        
+        showNotification('All data has been cleared', 'success');
+        
+        // Update storage usage display
+        updateStorageUsage();
+    } catch (error) {
+        console.error('Error clearing data:', error);
+        showNotification('Failed to clear data', 'error');
+    }
+}
+
+/**
+ * Update the storage usage display
+ */
+function updateStorageUsage() {
+    // Create or get storage usage element
+    let usageElement = document.getElementById('storage-usage');
+    if (!usageElement) {
+        usageElement = document.createElement('div');
+        usageElement.id = 'storage-usage';
+        document.querySelector('.storage-section')?.appendChild(usageElement);
+    }
+    
+    // Calculate localStorage usage
+    let total = 0;
+    for (const key in localStorage) {
+        if (localStorage.hasOwnProperty(key)) {
+            total += localStorage[key].length * 2; // Approximate size in bytes
         }
     }
+    
+    // Format size
+    let size;
+    if (total < 1024) {
+        size = `${total} bytes`;
+    } else if (total < 1024 * 1024) {
+        size = `${(total / 1024).toFixed(2)} KB`;
+    } else {
+        size = `${(total / (1024 * 1024)).toFixed(2)} MB`;
+    }
+    
+    // Update display
+    usageElement.textContent = `Storage used: ${size}`;
 }

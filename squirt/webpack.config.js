@@ -1,10 +1,10 @@
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-export default {
+module.exports = {
     entry: {
-        main: ['./src/js/app.js', './src/css/styles.css']
+        main: ['./src/js/app.js', './src/css/styles.css', './src/css/form-styles.css']
     },
     output: {
         path: path.resolve('public'),
@@ -49,6 +49,6 @@ export default {
         },
         compress: true,
         hot: true,
-        port: 9000
+        port: 9002
     }
 }
