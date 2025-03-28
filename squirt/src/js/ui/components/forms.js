@@ -227,30 +227,5 @@ function addFormField(container, field) {
   container.appendChild(wrapper);
 }
 
-// This function is defined above, so removed here
-
-function showNotification(message, type = 'info') {
-  // Check if notifications module is available
-  if (typeof window.showNotification === 'function') {
-    window.showNotification(message, type);
-    return;
-  }
-  
-  // Fallback for when notifications module isn't loaded
-  console.log(`${type.toUpperCase()}: ${message}`);
-  
-  // Create custom notification
-  const notification = document.createElement('div');
-  notification.className = `notification ${type}`;
-  notification.textContent = message;
-  
-  // Add to body if no notification container exists
-  const container = document.querySelector('.notifications-container') || document.body;
-  container.appendChild(notification);
-  
-  // Remove after 3 seconds
-  setTimeout(() => {
-    notification.classList.add('fade-out');
-    setTimeout(() => notification.remove(), 300);
-  }, 3000);
-}
+// REMOVED: Duplicate showNotification function was here
+// Using the imported showNotification from notifications.js instead

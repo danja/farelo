@@ -8,6 +8,10 @@ const rdfModelModule = require('./services/rdf/rdf-model');
 const notificationsModule = require('./ui/components/notifications');
 const settingsModule = require('./ui/views/settings');
 
+// Import wiki editor to ensure its event listeners are registered
+// Note: This file uses ES modules, but Webpack will handle the interop
+require('./ui/views/wiki-editor');
+
 // Destructure imported modules
 const { setupForms } = formsModule;
 const { initializeRouter } = routerModule;
