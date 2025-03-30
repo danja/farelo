@@ -18,6 +18,8 @@
 │   ├── config.json
 │   ├── css
 │   │   ├── form-styles.css
+│   │   ├── layout-fixes.css
+│   │   ├── mobile-fixes.css
 │   │   ├── styles.css
 │   │   └── yasgui-styles.css
 │   ├── html
@@ -33,11 +35,14 @@
 │       │   ├── rdf
 │       │   │   ├── rdf-extractor.js
 │       │   │   └── rdf-model.js
-│       │   └── sparql
-│       │       ├── endpoints.js
-│       │       └── sparql.js
+│       │   ├── sparql
+│       │   │   ├── endpoints.js
+│       │   │   └── sparql.js
+│       │   └── templates
+│       │       └── post-article.njk
 │       ├── ui
 │       │   ├── components
+│       │   │   ├── endpoint-indicator.js
 │       │   │   ├── endpoints-list.js
 │       │   │   ├── forms.js
 │       │   │   └── notifications.js
@@ -57,4 +62,4 @@
 ├── tree.xml
 └── webpack.config.js
 
-17 directories, 41 files
+18 directories, 45 files

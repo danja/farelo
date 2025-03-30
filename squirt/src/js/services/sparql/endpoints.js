@@ -199,6 +199,106 @@ export class EndpointManager {
         const endpoints = state.get('endpoints') || [];
         return endpoints.find(e => e.type === type && e.status === 'active');
     }
+
+    // Add to src/js/services/sparql/endpoints.js in the EndpointManager class
+
+/**
+ * Perform a non-blocking check of all endpoints
+ * @returns {Promise<Object>} Object with check results and status
+ */
+async checkEndpointsHealth() {
+    // Create a copy of the current endpoints to avoid mutation issues
+    const endpoints = [...(state.get('endpoints') || [])];
+    
+    if (endpoints.length === 0) {
+      console.log('No endpoints to check');
+      return { success: false, message: 'No endpoints configured' };
+    }
+    
+    console.log(`Checking health of ${endpoints.length} endpoints...`);
+    
+    // Set endpoints to checking state
+    endpoints.forEach(endpoint => {
+      endpoint.status = 'checking';
+    });
+    
+    // Update state to show checking status in UI
+    state.update('endpoints', endpoints);
+    
+    // Use Promise.all to run all checks in parallel
+    try {
+      const results = await Promise.all(
+        endpoints.map(async (endpoint) => {
+          try {
+            // Use existing testEndpoint function
+            const isActive = await this.checkEndpoint(endpoint.url, endpoint.credentials);
+            return {
+              url: endpoint.url,
+              label: endpoint.label,
+              type: endpoint.type,
+              isActive,
+              error: null
+            };
+          } catch (error) {
+            console.error(`Error checking endpoint ${endpoint.url}:`, error);
+            return {
+              url: endpoint.url,
+              label: endpoint.label,
+              type: endpoint.type,
+              isActive: false,
+              error: error.message
+            };
+          }
+        })
+      );
+      
+      // Update endpoints with results
+      const updatedEndpoints = endpoints.map(endpoint => {
+        const result = results.find(r => r.url === endpoint.url);
+        return {
+          ...endpoint,
+          status: result?.isActive ? 'active' : 'inactive',
+          lastChecked: new Date().toISOString(),
+          lastError: result?.error || null
+        };
+      });
+      
+      // Update state with final results
+      state.update('endpoints', updatedEndpoints);
+      
+      // Dispatch an event with the results for any listeners
+      try {
+        const anyActive = results.some(r => r.isActive);
+        const queryActive = results.some(r => r.isActive && r.type === 'query');
+        const updateActive = results.some(r => r.isActive && r.type === 'update');
+        
+        const event = new CustomEvent('endpointsStatusChecked', {
+          detail: {
+            results,
+            anyActive,
+            queryActive,
+            updateActive
+          }
+        });
+        
+        document.dispatchEvent(event);
+      } catch (error) {
+        console.error('Error dispatching endpoints status event:', error);
+      }
+      
+      // Return summary of results
+      return {
+        success: true,
+        anyActive: results.some(r => r.isActive),
+        queryActive: results.some(r => r.isActive && r.type === 'query'),
+        updateActive: results.some(r => r.isActive && r.type === 'update'),
+        results
+      };
+    } catch (error) {
+      console.error('Error checking endpoints health:', error);
+      return { success: false, message: error.message };
+    }
+  }
 }
 
 // Create and export a singleton instance
