@@ -138,3 +138,38 @@ main {
     opacity: 1;
   }
 }
+
+/* YASGUI specific styles */
+.yasgui-container {
+  width: 100%;
+  height: 600px;
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Override YASGUI styles to match application theme */
+.yasgui .yasqe .CodeMirror {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.yasgui .tabPanel {
+  background-color: var(--background-color, #f9f9f9);
+}
+
+.yasgui .tabItem.active {
+  background-color: var(--primary-color, #3498db);
+  color: white;
+}
+
+.yasgui button.btn-primary {
+  background-color: var(--primary-color, #3498db);
+  border-color: var(--primary-color, #3498db);
+}
+
+.yasgui button.btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+}

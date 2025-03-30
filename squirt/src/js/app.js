@@ -1,24 +1,22 @@
 // Import dependencies with ES module syntax
 import { setupForms } from './ui/components/forms.js';
 import { initializeRouter } from './router.js';
-import { EndpointManager } from './services/sparql/endpoints.js';
+import { endpointManager } from './services/sparql/endpoints.js'; // Import singleton
 import { state } from './core/state.js';
 import { ErrorHandler } from './core/errors.js';
 import { rdfModel } from './services/rdf/rdf-model.js';
 import { initializeNotifications } from './ui/components/notifications.js';
 import { initializeSettingsView } from './ui/views/settings.js';
+import { VIEWS } from './core/views.js';
 
-// Import wiki editor to ensure its event listeners are registered
+// Import CSS
+import '../css/styles.css';
+import '../css/form-styles.css';
+import '../css/yasgui-styles.css';
+
+// Import view components
 import './ui/views/wiki-editor.js';
-
-// Define application views
-export const VIEWS = {
-  POST: 'post-view',
-  DEVELOPER: 'developer-view',
-  WIKI: 'wiki-view',
-  PROFILE: 'profile-view',
-  SETTINGS: 'settings-view'
-};
+import './ui/views/yasgui-view.js';
 
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
@@ -53,8 +51,7 @@ async function initializeApp() {
     // Initialize routing
     initializeRouter();
     
-    // Initialize services
-    const endpointManager = new EndpointManager();
+    // Initialize services - use the singleton instance
     await endpointManager.initialize();
     
     // Register service worker for PWA support
@@ -114,6 +111,15 @@ function setupViews() {
         <button type="button" id="save-wiki">Save</button>
       </div>
       <div class="wiki-entries"></div>
+    `;
+  }
+  
+  // Add yasgui view content if it doesn't exist
+  const yasguiView = document.getElementById(VIEWS.YASGUI);
+  if (yasguiView && yasguiView.children.length === 0) {
+    yasguiView.innerHTML = `
+      <h2>SPARQL Query Editor</h2>
+      <div id="yasgui-container" class="yasgui-container"></div>
     `;
   }
   

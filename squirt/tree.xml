@@ -1,36 +1,32 @@
 .
 ├── about.md
 ├── babel.config.json
-├── endpoints.json
 ├── jasmine.json
 ├── jest.config.js
 ├── package.json
 ├── package-lock.json
 ├── public
-│   ├── demo.html
-│   ├── icons
-│   │   ├── icon-192x192.png
-│   │   └── icon-512x512.png
+│   ├── favicon.ico
 │   ├── index.html
-│   ├── main.5e2c985a614e3bf02320.css
-│   ├── main.bundle.js
-│   ├── main.bundle.js.LICENSE.txt
-│   ├── manifest.json
-│   └── service-worker.js
+│   ├── main.324fa52b.css
+│   └── main.bundle.js
 ├── repomix.config.json
 ├── requirements_2025-03-28.md
 ├── squirt_repomix.md
 ├── src
+│   ├── config.json
 │   ├── css
 │   │   ├── form-styles.css
-│   │   └── styles.css
+│   │   ├── styles.css
+│   │   └── yasgui-styles.css
 │   ├── html
 │   │   └── index.html
 │   └── js
 │       ├── app.js
 │       ├── core
 │       │   ├── errors.js
-│       │   └── state.js
+│       │   ├── state.js
+│       │   └── views.js
 │       ├── router.js
 │       ├── services
 │       │   ├── rdf
@@ -38,10 +34,7 @@
 │       │   │   └── rdf-model.js
 │       │   └── sparql
 │       │       ├── endpoints.js
-│       │       ├── sparql.js
-│       │       └── test
-│       │           └── spec
-│       │               └── sparql.spec.js
+│       │       └── sparql.js
 │       ├── ui
 │       │   ├── components
 │       │   │   ├── endpoints-list.js
@@ -49,7 +42,8 @@
 │       │   │   └── notifications.js
 │       │   └── views
 │       │       ├── settings.js
-│       │       └── wiki-editor.js
+│       │       ├── wiki-editor.js
+│       │       └── yasgui-view.js
 │       └── utils
 │           └── utils.js
 ├── storage
@@ -57,8 +51,9 @@
 │   ├── setup.js
 │   └── spec
 │       ├── about.md
+│       ├── sparql1.spec.js
 │       └── sparql.spec.js
 ├── tree.xml
 └── webpack.config.js
 
-20 directories, 42 files
+17 directories, 40 files

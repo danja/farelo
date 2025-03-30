@@ -1,3 +1,4 @@
+// src/js/services/sparql/sparql.js
 import { state } from '../../core/state.js';
 import { ErrorHandler } from '../../core/errors.js';
 
@@ -37,7 +38,7 @@ export async function postToSparql(dataset) {
   try {
     const headers = {
       'Content-Type': 'application/sparql-update',
-      'Accept': '*/*'
+      'Accept': 'application/json, */*'
     };
     
     // Add basic auth if credentials exist
@@ -50,7 +51,6 @@ export async function postToSparql(dataset) {
     const response = await fetch(endpoint.url, {
       method: 'POST',
       headers,
-      mode: 'cors',
       body: insertQuery
     });
 
@@ -80,7 +80,7 @@ export async function querySparql(query) {
   try {
     const headers = {
       'Content-Type': 'application/sparql-query',
-      'Accept': 'application/json'
+      'Accept': 'application/sparql-results+json, application/json'
     };
     
     // Add basic auth if credentials exist
@@ -93,7 +93,6 @@ export async function querySparql(query) {
     const response = await fetch(endpoint.url, {
       method: 'POST',
       headers,
-      mode: 'cors',
       body: query
     });
 
@@ -118,7 +117,8 @@ export async function querySparql(query) {
 export async function testEndpoint(url, credentials) {
   try {
     const headers = {
-      'Accept': 'application/json'
+      'Content-Type': 'application/sparql-query',
+      'Accept': 'application/sparql-results+json, application/json'
     };
     
     if (credentials) {
@@ -132,11 +132,7 @@ export async function testEndpoint(url, credentials) {
     
     const response = await fetch(url, {
       method: 'POST',
-      headers: {
-        ...headers,
-        'Content-Type': 'application/sparql-query'
-      },
-      mode: 'cors',
+      headers,
       body: query
     });
 

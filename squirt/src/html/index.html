@@ -13,7 +13,7 @@
     <link rel="manifest" href="/manifest.json">
     
     <!-- iOS PWA support -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Squirt">
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -25,11 +25,13 @@
         <nav>
             <a href="#" data-view="post-view">Post</a>
             <a href="#" data-view="wiki-view">Wiki</a>
+            <a href="#" data-view="yasgui-view">SPARQL</a>
             <a href="#" data-view="developer-view">Developer</a>
             <a href="#" data-view="profile-view">Profile</a>
             <a href="#" data-view="settings-view">Settings</a>
         </nav>
     </header>
+    
 
     <main>
         <!-- Post View -->
@@ -97,6 +99,11 @@
             <div class="wiki-entries"></div>
         </div>
 
+        <div id="yasgui-view" class="view hidden">
+            <h2>SPARQL Query Editor</h2>
+            <div id="yasgui-container" class="yasgui-container"></div>
+        </div>
+        
         <!-- Developer View -->
         <div id="developer-view" class="view hidden">
             <h2>Developer Tools</h2>

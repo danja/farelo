@@ -1,5 +1,5 @@
+// src/js/services/sparql/endpoints.js
 import { state } from '../../core/state.js';
-import { namespaces } from '../../utils/utils.js';
 import { testEndpoint } from './sparql.js';
 import { ErrorHandler } from '../../core/errors.js';
 
@@ -11,8 +11,10 @@ export class EndpointManager {
 
     async initialize() {
         try {
-            // First try to load endpoints from the JSON file
-            const endpointsFromFile = await this.loadFromFile();
+            console.log('Initializing endpoints manager...');
+            
+            // First try to load endpoints from the config file
+            const endpointsFromFile = this.loadFromConfig();
             
             // Then try to load from localStorage (which may have user customizations)
             const storedEndpoints = this.loadFromStorage();
@@ -32,13 +34,22 @@ export class EndpointManager {
                 endpoints = this.getDefaultEndpoints();
             }
             
+            console.log(`Loaded ${endpoints.length} endpoints`);
+            
+            // Update state with endpoints
             state.update('endpoints', endpoints);
+            
+            // Start status checks
             this.startStatusChecks();
+            
+            return endpoints;
         } catch (error) {
+            console.error('Error initializing endpoints:', error);
             ErrorHandler.handle(error);
             const fallback = this.getDefaultEndpoints();
             state.update('endpoints', fallback);
             this.startStatusChecks();
+            return fallback;
         }
     }
 
@@ -52,57 +63,68 @@ export class EndpointManager {
         }
     }
 
-    async loadFromFile() {
+    // Load endpoints from imported config
+    loadFromConfig() {
         try {
-            const response = await fetch('/endpoint.json');
-            if (!response.ok) {
-                throw new Error('Failed to load endpoints from file');
+            // Import config dynamically
+            const config = require('../../../config.json');
+            
+            // If config exists and is an array, return it
+            if (config && Array.isArray(config)) {
+                return config.map(endpoint => ({
+                    url: endpoint.url,
+                    label: endpoint.name,
+                    type: endpoint.type,
+                    credentials: endpoint.credentials,
+                    status: 'unknown'
+                }));
             }
-            
-            const endpoints = await response.json();
-            
-            // Map the structure to match our internal format
-            return endpoints.map(endpoint => ({
-                url: endpoint.url,
-                label: endpoint.name,
-                type: endpoint.type,
-                credentials: endpoint.credentials,
-                status: 'unknown'
-            }));
+            throw new Error('Invalid config format');
         } catch (error) {
-            console.error('Error loading endpoints from file:', error);
-            throw error;
+            console.error('Error loading endpoints from config:', error);
+            return [];
         }
     }
 
     getDefaultEndpoints() {
         return [
             { 
-                url: 'http://localhost:3030/squirt/query',
+                url: 'http://localhost:4030/semem/query',
                 label: 'Local Query Endpoint',
                 type: 'query',
-                status: 'unknown'
+                status: 'unknown',
+                credentials: {
+                    user: 'admin',
+                    password: 'admin123'
+                }
             },
             {
-                url: 'http://localhost:3030/squirt/update',
+                url: 'http://localhost:4030/semem/update',
                 label: 'Local Update Endpoint',
                 type: 'update',
-                status: 'unknown'
+                status: 'unknown',
+                credentials: {
+                    user: 'admin',
+                    password: 'admin123'
+                }
             }
         ];
     }
 
-    startStatusChecks() {
+    async startStatusChecks() {
         const checkAll = async () => {
             const endpoints = state.get('endpoints');
             
             if (!endpoints || endpoints.length === 0) return;
+            
+            console.log(`Checking ${endpoints.length} endpoints...`);
             
             for (const endpoint of endpoints) {
                 try {
                     const status = await testEndpoint(endpoint.url, endpoint.credentials);
                     endpoint.status = status ? 'active' : 'inactive';
                     endpoint.lastChecked = new Date().toISOString();
+                    console.log(`Endpoint ${endpoint.url} status: ${endpoint.status}`);
                 } catch (error) {
                     console.error(`Error checking endpoint ${endpoint.url}:`, error);
                     endpoint.status = 'inactive';
@@ -114,7 +136,7 @@ export class EndpointManager {
         };
 
         // Run immediately and then on interval
-        checkAll();
+        await checkAll();
         setInterval(checkAll, this.statusCheckInterval);
     }
 
@@ -174,7 +196,10 @@ export class EndpointManager {
     }
 
     getActiveEndpoint(type) {
-        const endpoints = state.get('endpoints');
+        const endpoints = state.get('endpoints') || [];
         return endpoints.find(e => e.type === type && e.status === 'active');
     }
 }
+
+// Create and export a singleton instance
+export const endpointManager = new EndpointManager();

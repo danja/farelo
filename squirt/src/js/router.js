@@ -1,19 +1,12 @@
+// src/js/router.js
 import { state } from './core/state.js';
 import { ErrorHandler } from './core/errors.js';
-import { VIEWS } from './app.js';
+import { VIEWS } from './core/views.js';
 
 /**
  * Initialize the router
  */
 export function initializeRouter() {
-    if (!VIEWS) {
-        throw new Error('VIEWS constant not available');
-    }
-
-    /**
-     * Valid routes derived from view IDs
-     * @constant {string[]}
-     */
     const VALID_ROUTES = Object.values(VIEWS).map(view => view.replace('-view', ''));
 
     window.addEventListener('hashchange', () => {
@@ -25,8 +18,6 @@ export function initializeRouter() {
 
 /**
  * Handle route changes
- * @param {string} hash - URL hash including #
- * @param {string[]} validRoutes - List of valid routes
  */
 function handleRoute(hash, validRoutes) {
     try {
@@ -45,7 +36,7 @@ function handleRoute(hash, validRoutes) {
 
         const currentView = state.get('currentView');
         
-        // Fire pre-route change event
+        // Fire route change event
         const event = new CustomEvent('routeChange', {
             detail: {
                 from: currentView,
@@ -55,7 +46,6 @@ function handleRoute(hash, validRoutes) {
         });
 
         if (!document.dispatchEvent(event)) {
-            // Route change was prevented
             if (currentView) {
                 window.location.hash = currentView.replace('-view', '');
             }
@@ -65,14 +55,31 @@ function handleRoute(hash, validRoutes) {
         state.update('previousView', currentView);
         state.update('currentView', viewId);
 
+        // Hide all views
         Object.values(VIEWS).forEach(id => {
-            const view = document.getElementById(id);
-            if (view) {
-                view.classList.add('hidden');
+            const viewElement = document.getElementById(id);
+            if (viewElement) {
+                viewElement.classList.add('hidden');
             }
         });
         
+        // Show requested view
         view.classList.remove('hidden');
+        
+        // Special handling for YASGUI
+        if (viewId === VIEWS.YASGUI) {
+            // Import the YASGUI view module and initialize it
+            import('./ui/views/yasgui-view.js')
+                .then(module => {
+                    if (typeof module.initializeYasguiView === 'function') {
+                        // Delay to ensure view is visible
+                        setTimeout(() => module.initializeYasguiView(), 100);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading YASGUI module:', error);
+                });
+        }
 
     } catch (error) {
         ErrorHandler.handle(error);
