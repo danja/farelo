@@ -8,6 +8,7 @@ import { rdfModel } from './services/rdf/rdf-model.js';
 import { initializeNotifications } from './ui/components/notifications.js';
 import { initializeSettingsView } from './ui/views/settings.js';
 import { VIEWS } from './core/views.js';
+import { initializeEndpointIndicator } from './ui/components/endpoint-indicator.js';
 
 // Import CSS
 import '../css/styles.css';
@@ -75,7 +76,8 @@ async function initializeApp() {
     
     // Check for share target (for mobile devices)
     checkForShareTarget();
-    
+    const endpointIndicator = initializeEndpointIndicator();
+
     console.log('Application initialized successfully');
   } catch (error) {
     console.error('Error initializing application:', error);
@@ -524,3 +526,11 @@ function checkForShareTarget() {
     }
   }
 }
+
+document.addEventListener('checkEndpointsRequest', async () => {
+  try {
+    await endpointManager.checkEndpointsHealth();
+  } catch (error) {
+    console.error('Error checking endpoints health:', error);
+  }
+});

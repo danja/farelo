@@ -1,4 +1,4 @@
-// src/js/ui/components/endpoint-indicator.js - Fixed version
+// src/js/ui/components/endpoint-indicator.js
 import { state } from '../../core/state.js';
 
 /**
@@ -19,11 +19,6 @@ export class EndpointStatusIndicator {
     }
     
     // Initialize the indicator content
-    this.indicator.innerHTML = `
-      <div class="status-light"></div>
-      <span class="status-tooltip-icon">?</span>
-    `;
-    
     this.statusLight = this.indicator.querySelector('.status-light');
     
     // Initialize status

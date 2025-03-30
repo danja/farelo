@@ -34,7 +34,7 @@ function initializeYasguiComponent() {
     // Create minimal configuration
     const config = {
       requestConfig: {
-        endpoint: activeEndpoint ? activeEndpoint.url : 'http://localhost:4030/semem/query',
+        endpoint: activeEndpoint ? activeEndpoint.url : 'http://localhost:3030/semem/query',
         method: 'POST'
       }
     };
