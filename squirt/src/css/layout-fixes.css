@@ -39,12 +39,56 @@
   box-shadow: var(--shadow);
 }
 
-/* CodeMirror editor fixes */
+/* ===== CodeMirror Fixes ===== */
+/* These specific overrides fix the horizontal scrollbar issues */
+
+/* Main container fixes */
 .CodeMirror {
-  border: 1px solid var(--border-color) !important;
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   height: auto !important;
   min-height: 200px;
+  font-family: monospace;
+  line-height: 1.5;
+  overflow: hidden !important;
+}
+
+/* Fix the scroll container that causes the middle scrollbar */
+.CodeMirror-scroll {
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+  padding-bottom: 0 !important;
+  padding-right: 0 !important;
+  overflow-x: hidden !important;
+  /* Important override to prevent the 50px offset that causes the scrollbar */
+  height: auto !important;
+}
+
+/* Ensure sizer doesn't create overflow */
+.CodeMirror-sizer {
+  margin-bottom: 0 !important;
+  border-right-width: 0 !important;
+}
+
+/* Prevent scrollbars */
+.CodeMirror-hscrollbar,
+.CodeMirror-vscrollbar,
+.CodeMirror-scrollbar-filler,
+.CodeMirror-gutter-filler {
+  display: none !important;
+}
+
+/* Force text wrapping in CodeMirror */
+.CodeMirror-wrap pre.CodeMirror-line,
+.CodeMirror-wrap pre.CodeMirror-line-like {
+  word-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  word-break: normal !important;
+}
+
+/* Ensure container knows to enable wrapping */
+.CodeMirror-wrap {
+  word-wrap: break-word !important;
 }
 
 /* Make editor toolbar more consistent */
@@ -99,4 +143,12 @@
   .view {
     padding: var(--spacing-xl);
   }
+}
+
+/* Fix editor content overflow */
+.form-field textarea, 
+.wiki-editor .form-field textarea {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
