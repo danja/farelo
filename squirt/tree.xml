@@ -1,7 +1,7 @@
 .
 ├── about.md
 ├── babel.config.json
-├── endpoint.json
+├── endpoints.json
 ├── jasmine.json
 ├── jest.config.js
 ├── package.json
