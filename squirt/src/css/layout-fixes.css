@@ -1,0 +1,102 @@
+/* src/css/layout-fixes.css - Layout fixes for desktop view and YASGUI component */
+
+/* Fix for YASGUI container to show full results */
+.yasgui-container {
+  width: 100%;
+  height: 700px;
+  margin-top: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* Ensure the YASGUI component fills its container */
+.yasgui {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Fix YASGUI results panel */
+.yasgui .yasr {
+  height: 60% !important;
+  overflow: auto !important;
+}
+
+/* Fix YASGUI query editor */
+.yasgui .yasqe {
+  height: 40% !important;
+}
+
+.yasgui .yasqe .CodeMirror {
+  height: 100% !important;
+}
+
+/* Fix markdown editor alignment */
+.wiki-editor {
+  margin-bottom: var(--spacing-lg);
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+/* CodeMirror editor fixes */
+.CodeMirror {
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--border-radius);
+  height: auto !important;
+  min-height: 200px;
+}
+
+/* Make editor toolbar more consistent */
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+/* Fix preview panel alignment */
+.wiki-preview {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--card-background);
+}
+
+/* Fix wiki entries styling */
+.wiki-entries {
+  margin-top: var(--spacing-lg);
+}
+
+.entry-item {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--card-background);
+}
+
+/* Better desktop spacing */
+@media (min-width: 1024px) {
+  .yasgui-container {
+    height: 800px;
+  }
+  
+  .CodeMirror {
+    min-height: 300px;
+  }
+  
+  /* Fix desktop layout for markdown editors */
+  main {
+    max-width: 1200px;
+    padding: var(--spacing-xl);
+  }
+  
+  .view {
+    padding: var(--spacing-xl);
+  }
+}

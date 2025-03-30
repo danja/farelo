@@ -13,6 +13,8 @@ import { VIEWS } from './core/views.js';
 import '../css/styles.css';
 import '../css/form-styles.css';
 import '../css/yasgui-styles.css';
+import '../css/layout-fixes.css';
+import '../css/mobile-fixes.css';
 
 // Import view components
 import './ui/views/wiki-editor.js';
@@ -38,6 +40,7 @@ async function initializeApp() {
     setupViews();
     setupNavigation();
     setupHamburgerMenu();
+    setupResponsiveNavigation();
     
     // Initialize notifications system
     initializeNotifications();
@@ -179,6 +182,103 @@ function setupNavigation() {
       }
     });
   });
+}
+
+/**
+ * Setup responsive navigation for mobile and desktop
+ */
+function setupResponsiveNavigation() {
+  // Setup hamburger menu toggle
+  const hamburgerButton = document.querySelector('.hamburger-button');
+  const hamburgerMenu = document.querySelector('.hamburger-menu');
+  const nav = document.querySelector('nav');
+  
+  if (hamburgerButton && hamburgerMenu && nav) {
+    hamburgerButton.addEventListener('click', () => {
+      hamburgerMenu.classList.toggle('active');
+      nav.classList.toggle('visible');
+    });
+    
+    // Close menu when clicking on a link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerMenu.classList.remove('active');
+        nav.classList.remove('visible');
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!hamburgerMenu.contains(event.target) && !nav.contains(event.target)) {
+        hamburgerMenu.classList.remove('active');
+        nav.classList.remove('visible');
+      }
+    });
+  }
+  
+  // Active nav highlighting
+  function setActiveNavItem(viewId) {
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      if (link.getAttribute('data-view') === viewId) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+  
+  // Add setActiveNavItem when route changes
+  document.addEventListener('routeChange', (e) => {
+    if (e.detail && e.detail.to) {
+      setActiveNavItem(e.detail.to);
+    }
+  });
+  
+  // Initial active state based on current view
+  const currentView = window.location.hash.slice(1) || 'post';
+  setActiveNavItem(`${currentView}-view`);
+  
+  // Add theme detection code
+  function setThemeBasedOnPreference() {
+    const savedTheme = localStorage.getItem('squirt_theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (savedTheme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else if (savedTheme === 'system' || !savedTheme) {
+      // Check system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+      
+      // Listen for system preference changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const theme = e.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      });
+    }
+  }
+  
+  // Initialize theme
+  setThemeBasedOnPreference();
+  
+  // Add theme selector functionality
+  const themeSelector = document.getElementById('theme-selector');
+  if (themeSelector) {
+    themeSelector.addEventListener('change', (e) => {
+      const selectedTheme = e.target.value;
+      localStorage.setItem('squirt_theme', selectedTheme);
+      
+      if (selectedTheme === 'system') {
+        setThemeBasedOnPreference();
+      } else {
+        document.documentElement.setAttribute('data-theme', selectedTheme);
+      }
+    });
+  }
 }
 
 /**
