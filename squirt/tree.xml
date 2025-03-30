@@ -9,9 +9,10 @@
 │   ├── favicon.ico
 │   ├── index.html
 │   ├── main.324fa52b.css
-│   └── main.bundle.js
+│   ├── main.bundle.js
+│   ├── manifest.json
+│   └── service-worker.js
 ├── repomix.config.json
-├── requirements_2025-03-28.md
 ├── squirt_repomix.md
 ├── src
 │   ├── config.json
@@ -56,4 +57,4 @@
 ├── tree.xml
 └── webpack.config.js
 
-17 directories, 40 files
+17 directories, 41 files
