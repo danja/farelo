@@ -29,6 +29,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+// Also reinitialize endpoints when visibility changes (for page revisits)
+document.addEventListener('visibilitychange', async () => {
+  if (document.visibilityState === 'visible') {
+    console.log('Page visibility changed to visible, reinitializing endpoints');
+    try {
+      // Reinitialize endpoints to force reload from config
+      await endpointManager.initialize();
+    } catch (error) {
+      ErrorHandler.handle(error);
+    }
+  }
+});
+
 /**
  * Initialize the application
  */

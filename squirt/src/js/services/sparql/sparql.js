@@ -12,7 +12,7 @@ export function getEndpoint(type) {
   const endpoint = endpoints.find(e => e.type === type && e.status === 'active');
   
   if (!endpoint) {
-    throw new Error(`No active ${type} endpoint available`);
+    throw new Error(`No active ${type} endpoint available. Please check your SPARQL configuration.`);
   }
   
   return endpoint;
@@ -56,7 +56,7 @@ export async function postToSparql(dataset) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`SPARQL update failed: ${response.status} ${errorText}`);
+      throw new Error(`SPARQL update failed for endpoint ${endpoint.url}: ${response.status} ${errorText}`);
     }
     return true;
   } catch (error) {
@@ -98,7 +98,7 @@ export async function querySparql(query) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`SPARQL query failed: ${response.status} ${errorText}\n${query}`);
+      throw new Error(`SPARQL query failed for endpoint ${endpoint.url}: ${response.status} ${errorText}\n${query}`);
     }
 
     return response.json();
@@ -138,7 +138,7 @@ export async function testEndpoint(url, credentials) {
 
     return response.ok;
   } catch (error) {
-    console.error('Endpoint test failed:', error);
+    console.error(`Endpoint test failed for ${url}:`, error);
     return false;
   }
 }

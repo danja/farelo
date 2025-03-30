@@ -31,6 +31,7 @@ export class EndpointManager {
             }
             
             if (!endpoints || endpoints.length === 0) {
+                console.warn('No endpoints found in config or storage, using defaults');
                 endpoints = this.getDefaultEndpoints();
             }
             
@@ -71,6 +72,7 @@ export class EndpointManager {
             
             // If config exists and is an array, return it
             if (config && Array.isArray(config)) {
+                console.log('Found endpoints in config.json:', config);
                 return config.map(endpoint => ({
                     url: endpoint.url,
                     label: endpoint.name,
@@ -79,14 +81,15 @@ export class EndpointManager {
                     status: 'unknown'
                 }));
             }
-            throw new Error('Invalid config format');
+            throw new Error('Invalid config format in config.json');
         } catch (error) {
-            console.error('Error loading endpoints from config:', error);
+            console.error('Error loading endpoints from config.json:', error);
             return [];
         }
     }
 
     getDefaultEndpoints() {
+        console.warn('Using default endpoints as fallback');
         return [
             { 
                 url: 'http://localhost:4030/semem/query',
