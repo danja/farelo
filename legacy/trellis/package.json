@@ -4,5 +4,9 @@
     "version": "0.1.0",
     "author": "danja",
     "dependencies": {},
-    "devDependencies": {}
+    "devDependencies": {},
+    "scripts": {
+  
+    "rp": "repomix -c repomix.config.json ."
+  }
 }

@@ -1,0 +1,12 @@
+{
+    "name": "Trellis",
+    "description": "",
+    "version": "0.1.0",
+    "author": "danja",
+    "dependencies": {},
+    "devDependencies": {},
+    "scripts": {
+  
+    "rp": "repomix -c repomix.config.json ."
+  }
+}

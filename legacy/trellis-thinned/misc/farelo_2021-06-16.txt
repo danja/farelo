@@ -1,0 +1,143 @@
+- Farelo
+  - SparqlPress2
+    - https://github.com/danja/sparqlpress2
+  - HKMS
+    - Diced
+      - https://github.com/danja/Diced
+    - https://github.com/oxigraph/oxigraph - Rust SPARQL store
+    - Problem statement : what am I trying to solve
+      - information overload
+      - decision fatigue https://en.wikipedia.org/wiki/Decision_fatigue
+    - Static Site
+      - clonio
+        - https://github.com/danja/clonio
+        - Util for cloning/mirroring/scraping dynamically-generated pages and sites
+      - danja.github.io
+      - docker-hyperdata
+        - https://github.com/danja/docker-hyperdata
+    - SPARQL Babies
+      - same as other bits, done from scratch for video
+      - also make VSCode & Atom plugin 
+    - foolicious
+      - https://github.com/danja/foolicious
+    - foowiki
+      - https://github.com/danja/foowiki
+      - https://github.com/danja/foowiki-heroku
+    - NewsMonitor
+      - https://github.com/danja/NewsMonitor
+    - schema-editor
+      - https://github.com/danja/schema-editor
+    - Thiki
+      - https://github.com/danja/thiki
+    - Trellis
+      - https://github.com/danja/trellis
+    - XMLNS
+      - https://github.com/danja/xmlns
+  - Fun Stuff
+    - Robotics
+      - Servo easing functions
+        - http://robertpenner.com/easing/
+        - https://web.archive.org/web/20150315010428/http://upshots.org/actionscript/jsas-understanding-easing
+      - Mini Draw
+        - https://github.com/danja/mini-draw
+        - https://www.instructables.com/Mini-Drawing-Bot-Live-Android-App-Trignomentry/
+      - robot arm
+        - https://en.wikipedia.org/wiki/Braitenberg_vehicle
+      - servo cat toy
+    - ultrasonics
+      - DL4covidUltrasound
+    - 'scope' with piezo transducers, mirror, laser
+      - https://forum.arduino.cc/index.php?topic=410245.0
+    - infinite bounce
+    - chaotic pendulum
+    - Joule thief
+    - LISP machine
+      - http://www.ulisp.com/
+  - ELFQuake
+    - https://github.com/danja/elfquake
+  - Analog Computer
+    - Analog computer - slime mould - plasmodium c
+    - https://github.com/danja/analog-computer
+  - Ultrasonics
+    - https://github.com/danja/ultrasonics
+  - Sound Machine
+    - sound-machine
+    - https://github.com/danja/sound-machine-mega2560
+    - https://github.com/danja/sample-library
+    - https://github.com/danja/synth
+    - infinite player
+      - just a small jack out, shuffle button, fractal music
+  - Chatterbox
+    - TODO
+      - Disable/Enable
+      - System Update
+    - Tutorials
+      - https://en.wikipedia.org/wiki/Headless_software
+    - Transistor level shifter
+      - https://wiki.analog.com/university/courses/electronics/text/chapter-9
+      - https://www.ti.com/lit/an/sloa097/sloa097.pdf
+      - https://www.youtube.com/watch?v=OlhN7ADpKds
+    - Admin
+    - Software
+      - Oscillators
+      - Filters
+      - Patchbay
+      - Control Handlers
+        - Disable/Enable
+          - All controllers
+          - Just for JTAG?
+      - MIDI
+      - Web
+      - System Update
+        - OTA?
+          - https://hackaday.com/2019/03/21/library-makes-esp-over-the-air-updates-easy/
+          - https://github.com/krdarrah/ESP32_GUI_Programmer
+          - https://github.com/scottchiefbaker/ESP-WebOTA
+        - File upload?
+        - Access point?
+        - Card reader?
+    - Hardware
+      - Core
+        - BOM
+          - Case
+          - Stripboard etc.
+          - ESP32 controller
+          - UDA1334A DAC
+          - MIDI In interface
+          - Power Supply
+      - Controls
+        - BOM as core, plus
+          - Case
+            - A4 laminated front panel
+            - hobby box
+          - Audio amplifier
+          - Loudspeaker
+          - Power LED
+          - Power toggle switch
+          - Speaker on/off toggle switch
+          - 4 x control toggle switches
+          - 8 x control push switches
+          - 2 x volume level pots
+          - 4 x control pots 
+          - Control joystick
+      - PCB
+        - @TODO make a  
+  - Test Gear
+    - PSU
+      - https://github.com/danja/bench-psu
+    - Sweep generator
+      - AD9833 DDS Signal Generator Module 0-12.5MHz Square / Triangle / Sine Wave
+      - https://www.banggood.com/AD9833-DDS-Signal-Generator-Module-0-12_5MHz-Square-Triangle-Sine-Wave-p-1161804.html
+  - T-Watch-2020
+    - https://github.com/danja/T-Watch-2020
+  - Monet
+    - Colour-matching Android app
+    - https://github.com/danja/monet
+  - Video
+    - Vague ideas
+      - A Day
+        - Quasi one shot, film a day in my life
+        - use all cameras
+        - make timelapse
+      - Everything's Connected
+        - systems thinking talk : start with excavator toy, go onto analog computing, neural networks... 

@@ -1,0 +1,719 @@
+@prefix dc: <http://purl.org/dc/terms/> . 
+@prefix ts: <http://hyperdata.it/trellis/> . 
+
+<http://hyperdata.it/trellis/workflowy/root-nid-2021-06-16-12-48-57-619-7970> a ts:RootNode . 
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> a ts:Node; 
+   dc:title "Farelo" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/root-nid-2021-06-16-12-48-57-619-7970> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-626-4650> a ts:Node; 
+   dc:title "SparqlPress2" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-626-5223> a ts:Node; 
+   dc:title "https://github.com/danja/sparqlpress2" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-626-4650> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> a ts:Node; 
+   dc:title "HKMS" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-1684> a ts:Node; 
+   dc:title "Diced" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-7181> a ts:Node; 
+   dc:title "https://github.com/danja/Diced" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-1684> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-4504> a ts:Node; 
+   dc:title "https://github.com/oxigraph/oxigraph - Rust SPARQL store" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-7058> a ts:Node; 
+   dc:title "Problem statement : what am I trying to solve" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-5546> a ts:Node; 
+   dc:title "information overload" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-7058> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-6733> a ts:Node; 
+   dc:title "decision fatigue https://en.wikipedia.org/wiki/Decision_fatigue" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-7058> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-3824> a ts:Node; 
+   dc:title "Static Site" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-1657> a ts:Node; 
+   dc:title "clonio" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-3824> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-4897> a ts:Node; 
+   dc:title "https://github.com/danja/clonio" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-1657> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-5108> a ts:Node; 
+   dc:title "Util for cloning/mirroring/scraping dynamically-generated pages and sites" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-1657> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-3217> a ts:Node; 
+   dc:title "danja.github.io" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-3824> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-2133> a ts:Node; 
+   dc:title "docker-hyperdata" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-3824> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-8659> a ts:Node; 
+   dc:title "https://github.com/danja/docker-hyperdata" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-630-2133> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-2486> a ts:Node; 
+   dc:title "SPARQL Babies" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "4" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-0202> a ts:Node; 
+   dc:title "same as other bits, done from scratch for video" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-2486> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-2810> a ts:Node; 
+   dc:title "also make VSCode & Atom plugin" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-2486> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-9720> a ts:Node; 
+   dc:title "foolicious" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "5" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-3768> a ts:Node; 
+   dc:title "https://github.com/danja/foolicious" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-9720> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-7007> a ts:Node; 
+   dc:title "foowiki" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "6" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-6392> a ts:Node; 
+   dc:title "https://github.com/danja/foowiki" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-7007> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-6669> a ts:Node; 
+   dc:title "https://github.com/danja/foowiki-heroku" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-631-7007> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-5346> a ts:Node; 
+   dc:title "NewsMonitor" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "7" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-4197> a ts:Node; 
+   dc:title "https://github.com/danja/NewsMonitor" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-5346> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-7492> a ts:Node; 
+   dc:title "schema-editor" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "8" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-6092> a ts:Node; 
+   dc:title "https://github.com/danja/schema-editor" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-7492> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-1534> a ts:Node; 
+   dc:title "Thiki" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "9" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-3712> a ts:Node; 
+   dc:title "https://github.com/danja/thiki" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-1534> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-9998> a ts:Node; 
+   dc:title "Trellis" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "10" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-4585> a ts:Node; 
+   dc:title "https://github.com/danja/trellis" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-632-9998> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-633-4837> a ts:Node; 
+   dc:title "XMLNS" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "11" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-629-2319> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-633-0025> a ts:Node; 
+   dc:title "https://github.com/danja/xmlns" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-633-4837> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9610> a ts:Node; 
+   dc:title "Fun Stuff" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-2955> a ts:Node; 
+   dc:title "Robotics" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9610> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-3434> a ts:Node; 
+   dc:title "Servo easing functions" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-2955> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9544> a ts:Node; 
+   dc:title "http://robertpenner.com/easing/" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-3434> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-8437> a ts:Node; 
+   dc:title "https://web.archive.org/web/20150315010428/http://upshots.org/actionscript/jsas-understanding-easing" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-3434> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-0313> a ts:Node; 
+   dc:title "Mini Draw" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-2955> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-7070> a ts:Node; 
+   dc:title "https://github.com/danja/mini-draw" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-0313> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-3505> a ts:Node; 
+   dc:title "https://www.instructables.com/Mini-Drawing-Bot-Live-Android-App-Trignomentry/" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-0313> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-8996> a ts:Node; 
+   dc:title "robot arm" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-2955> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-4589> a ts:Node; 
+   dc:title "https://en.wikipedia.org/wiki/Braitenberg_vehicle" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-8996> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-7536> a ts:Node; 
+   dc:title "servo cat toy" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-2955> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-6681> a ts:Node; 
+   dc:title "ultrasonics" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9610> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-5161> a ts:Node; 
+   dc:title "DL4covidUltrasound" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-6681> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-3831> a ts:Node; 
+   dc:title "'scope' with piezo transducers, mirror, laser" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9610> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-5719> a ts:Node; 
+   dc:title "https://forum.arduino.cc/index.php?topic=410245.0" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-3831> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-5858> a ts:Node; 
+   dc:title "infinite bounce" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9610> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-4444> a ts:Node; 
+   dc:title "chaotic pendulum" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "4" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9610> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-2259> a ts:Node; 
+   dc:title "Joule thief" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "5" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9610> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-1377> a ts:Node; 
+   dc:title "LISP machine" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "6" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-634-9610> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-8527> a ts:Node; 
+   dc:title "http://www.ulisp.com/" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-635-1377> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-7306> a ts:Node; 
+   dc:title "ELFQuake" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-4530> a ts:Node; 
+   dc:title "https://github.com/danja/elfquake" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-7306> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-9110> a ts:Node; 
+   dc:title "Analog Computer" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "4" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-8385> a ts:Node; 
+   dc:title "Analog computer - slime mould - plasmodium c" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-9110> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-0383> a ts:Node; 
+   dc:title "https://github.com/danja/analog-computer" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-9110> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-2985> a ts:Node; 
+   dc:title "Ultrasonics" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "5" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-3232> a ts:Node; 
+   dc:title "https://github.com/danja/ultrasonics" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-2985> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-2524> a ts:Node; 
+   dc:title "Sound Machine" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "6" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-5401> a ts:Node; 
+   dc:title "sound-machine" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-2524> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-3954> a ts:Node; 
+   dc:title "https://github.com/danja/sound-machine-mega2560" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-2524> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-9731> a ts:Node; 
+   dc:title "https://github.com/danja/sample-library" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-2524> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-5417> a ts:Node; 
+   dc:title "https://github.com/danja/synth" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-2524> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-2301> a ts:Node; 
+   dc:title "infinite player" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "4" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-636-2524> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-1752> a ts:Node; 
+   dc:title "just a small jack out, shuffle button, fractal music" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-2301> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-0708> a ts:Node; 
+   dc:title "Chatterbox" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "7" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-3303> a ts:Node; 
+   dc:title "TODO" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-0708> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-5890> a ts:Node; 
+   dc:title "Disable/Enable" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-3303> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-7899> a ts:Node; 
+   dc:title "System Update" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-3303> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-1462> a ts:Node; 
+   dc:title "Tutorials" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-0708> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-0512> a ts:Node; 
+   dc:title "https://en.wikipedia.org/wiki/Headless_software" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-1462> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-5762> a ts:Node; 
+   dc:title "Transistor level shifter" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-0708> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-7470> a ts:Node; 
+   dc:title "https://wiki.analog.com/university/courses/electronics/text/chapter-9" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-5762> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-2038> a ts:Node; 
+   dc:title "https://www.ti.com/lit/an/sloa097/sloa097.pdf" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-5762> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-2928> a ts:Node; 
+   dc:title "https://www.youtube.com/watch?v=OlhN7ADpKds" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-5762> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-4031> a ts:Node; 
+   dc:title "Admin" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-0708> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8122> a ts:Node; 
+   dc:title "Software" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "4" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-0708> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-3700> a ts:Node; 
+   dc:title "Oscillators" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8122> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-3661> a ts:Node; 
+   dc:title "Filters" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8122> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-7272> a ts:Node; 
+   dc:title "Patchbay" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8122> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8756> a ts:Node; 
+   dc:title "Control Handlers" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8122> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-4779> a ts:Node; 
+   dc:title "Disable/Enable" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8756> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-0801> a ts:Node; 
+   dc:title "All controllers" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-4779> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-9889> a ts:Node; 
+   dc:title "Just for JTAG?" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-4779> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-2143> a ts:Node; 
+   dc:title "MIDI" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "4" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8122> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-0370> a ts:Node; 
+   dc:title "Web" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "5" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8122> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-2484> a ts:Node; 
+   dc:title "System Update" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "6" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-638-8122> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-5663> a ts:Node; 
+   dc:title "OTA?" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-2484> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-7913> a ts:Node; 
+   dc:title "https://hackaday.com/2019/03/21/library-makes-esp-over-the-air-updates-easy/" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-5663> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-7893> a ts:Node; 
+   dc:title "https://github.com/krdarrah/ESP32_GUI_Programmer" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-5663> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-1270> a ts:Node; 
+   dc:title "https://github.com/scottchiefbaker/ESP-WebOTA" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-5663> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-6417> a ts:Node; 
+   dc:title "File upload?" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-2484> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-9740> a ts:Node; 
+   dc:title "Access point?" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-2484> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-6455> a ts:Node; 
+   dc:title "Card reader?" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-639-2484> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-6284> a ts:Node; 
+   dc:title "Hardware" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "5" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-637-0708> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-6485> a ts:Node; 
+   dc:title "Core" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-6284> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-2230> a ts:Node; 
+   dc:title "BOM" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-6485> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-9353> a ts:Node; 
+   dc:title "Case" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-2230> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-2374> a ts:Node; 
+   dc:title "Stripboard etc." ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-2230> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-1326> a ts:Node; 
+   dc:title "ESP32 controller" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-2230> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-0564> a ts:Node; 
+   dc:title "UDA1334A DAC" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-2230> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-5545> a ts:Node; 
+   dc:title "MIDI In interface" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "4" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-2230> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-1227> a ts:Node; 
+   dc:title "Power Supply" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "5" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-2230> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-1387> a ts:Node; 
+   dc:title "Controls" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-6284> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> a ts:Node; 
+   dc:title "BOM as core, plus" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-1387> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-8986> a ts:Node; 
+   dc:title "Case" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-1755> a ts:Node; 
+   dc:title "A4 laminated front panel" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-8986> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-5414> a ts:Node; 
+   dc:title "hobby box" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-8986> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-8306> a ts:Node; 
+   dc:title "Audio amplifier" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9445> a ts:Node; 
+   dc:title "Loudspeaker" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-2441> a ts:Node; 
+   dc:title "Power LED" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "3" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-4214> a ts:Node; 
+   dc:title "Power toggle switch" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "4" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-4512> a ts:Node; 
+   dc:title "Speaker on/off toggle switch" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "5" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-1464> a ts:Node; 
+   dc:title "4 x control toggle switches" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "6" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-8102> a ts:Node; 
+   dc:title "8 x control push switches" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "7" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-4242> a ts:Node; 
+   dc:title "2 x volume level pots" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "8" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-5300> a ts:Node; 
+   dc:title "4 x control pots" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "9" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-9835> a ts:Node; 
+   dc:title "Control joystick" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "10" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-641-9549> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-7514> a ts:Node; 
+   dc:title "PCB" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-640-6284> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-3640> a ts:Node; 
+   dc:title "@TODO make a" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-7514> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-7317> a ts:Node; 
+   dc:title "Test Gear" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "8" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-9724> a ts:Node; 
+   dc:title "PSU" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-7317> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-9028> a ts:Node; 
+   dc:title "https://github.com/danja/bench-psu" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-9724> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-3375> a ts:Node; 
+   dc:title "Sweep generator" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-7317> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-2794> a ts:Node; 
+   dc:title "AD9833 DDS Signal Generator Module 0-12.5MHz Square / Triangle / Sine Wave" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-3375> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-8020> a ts:Node; 
+   dc:title "https://www.banggood.com/AD9833-DDS-Signal-Generator-Module-0-12_5MHz-Square-Triangle-Sine-Wave-p-1161804.html" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-642-3375> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-3139> a ts:Node; 
+   dc:title "T-Watch-2020" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "9" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-4715> a ts:Node; 
+   dc:title "https://github.com/danja/T-Watch-2020" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-3139> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-1768> a ts:Node; 
+   dc:title "Monet" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "10" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-6793> a ts:Node; 
+   dc:title "Colour-matching Android app" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-1768> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-3348> a ts:Node; 
+   dc:title "https://github.com/danja/monet" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-1768> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-8201> a ts:Node; 
+   dc:title "Video" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "11" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-619-4455> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-7104> a ts:Node; 
+   dc:title "Vague ideas" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-8201> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-5624> a ts:Node; 
+   dc:title "A Day" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-7104> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-644-2547> a ts:Node; 
+   dc:title "Quasi one shot, film a day in my life" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-5624> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-644-9814> a ts:Node; 
+   dc:title "use all cameras" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-5624> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-644-7259> a ts:Node; 
+   dc:title "make timelapse" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "2" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-5624> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-644-3821> a ts:Node; 
+   dc:title "Everything's Connected" ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "1" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-643-7104> .
+<http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-644-2181> a ts:Node; 
+   dc:title "systems thinking talk : start with excavator toy, go onto analog computing, neural networks..." ; 
+   dc:created "2021-06-16T12:48:57Z" ; 
+   ts:index "0" ; 
+   ts:parent <http://hyperdata.it/trellis/workflowy/nid-2021-06-16-12-48-57-644-3821> .

@@ -1,0 +1,27 @@
+{
+    "output": {
+        "filePath": "./repomix-trellis.md",
+        "headerText": "Trellis Source Code",
+        "removeComments": false
+    },
+    "include": [
+        "**/*"
+    ],
+    "ignore": {
+        "useDefaultPatterns": false,
+        "customPatterns": [
+            "package-lock.json",
+            ".nyc_output",
+            ".env",
+            "**/_*",
+            "node_modules",
+            "*.log",
+            "**/*repomix*.txt",
+            "**/*repomix*.md",
+            "**/*.html",
+            "**/data/*",
+            "**/*copy*.js",
+            "**/conversations.json"
+        ]
+    }
+}
