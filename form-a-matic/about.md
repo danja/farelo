@@ -1,7 +1,7 @@
 ```
 ./a
 
-cd ~/github-danny/hyperdata/packages/farelo/form-a-matic
+cd ~/hyperdata/farelo/form-a-matic
 npm run build
 npm run fam
 npm run rp
