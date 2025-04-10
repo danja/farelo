@@ -22,20 +22,24 @@ Trellis is a web-based hierarchical todo list application with RDF/SPARQL backen
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/trellis.git
    cd trellis
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Configure the application:
+
    - Edit `js/config.js` to set your SPARQL endpoint URL and other preferences
 
 4. Start the development server:
+
    ```bash
    npm run dev
    ```
@@ -62,7 +66,7 @@ Click the card icon (📄) next to any item to open its detail card. Here you ca
 
 ### Drag and Drop
 
-- Drag items using the handle (☰) to reposition them
+- Drag items using the handle (●) to reposition them
 - Drop between items to place as a sibling
 - Hold over an item to make the dragged item a child
 

@@ -4,9 +4,10 @@
 export const Config = {
     // SPARQL endpoint for data persistence
     // SPARQL_ENDPOINT: 'http://localhost:3030/trellis',
-    SPARQL_ENDPOINT: 'http://localhost:4030/trellis',
+    SPARQL_ENDPOINT: 'https://fuseki.hyperdata.it/farelo',
     // Base URI for RDF data
     BASE_URI: 'http://hyperdata.it/trellis/',
+
 
     // RDF prefixes
     PREFIXES: {
@@ -26,4 +27,4 @@ export const Config = {
         UP: 38,
         DOWN: 40
     }
-};
+}
