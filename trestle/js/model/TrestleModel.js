@@ -1,10 +1,10 @@
 /**
- * TrellisModel - Manages the data structure and SPARQL persistence
+ * TrestleModel - Manages the data structure and SPARQL persistence
  */
 import { Config } from '../config.js'
 import { generateID, generateDate } from '../utils/utils.js'
 
-export class TrellisModel {
+export class TrestleModel {
     /**
      * @param {string} endpoint - SPARQL endpoint URL
      * @param {string} baseUri - Base URI for RDF data
@@ -67,7 +67,7 @@ export class TrellisModel {
     }
 
     /**
-     * Loads trellis data from SPARQL endpoint
+     * Loads trestle data from SPARQL endpoint
      */
     async loadData() {
         try {

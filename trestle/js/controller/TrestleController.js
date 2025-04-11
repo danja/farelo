@@ -1,10 +1,10 @@
 /**
- * TrellisController - Mediates between model and view
+ * TrestleController - Mediates between model and view
  */
-export class TrellisController {
+export class TrestleController {
     /**
-     * @param {TrellisModel} model - Data model
-     * @param {TrellisView} view - UI view
+     * @param {TrestleModel} model - Data model
+     * @param {TrestleView} view - UI view
      * @param {EventBus} eventBus - Event bus for component communication
      */
     constructor(model, view, eventBus) {
@@ -61,7 +61,7 @@ export class TrellisController {
         const node = this.model.addNode(rootNode.id, '', rootNode.children.length)
         this.eventBus.publish('node:added', {
             node,
-            parentId: 'trellis-root'
+            parentId: 'trestle-root'
         })
     }
 

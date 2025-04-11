@@ -1,12 +1,12 @@
 /**
- * TrellisView - Responsible for rendering the UI and handling DOM interactions
+ * TrestleView - Responsible for rendering the UI and handling DOM interactions
  */
 // import { marked } from 'marked';
 
 
-export class TrellisView {
+export class TrestleView {
     /**
-     * @param {HTMLElement} rootElement - The root DOM element for the trellis
+     * @param {HTMLElement} rootElement - The root DOM element for the trestle
      * @param {EventBus} eventBus - Event bus for component communication
      */
     constructor(rootElement, eventBus) {
@@ -151,7 +151,7 @@ export class TrellisView {
     }
 
     /**
-     * Setup event listeners for trellis interactions
+     * Setup event listeners for trestle interactions
      */
     setupEventListeners() {
         // Delegate events from the root element
@@ -165,7 +165,7 @@ export class TrellisView {
     }
 
     /**
-     * Handle click events within the trellis
+     * Handle click events within the trestle
      * @param {Event} event - The click event
      */
     handleClick(event) {
@@ -483,7 +483,7 @@ export class TrellisView {
 
         if (isDropAfter) {
             // Dropping between items: same parent as target, just before target
-            newParentId = targetLi.parentElement.closest('li')?.dataset.nodeId || 'trellis-root'
+            newParentId = targetLi.parentElement.closest('li')?.dataset.nodeId || 'trestle-root'
 
             // Find all children of the parent and get the index
             const siblings = Array.from(parentUl.children)
@@ -670,7 +670,7 @@ export class TrellisView {
 
         // Find parent element
         let parentElement
-        if (parentId === 'trellis-root') {
+        if (parentId === 'trestle-root') {
             parentElement = this.rootElement.querySelector('ul')
         } else {
             const parentLi = this.nodeElements.get(parentId)

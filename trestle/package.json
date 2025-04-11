@@ -1,6 +1,6 @@
 {
-  "name": "trellis",
-  "version": "2.0.0",
+  "name": "trestle",
+  "version": "0.9.0",
   "description": "A hierarchical todo list with SPARQL backend",
   "type": "module",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "jasmine",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json",
+    "rp": "repomix -c repomix.config.json ."
   },
   "keywords": [
     "todo",

@@ -3,16 +3,16 @@
  */
 export const Config = {
     // SPARQL endpoint for data persistence
-    // SPARQL_ENDPOINT: 'http://localhost:3030/trellis',
+    // SPARQL_ENDPOINT: 'http://localhost:3030/trestle',
     SPARQL_ENDPOINT: 'https://fuseki.hyperdata.it/farelo',
     // Base URI for RDF data
-    BASE_URI: 'http://hyperdata.it/trellis/',
+    BASE_URI: 'http://hyperdata.it/trestle/',
 
 
     // RDF prefixes
     PREFIXES: {
         dc: 'http://purl.org/dc/terms/',
-        ts: 'http://purl.org/stuff/trellis/'
+        ts: 'http://purl.org/stuff/trestle/'
     },
 
     // Application settings

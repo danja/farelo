@@ -1,5 +1,5 @@
 /**
- * Utility functions for Trellis
+ * Utility functions for Trestle
  */
 
 /**
@@ -7,10 +7,10 @@
  * @returns {string} - A unique ID
  */
 export function generateID() {
-    const now = new Date();
-    const timestamp = formatDate(now, "yyyy-mm-dd-HH-MM-ss-l");
-    const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-    return `${timestamp}-${random}`;
+    const now = new Date()
+    const timestamp = formatDate(now, "yyyy-mm-dd-HH-MM-ss-l")
+    const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0')
+    return `${timestamp}-${random}`
 }
 
 /**
@@ -18,7 +18,7 @@ export function generateID() {
  * @returns {string} - ISO formatted date
  */
 export function generateDate() {
-    return new Date().toISOString();
+    return new Date().toISOString()
 }
 
 /**
@@ -29,46 +29,46 @@ export function generateDate() {
  * @returns {string} - Formatted date string
  */
 export function formatDate(date, mask, utc = true) {
-    const token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g;
-    const timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g;
-    const timezoneClip = /[^-+\dA-Z]/g;
-    
+    const token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g
+    const timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g
+    const timezoneClip = /[^-+\dA-Z]/g
+
     const pad = (val, len) => {
-        val = String(val);
-        len = len || 2;
-        while (val.length < len) val = "0" + val;
-        return val;
-    };
-    
+        val = String(val)
+        len = len || 2
+        while (val.length < len) val = "0" + val
+        return val
+    }
+
     // You can't provide utc if you skip other args (use the "UTC:" mask prefix)
     if (arguments.length === 1 && Object.prototype.toString.call(date) === "[object String]" && !/\d/.test(date)) {
-        mask = date;
-        date = undefined;
+        mask = date
+        date = undefined
     }
 
     // Passing date through Date applies Date.parse, if necessary
-    date = date ? new Date(date) : new Date();
-    if (isNaN(date)) throw SyntaxError("invalid date");
+    date = date ? new Date(date) : new Date()
+    if (isNaN(date)) throw SyntaxError("invalid date")
 
-    mask = String(masks[mask] || mask || masks["default"]);
+    mask = String(masks[mask] || mask || masks["default"])
 
     // Allow setting the utc argument via the mask
     if (mask.slice(0, 4) === "UTC:") {
-        mask = mask.slice(4);
-        utc = true;
+        mask = mask.slice(4)
+        utc = true
     }
 
-    const _ = utc ? "getUTC" : "get";
-    const d = date[_ + "Date"]();
-    const D = date[_ + "Day"]();
-    const m = date[_ + "Month"]();
-    const y = date[_ + "FullYear"]();
-    const H = date[_ + "Hours"]();
-    const M = date[_ + "Minutes"]();
-    const s = date[_ + "Seconds"]();
-    const L = date[_ + "Milliseconds"]();
-    const o = utc ? 0 : date.getTimezoneOffset();
-    
+    const _ = utc ? "getUTC" : "get"
+    const d = date[_ + "Date"]()
+    const D = date[_ + "Day"]()
+    const m = date[_ + "Month"]()
+    const y = date[_ + "FullYear"]()
+    const H = date[_ + "Hours"]()
+    const M = date[_ + "Minutes"]()
+    const s = date[_ + "Seconds"]()
+    const L = date[_ + "Milliseconds"]()
+    const o = utc ? 0 : date.getTimezoneOffset()
+
     const flags = {
         d: d,
         dd: pad(d),
@@ -97,11 +97,11 @@ export function formatDate(date, mask, utc = true) {
         Z: utc ? "UTC" : (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
         o: (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
         S: ["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10]
-    };
+    }
 
     return mask.replace(token, function ($0) {
-        return $0 in flags ? flags[$0] : $0.slice(1, $0.length - 1);
-    });
+        return $0 in flags ? flags[$0] : $0.slice(1, $0.length - 1)
+    })
 }
 
 // Predefined date formats
@@ -118,18 +118,18 @@ const masks = {
     isoTime: "HH:MM:ss",
     isoDateTime: "yyyy-mm-dd'T'HH:MM:ss",
     isoUtcDateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'"
-};
+}
 
 // Internationalization strings
 const dayNames = [
     "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
     "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-];
+]
 
 const monthNames = [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
     "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-];
+]
 
 /**
  * Escape HTML special characters
@@ -137,14 +137,14 @@ const monthNames = [
  * @returns {string} - Escaped text
  */
 export function escapeHtml(text) {
-    if (!text) return '';
-    
+    if (!text) return ''
+
     return text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+        .replace(/'/g, '&#039;')
 }
 
 /**
@@ -154,19 +154,19 @@ export function escapeHtml(text) {
  */
 export function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') {
-        return obj;
+        return obj
     }
-    
+
     if (Array.isArray(obj)) {
-        return obj.map(item => deepClone(item));
+        return obj.map(item => deepClone(item))
     }
-    
-    const cloned = {};
+
+    const cloned = {}
     for (const key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            cloned[key] = deepClone(obj[key]);
+            cloned[key] = deepClone(obj[key])
         }
     }
-    
-    return cloned;
+
+    return cloned
 }

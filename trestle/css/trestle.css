@@ -1,4 +1,4 @@
-/* Trellis CSS - Modern Version */
+/* Trestle CSS - Modern Version */
 
 :root {
     --primary-color: #444;
@@ -107,21 +107,21 @@ body {
     max-width: 800px;
 }
 
-/* Trellis Structure */
-#trellis {
+/* Trestle Structure */
+#trestle {
     display: block;
     margin: 0;
     list-style: none;
     user-select: none;
 }
 
-#trellis ul {
+#trestle ul {
     font-size: 1em;
     list-style: none;
     padding-left: 20px;
 }
 
-#trellis li {
+#trestle li {
     display: block;
     position: relative;
     margin: 2px 0;
@@ -209,11 +209,11 @@ body {
     color: #888;
 }
 
-.ts-closed > .ts-entry > .ts-expander::before {
+.ts-closed>.ts-entry>.ts-expander::before {
     content: "▶";
 }
 
-.ts-closed > ul {
+.ts-closed>ul {
     display: none;
 }
 
@@ -278,7 +278,8 @@ body {
     resize: vertical;
 }
 
-#card-nid, #card-date {
+#card-nid,
+#card-date {
     font-size: 0.8em;
     color: #666;
     padding: 5px 10px;

@@ -1,9 +1,9 @@
 /**
- * Trellis - Main application entry point
+ * Trestle - Main application entry point
  */
-import { TrellisModel } from './model/TrellisModel.js'
-import { TrellisView } from './view/TrellisView.js'
-import { TrellisController } from './controller/TrellisController.js'
+import { TrestleModel } from './model/TrestleModel.js'
+import { TrestleView } from './view/TrestleView.js'
+import { TrestleController } from './controller/TrestleController.js'
 import { Config } from './config.js'
 import { EventBus } from './utils/EventBus.js'
 
@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const eventBus = new EventBus()
 
     // Initialize components
-    const model = new TrellisModel(Config.SPARQL_ENDPOINT, Config.BASE_URI, eventBus)
+    const model = new TrestleModel(Config.SPARQL_ENDPOINT, Config.BASE_URI, eventBus)
     //   model.createEmptyModel()
-    const view = new TrellisView(document.getElementById('trellis-root'), eventBus)
-    const controller = new TrellisController(model, view, eventBus)
+    const view = new TrestleView(document.getElementById('trestle-root'), eventBus)
+    const controller = new TrestleController(model, view, eventBus)
 
     // Set up UI event listeners
     setupUIListeners(controller)
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /**
  * Sets up global UI element event listeners
- * @param {TrellisController} controller - The application controller
+ * @param {TrestleController} controller - The application controller
  */
 function setupUIListeners(controller) {
     const saveButton = document.getElementById('saveButton')

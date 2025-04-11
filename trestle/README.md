@@ -1,6 +1,6 @@
-# Trellis - Modern Hierarchical Todo List
+# Trestle - Modern Hierarchical Todo List
 
-Trellis is a web-based hierarchical todo list application with RDF/SPARQL backend support. It allows you to create, organize, and manage nested tasks with rich text descriptions using markdown.
+Trestle is a web-based hierarchical todo list application with RDF/SPARQL backend support. It allows you to create, organize, and manage nested tasks with rich text descriptions using markdown.
 
 ## Features
 
@@ -24,8 +24,8 @@ Trellis is a web-based hierarchical todo list application with RDF/SPARQL backen
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/trellis.git
-   cd trellis
+   git clone https://github.com/yourusername/trestle.git
+   cd trestle
    ```
 
 2. Install dependencies:
@@ -72,7 +72,7 @@ Click the card icon (📄) next to any item to open its detail card. Here you ca
 
 ## Data Model
 
-Trellis uses RDF to represent the data structure with the following predicates:
+Trestle uses RDF to represent the data structure with the following predicates:
 
 - `dc:title`: Item title
 - `dc:created`: Creation timestamp
@@ -107,5 +107,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Original Trellis concept by Danny Ayers
+- Original Trestle concept by Danny Ayers
 - Inspired by [Workflowy](https://workflowy.com)
