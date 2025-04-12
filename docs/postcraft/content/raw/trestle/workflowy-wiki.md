@@ -1,0 +1,1787 @@
+from https://workflowy.com/s/Eum_.6j1c4viQXq#/d7fc1f1490ca
+
+WikiFlowy
+
+-  📌 Wiki Rules
+  - General
+    - Please use your own best practices to contribute, adjust and format the content here while it is still in completely open-source mode.  Make suggestions on the Slack group as you think would be helpful.
+  - Tagging
+    - Use "@" tag for people's names
+- Contributors
+  - @dan [ Daniel Wadsworth ]
+  - [ David Clark ]
+  - @dareman [ Derek Luce ]
+  - @dkohtes [ Daniel Kohtes ]
+  - @frank-dg [ Frank Degenaar ]
+  - @jessep [ Jesse Patel ]
+  - @jim-karwisch [ Jim Karwisch ]
+  - @Mark-Harrison [Mark Harrison ]
+  - @mdalves [Marcos D. Alves]
+  - @rawbytz [ Jay ]
+  - @stef-rausch [ Stefano F. Rausch ]
+  - @vaughn.seward [ Vaughn Seward ]
+  - @bird2920 [ Richard Bird]
+  - @rcherny [ Rob Cherny ]
+- [Click here to submit an edit or addition for WikiFlowy](https://workflowy.com/s/submit-an-edit-or-ad/zXHaTReuHVgzxNpu)
+- [Click here for access to Workflowy Social](https://beta.workflowy.com/#/48b8af2f91bd)
+- ----
+- Dates
+  - [https://blog.workflowy.com/2019/12/30/dates-in-workflowy-try-it-out/](https://blog.workflowy.com/2019/12/30/dates-in-workflowy-try-it-out/)
+  - Usage examples
+    > (typed text -> result parsed after pressing tab key)
+    > [posted by @mdalves]
+    - **Reference date for the examples is Tue, May 25, 2020**
+    - **Date formats: **05/25/2020 (mm/dd/yyyy); 05/25/20 (dd/mm/yy);  Mon, May 25, 2020
+    - **Time formats: **8:00am (or pm); 8am (or pm); 8:30am (or pm); 14 -> 2:00pm; 16:30 -> 4:30pm etc
+    - today -> 25/05/2020
+    - now -> 25/05/2020 14:40
+    - yesterday / 1 day ago -> 24/05/2020
+    - next week / 1 week -> 01/06/2020
+    - last week -> 18/05/2020
+    - 'next month / 1 month -> '25/06/2020
+    - last month -> 25/04/2020
+    - 2 months -> 25/
+    - next year -> ﻿2021-05-25﻿
+    - last year -> 25/05/2019
+    - 05/25 -> ﻿2021-05-25﻿ (**?**)
+    - 05/26 -> 26/05/2020
+    - June 6 -> 06/06/2020
+    - night / morning -> 25/05/2020
+    - monday -> 25/05/2020
+    - tuesday -> 26/05/2020
+    - saturday -> 30/05/2020
+    - sunday -> Sun, May 31, 2020 etc
+    - Ranges:
+      - '05/25 - 1 month -> '25/05/2020 - 25/06/2020
+      - '05/26 - 1 month -> '26/05/2020 - 25/06/2020
+      - '05/25/2020 - 1 year -> '25/05/2020 - 26/05/2021
+      - '05/01/21 - 05/31/21 -> '01/05/2021 - 31/05/2021
+      - '05/01 - 1 month -> '01/05/2020 - 25/06/2020 (**?**)
+      - '05/01/21 - 1 month -> '25/06/2020 - 01/05/2021  (**?**)
+      - '05/27 - 1 week -> 'Wed, May 27, 2020  (**?**)
+    - A predefined time can also be informed using "at (time)":
+      - today at 8pm -> 25/05/2020 20:00
+      - '1 month at 8am -> '26/06/2020 08:00
+  - Help Desk: [Is There a Search Operator for Nodes With No Date?](https://workflowy.zendesk.com/hc/en-us/community/posts/360071331292-Is-there-a-search-operator-for-nodes-with-no-date-?page=1#community_comment_360011293212)  
+- Search Operators
+  - [https://workflowy.com/s/workflowy-search-ope/xtIeg82efzHHQ2ZK](https://workflowy.com/s/workflowy-search-ope/xtIeg82efzHHQ2ZK)
+  - WorkFlowy Search Operators
+    - **Documented Search Operators**
+      > https://blog.workflowy.com/2012/09/25/hidden-search-operators/
+      - is: lets you to search for the following item types:
+        - Complete items
+        - Items that you have shared
+        - Items that have been shared with you
+        - Mirrors
+        - Backlinks
+      - has: lets you search for items that have:
+        - Notes
+        - Files
+        - Images
+        - Videos
+        - Tweets
+      - Dates
+        -
+      - Changed
+        -
+        -
+      - Text:
+        - colors
+      - Highlight:
+        - colors
+      - Use spaces to combine search terms, implying "AND"
+        > #tag @tag
+      - OR (must be CAPS with leading and trailing space)
+        > #tag OR @tag
+      - Quotes search for exact strings (spaces no longer interpreted as "AND") Also use to find strings inside of strings.
+        > "find this exact string"
+        > "ring" will match **ring** and st**ring** and sp**ring**s
+      - Completed items
+        > is:complete
+      - NOT this: Prepend search terms with "-"
+        > -#tag -is:complete
+      - Items you have shared
+        > is:shared
+      - Items others have shared & you have added
+        > is:embedded
+      - Edited in the last x time unit  (h = hours, d = days, m or (none) = minutes)
+        > changed:30d
+  - To achieve "bookmarking" a node
+    > so that you can place a marker on a node that is a part of a long list, and then return to that node in context
+    >
+    - **To Bookmark:**
+      - [Ksenia (Process/Systems Coach)](https://app.slack.com/team/U41C8S35J)  
+      - add a unique bookmark tag
+      - **indent that node (Tab)**
+      - **To find your bookmark:**
+      - search for the bookmark
+      - zoom into its parent that will be shown along with it
+      - Alt+⬆ (if you zoom into the node with the bookmark itself you'll just have to Alt+⬆ twice)
+      - unindent the bookmarked paragraph (Shift+Tab). To get to that paragraph via keyboard press  or
+      - explode the bookmark tag (Alt+ left click)
+      - enjoy reading
+    - alternative kbs
+      - [Café655](https://app.slack.com/team/U3YEKV08K)
+      - I can't use  alt  (it does not do anything at all...which I suppose means that KBS has been co-opted by something else) but I can use alt+⬅  and that works for me
+- Keyboard Shortcuts
+  - By function
+    - #Complete  (Uncomplete)
+    -   (Duplicate)
+    - #Expand  (Collapse)
+    - #Format
+    - #Navigate  (Browser / Nodes)
+    - #Reset  (Clear / Reset / Delete / Undo)
+    - #Search
+    - #Select
+    - #Zoom
+  - By keyboard characters
+    - **Escape (Win/Mac)  #Reset**
+      > Clears or puts focus on the Search box.
+      - If a search is active, clears the search.
+      - If the search is inactive, puts the keyboard cursor in the search box.
+    - **Alt+Up  / Alt+Down (Win)  #Zoom**
+      - Using Rawbyte's AHK over-rides
+        - Shorcuts:
+          - **Alt+Up  #Zoom**
+            > **Zoom Out**
+          - **Alt+Down  #Zoom**
+            > **Zoom In**
+        - Also see TamperMonkey:
+          - [https://github.com/rawbytz/reclaim-chrome-history](https://github.com/rawbytz/reclaim-chrome-history)
+    - **Alt + Drag (Win) **
+      > Duplicate a note
+    - **Alt+Right /  Alt+Left (Win) #zoom**
+      - The following are actually browser shortcuts
+        - **Alt+Right  #zoom**
+          > zoom in on node with cursor focus
+        - **Alt+Left   #zoom**
+          > zoom out to parent of node with cursor focus
+    - **Alt+Shift+Right (Win) Tab (Mac) **
+      > Indent node
+    - **Alt+Shift+Left (Win) Shift+Tab (Mac) **
+      > De-Indent node
+    - **Alt+Shift+9 / Alt+Shift+0 (Win) Command+Shift+9 / Command+Shift+0 (Mac):  #Navigate **
+      > Go to the previous/next parent node.
+      - See: Flipping Through Zoomed-in Sibling Lists | WorkFlowy Blog
+        > http://blog.workflowy.com/2015/12/10/flipping-through-zoomed-in-sibling-lists/
+    - **Alt + Mouse-click:   #Select   #Reset**
+      > Either selects a node, or deletes a tag.
+      - Selects a node and its children if the mouse cursor is hovering over the parent node (unless it is also hovering over a tag).
+      - Deletes (explodes) a tag if the mouse cursor is hovering over it.
+      - Select multiple nodes:
+        - Hold the Alt key while clicking several rows in succession.
+        - The rows that are clicked-on will be selected for copying, moving, deleting, etc.
+    - **Ctrl+B  Ctrl+I  Ctrl+U (Win) Cmd+B Cmd+I Cmd+U (Mac) -- bold / italic / underline  #format**
+      > **Bold** / *italic* / underline
+    - **Ctrl+K or Ctrl+; (Win) Cmd+K or Cmd+; (Mac) ('z' on Dvorak)  #Search  #Navigate **
+      > Brings up a fast and hearty Star menu/search dialog box
+    - **Ctrl+Z /** **Shift+Ctrl+Z (Win) Cmd+Z / Shift+Cmd+Z (Mac)  #Reset**
+      > Undo / Redo previous editing.
+      - Ctrl-Z for undo, and Shift-Ctrl-Z for redo.
+      - Hit these successively for going backward and forward in your editing session.
+    - **Ctrl+Enter (Win) Cmd+Enter (Mac)  #Complete **
+      > Complete / Uncomplete a node.
+    - **Ctrl+Space  #Expand**
+      > Ctrl+Space on any children lists (not zoomed-in list titles) to fully expand/collapse any hierarchy.
+    - **Ctrl+Shift+V (Win) Cmd+Shift+V (Mac)**
+      > Paste text, but avoids the current (as of 2019-01-05) bug in WF. (@jkenton - What does the bug do?) (on Mac: pastes text without any format - plain text)
+    - **Ctrl+Shift+Backspace (Win) Cmd+Shift+Backspace (Mac)  #Reset**
+      > Delete a node.
+    - Ctrl+downarrow or uparrow #Expand
+      > to expand or collapse offsprings one level at a time
+- Sharing & Collaboration
+  - How to make a mirror work in a share
+    - *aka: get rid of the dreaded eyeball warning.*
+    - Click the eyeball in the share.
+    - Note the location/parent under `The original item is:`
+    - Click the item menu `⋯ > Detach Mirror`
+    - Click the item menu again `⋯ > Mirror`
+    - Go to the original location/parent you noted.
+    - Paste your new mirror below the original.
+    - If the old original is no longer a mirror, you can now delete it. Done. You should be eyeball free.
+    - If the old original is still a mirror, you have more work to do before you can delete it.
+    - *Optional:* *Add* `Old_` *to the old original item name (this will help you to distinguish old vs new)*
+    - On the old original click `⋯ > Node has x mirrors > See them`
+    - You will need to paste a new mirror for each remaining `Linked copy`
+    - After each paste, delete the old linked copy.
+    - Once the old original is no longer a mirror, you can delete it too.
+    - *Notes: *
+      - *a set of mirrors has only one original. So it can only be shared once. There is **no way** for the same set of mirrors to appear in two or more shares. *
+      - *To avoid the eyeball in the first place, you should focus on mirroring **OUT **of a share, and **NOT **mirroring **INTO **a share. *
+      - *If you have content outside of the share that you want to mirror into the share, you have two options: *
+        - *if you are the owner of share, you can simply move the content into the share then mirror it back out. *
+        - *if the share is embedded (you are not the owner), then you need to copy and paste the content: *
+          - `*Alt/Cmd+Click*`* the parent to select the parent and descendents.*
+          - *With the content selected `Ctrl/CMD+C` to copy it to the clipboard *
+          - *Paste into the share, then mirror out.*
+          - *Delete your original copied node.*
+  - WorkFlowy Blog posts on Sharing and Collaboration
+    - Use Sharing to Collaborate with WorkFlowy – WorkFlowy
+      > [https://blog.workflowy.com/2018/11/29/use-sharing-to-collaborate-with-workflowy/](https://blog.workflowy.com/2018/11/29/use-sharing-to-collaborate-with-workflowy/)
+    - New Pro Feature: Private, Login-based Sharing – WorkFlowy
+      > [https://blog.workflowy.com/2012/06/26/new-pro-feature-private-login-based-sharing/](https://blog.workflowy.com/2012/06/26/new-pro-feature-private-login-based-sharing/)
+    - New Feature: Share and Duplicate on WorkFlowy Mobile – WorkFlowy
+      > [https://blog.workflowy.com/2019/04/23/you-can-now-share-and-duplicate-items-from-the-mobile-apps/](https://blog.workflowy.com/2019/04/23/you-can-now-share-and-duplicate-items-from-the-mobile-apps/)
+    - 4 Pretty Useful Things You Can do With Shared WorkFlowy Lists – WorkFlowy
+      > [https://blog.workflowy.com/2016/08/24/shared-list-use-cases/](https://blog.workflowy.com/2016/08/24/shared-list-use-cases/)
+    - Links for shared WorkFlowy lists just got a lot shorter. And safer. – WorkFlowy
+      > [https://blog.workflowy.com/2014/08/04/links-for-shared-workflowy-lists-just-got-a-lot-shorter-and-safer/](https://blog.workflowy.com/2014/08/04/links-for-shared-workflowy-lists-just-got-a-lot-shorter-and-safer/)
+    - Share and Collaborate On Your WorkFlowy Lists – WorkFlowy
+      > [https://blog.workflowy.com/2011/08/23/share-and-collaborate-on-your-workflowy-lists/](https://blog.workflowy.com/2011/08/23/share-and-collaborate-on-your-workflowy-lists/)
+  - Shared links exist in two formats:
+    > @rawbytz contribution on Slack - WorkFlowy User Group
+    - 1. "Shared Links": These are the links that get generated in Share dialog. They have /s/ in the path and always open in a new Tab, and not in your WorkFlowy outline.
+    - 2. "Embedded Links": What happens AFTER you press the "Add to my WorkFlowy" button while viewing the /s/ link. There are two important things to know about embedding (or adding) the share to your outline.
+      - 1. The shared parent link is now unique for every person that adds the share. The unique part is the 12 character hexadecimal ID that looks like this 19ca8ed3fb60.
+      - 2. All the descendant IDs of the shared parent will be the same for all embedders.
+    - So, when sharing links with a large audience where you don't know the embed status, ALWAYS get the share link from the Share dialog and NOT the "Copy Link" function. *btw, the PowerPack > Share script was made for this workflow.*
+    - The only time you should ever use "Copy Link", is if you know your audience has embedded the share, and you are pointing them to a descendant node.
+    - If you wish to point the large, unknown audience to a descendant, you need to open the /s/ link in a new tab, zoom, and then you can use "Copy link".
+    - Example: this link will zoom on the Search Operators sections of your Wiki: [https://workflowy.com/s/wikiflowy/OfOdQBcwlw6o4YEB#/e97ff7d9b4bf](https://slack-redir.net/link?url=https%3A%2F%2Fworkflowy.com%2Fs%2Fwikiflowy%2FOfOdQBcwlw6o4YEB%23%2Fe97ff7d9b4bf)
+    - Fun fact: you can remove the s/wikiflowy/OfOdQBcwlw6o4YEB from above  (leaving the 12 character ID), and you will end up with the link for everyone who has embedded the share.
+- Tags
+  - Allowed Characters
+    - Regular Expression: [#@]([a-zA-Z]|[0-1]{4,})([a-zA-Z0-1]+|[-_]+|:[a-zA-Z0-1]+)*
+  - Status
+    - #active
+    - #deactivated
+    - -#deactivated-but-searchable
+  - Use Cases
+    > Examples
+    - categories: #main:sub:deeper
+    - people: @person @ñnitial-lastname
+    - priorities: p1 p2 p3 p4
+      - #q-1:urgent-and-important #q-2:not-urgent-and-important #q-3:urgent-and-not-important #q-4:not-urgent-and-not-important
+    - same level: #multiple-words
+- WorkFlowy Information Resources
+  - Introductions
+    - 📘 The Basic Guide to Workflowy
+      - **🏕 What is Workflowy**
+        - Workflowy is an outliner – a text editor that organizes information in a hierarchy, allowing users to control the level of detail and to reorganize according to the structure.
+        - In outlines, everything is a bullet item. Each bullet item (they are called **nodes**) is the atomic unit of information.
+          - Each bullet item  can have its own nested child nodes.
+            - That allows your notes to be very detailed, yet organized to get a quick overview when you need it.
+              - Try clicking on the small grey triangle near the upper node here to wrap it.
+        - Workflowy is an extremely flexible tool that can be used to store your tasks, notes, and anything else. Any other productivity app would have a specific workflow (or a few) that you'd have to adopt.  Workflowy enables you to build your own unique structure that works just for you.
+      - **✍️ Getting Started**
+        - Sign up to [Workflowy](https://workflowy.com/invite/72f2f232.lnx)!
+          - You'll see the onboarding notes that explain the basic functionality.
+            - You might want to save that and start playing with the app at the same time (unwrap this to see what I mean).
+              - Put the cursor at the beginning of the first line.
+              - Write "Tutorial". Click *Enter*.
+              - Select all the nodes after it. Click *Tab*.
+              - Now you can wrap the "Tutorial" node so you won't lose it.
+          - It's easy to start. You can just dump everything you're planning to work on today like this:
+            - Finish the memo
+            - Buy the groceries
+            - Order coffee
+            - Technician #: 495-05-17
+          - Or make it a bit more complex from the start.
+            - Tasks
+              - Finish the memo
+              - Buy the groceries
+              - Order coffee
+            - Notes
+              - Technician #: 495-05-17
+          - You can click the three dots on the left of each task and click **Complete **or use type *Cmd-Enter* / *Ctrl-Enter* on the keyboard.
+            - Completed nodes are hidden by default. You can click *Cmd-O / Ctrl-O *or **Show Completed **on top to surface completed items back.
+          - The flexibility of Workflowy allows you to start small and then quickly adjust the structure to accommodate your needs at the moment.
+            - You can select multiple nodes, click *Shift-Tab* and they'd become nested under the node above which will become a heading.
+        - One important detail you need to understand – in Workflowy you work with a single giant document. If you want to create a new "page" you add a new node.
+          - You can click on the bullet to **zoom*** *to just this node. That'd be an equivalent of opening a note in Evernote or another app. Try clicking on the round circle near this node and check how it looks.
+        - On the left side you see two main navigation sections.
+          - The first is **Starred** items. You can add any node or save any search here (more on that later [here](https://workflowy.com/#/143676d6bcac)). If you have any node buried multiple levels deeper that you want to access easily you can click on the "*Star*" icon in the right top corner.
+          - The second is **Home**. This is an entire tree of everything you put into your Workflowy. You can unwrap certain sections and Workflowy will remember that.
+        - At the top you see the breadcrumbs. They help to quickly jump between levels.
+        - In the right top corner you can see the **search** and **modifiers**.
+        - Click *Cmd-? / Ctrl-? *to surface the keyboard shortcuts. Learning them would help you navigate the app much quicker.
+        - One of the most important shortcuts is *Cmd-K / Ctrl-K. *It allows you to quickly jump between individual nodes using search.
+      - **#️⃣ Tags**
+        - Workflowy supports two notations for tags simultaneously. You can either start them with @ or # and the app will be able to distinguish them. Try clicking on any of the tags below to filter out the nodes with them.
+        - The official recommendation is to use **@** for key contexts: people and places.
+          - If you delegated something to John, you can mark it with @John.
+          - If you want to do something when you get to home, you can mark it with @ home.
+        - While **#** can be used for any general context:
+          - Areas of work: #design, #recruiting
+        - But of course, you can use them however you want.
+          - Time you'd need for a task: #90m or @90m.
+          - Mark the clients you work with, like #CocaCola or @CocaCola.
+          - Things you're going to work today: # today and @ today or maybe something you'd like to focus on: @ focus and # focus.
+      - **📆 Dates**
+        - Workflowy supports date input through natural language (as far as I know only in English). Try typing something like *today *or *next Friday *and the app would offer to convert it into a properly formatted date that Workflowy can recognize. * *
+        - As of this moment, Workflowy doesn't support any reminders based on those dates so it's up to you to properly integrate them into your workflow.
+          - For instance, if you rely on scheduling tasks for specific days and then you miss a day for some reason – you might forget about tasks scheduled for that day. Simply because you wouldn't be able to see them if you filter by "today" date anymore.
+      - **🔍 Search**
+        - Workflowy has a very powerful search engine and this is one of the main differences of the outliners that existed before it.
+        - Any search can be saved into **Starred **just like any single node. That creates a permanent filter that you can use in your personal workflow.
+        - Here are some basic operators you might use:
+          - You can search for any text. Quotes imply "strict search".
+          - You can search for any #tag (ag would also work).
+          - You can search for any date (like *today* or *tomorrow*) or periods (*next week* and *last month*).
+          - You can select the nodes edited in a specific timeframe using *changed: *operator (*changed: 1hr*)*.*
+          - You can search for the completed notes using *complete* (is:complete).
+          - You can filter out the nodes changed by you and people you've given editing access to.
+        - Each search is applied to the node you have opened at the moment and all its children
+        - If you **Star **the search you will see it appearing in the sidebar where it'd list the exact query and the  place for it
+          - You might find it useful to separately save searches for various sections. For instance, you might want to look at the tasks scheduled for today but don't need to see a journal note you just wrote.
+          - Unfortunately, Workflowy doesn't allow to give starred searches a better name so you're stuck with it.
+        - In addition to basic operators Workflowy has a search query language to amplify and combine them:
+          - A space implies a logical "*AND*" (today @ñmportant)
+          - "OR" is "*OR*" (today or @ñmportant)
+          - "*-*" is NOT (-@ñmportant)
+          - rawbytz prepared an unofficial [guide](https://workflowy.com/s/workflowy-search-ope/xtIeg82efzHHQ2ZK) specifically on Workflowy search operators.
+        - With all of that you can build some pretty sophisticated queries but I have to admit this part isn't documented well.
+          - "*today OR -20*" would show you any tasks that are scheduled for today or don't have a date assigned.
+          - "@ñmportant next week" would surface important tasks for the next week (presumably).
+          - "*is:complete last-changed:1d*" would show you the things you proudly finished today.
+        - Using all that functionality you can build a custom dashboard that would surface the things you need at any particular moment.
+      - **🗂 Organization Tips**
+        - The combination of tags, searches, and dates allows you to build customs views you might need at any particular moment.
+          - Workflowy allows you to complement its static hierarchy with a second dynamic layer that you can switch on the fly.
+            -
+          - Examples would include switching the context between tasks with different priority, project, date, etc.
+        - There are several approaches I've mostly seen people utilize in Workflowy:
+          - Project-focused
+            > Where your static hierarchy is the projects (or clients) and you filter using dates or tags.
+            - Dropbox
+              - Finalize the agreement @now
+                -
+            - Slack
+              - Send the proposal
+            - Shopify
+              - Iterate on the design
+          - Status-focused
+            > Where your static hierarchy is the status and you filter projects and the rest using tags.
+            - To-do
+              - Send the proposal ﻿2020-07-15﻿ #Slack
+            - Doing
+              - Finalize the agreement #Dropbox
+            - Done
+              - Send the proposal #Dropbox
+          - *Note: recently Workflowy added Kanban boards that are ideal for this particular workflow. *
+          - Time-focused
+            - 2020
+              - July
+                - ﻿﻿Invalid date﻿
+                  - Iterate on the design #Shopify
+                - ﻿﻿2020-07-15﻿
+                  - Send the proposal #Slack
+                - ﻿﻿2020-07-14﻿
+                  - Finalize the agreement #Dropbox
+                - ...
+          - And you can also mix these approaches for different parts of your life. For instance, I use the first one for work stuff and the second one for personal tasks and goals.
+      - **📬 Sharing**
+        - Workflowy allows you to share any node along with all its children (but not the parent ones) with anyone to see and edit.
+          - You can use it to:
+            - Share your groceries list with your partner
+            - Send the meeting nodes to your colleagues
+            - Or, well, share anything else you might want
+              - For instance, [The Bible](https://workflowy.com/s/bq7iBLI2zX)  
+        - Click on the dots near any node and find the **Share** item in the context menu.
+        - You can generate a sharing link that you can send to anyone or share the node with specific people using their emails.
+          - If you generate a link you can just send it using email, Slack or any other channel. People will be able to open it even if they don't have a Workflowy account.
+          - If you share it with specific people using their email handles, they'd need to create a Workflowy account in order to add the shared node and use it.
+        - There are several modes for content access:
+          - Read only
+            > Straightforward
+          - Read and write
+            > People can edit all content you shared under that node
+          - Full access
+            > In addition to reading and writing into it, people could share it with someone else themselves
+      - **🎯 Advanced Features**
+        - Workflowy has a couple of more advanced features that I'd like to tell you about.
+        - Templates
+          > Templates need to be turned on in settings first.
+          - Workflowy allows you to create custom templates for the structure that you often reuse.
+          - In order to do that you either need to invoke the context menu and click "Make template" or add a "template" hashtag. Workflowy then would generate a custom template code that you can paste anywhere and get the same text.
+          - Example below:
+            - Consulting Project #template
+              - Proposal
+              - Discovery
+              - First draft
+              - Discussion
+              - Second draft
+              - Approval
+        - Kanban Boards
+          - Workflowy allows you to turn any node into a Kanban view – so every child node turns into a column. Of course, it makes sense to set it up properly in advance.
+          - Click on the dots near the node, click on **Bullets **and choose the **Boards** representation.
+          - Example below:
+            - Doing
+              - New design for proposals
+            - To-do
+              - Proposal for #Slack
+            - Done
+              - Get introduction and set up a call #Slack
+                -
+          - These boards are fractal, meaning you can infinitely embed them in one another, so every card in your kanban board is actually another board in disguise.
+        - Mirroring
+          > A beta feature that requires turning on "WorkFlowy Beta" in Experimental features in Settings (note: you may also see this under "Labs" -- name changed recently ~ summer 2020)
+          - One of the recent additions to Workflowy is mirroring. It allows you to have a copy of a node along with all its children in a different place. The nodes are connected, so if you change one of the instances, the other one is also affected.
+          - You can use it however you want, I'll suggest a simple example where it can be useful. Let's say you have a Tasks section for the items you're working and a Notes section where you record items from your meetings. You have a structure where these things are separated and yet sometimes you have a meeting where you discuss your work plan. To ensure it'll stay structured you can create a task and then mirror the notes there.
+          - You can create a mirror in two ways:
+            - Click the context menu of any node, click **Mirror **and copy the link to any place – it will become a mirror.
+            - Start typing (( and the key words from the node you're looking to mirror – Workflowy will suggest an option. Then the mirror would appear as a child node.  
+          - Example below:
+            - Tasks
+              > Let's say you keep all your tasks here
+              - Draft the proposal
+              - Negotiate the terms
+            - Notes
+              > And you keep info on all calls with your clients and team members here
+              - Call
+                - Use our latest Keynote template
+                - Add more content examples
+                - Suggest several pricing options
+      - 💡**Tips**
+        - Workflowy is a web app. It has apps for desktop and mobile which are essentially wrappers but with one important advantage – they can work offline. You can write in them, edit nodes, close and open the app again, and it will sync when it has a connection.
+        - Workflowy now has a [Web Clipper](https://chrome.google.com/webstore/detail/workflowy-web-clipper/jgapgnoonjgchibeajphaejhabcnklbn?hl=en) extension for Google Chrome and Edge that you can use to quickly drop highlights from web pages to a pre-defined node.
+          > It doesn't really allow you to define it, but it remembers the last node you had opened.
+        - Workflowy is purely text-based and it might look too uniform. My suggestion: use emojis! It's an extremely cheap way to add color and visual distinctions to your notes.
+      - **[👨‍💻](https://emojipedia.org/man-technologist/) About**
+        - The guide has been prepared by Yury Molodtsov. If you have any tips or suggestions you'd love to see here or noticed any mistakes, please reach me at [@y_molodtsov](https://twitter.com/y_molodtsov) on Twitter.
+    - Workflowy - Wikipedia
+      > https://en.wikipedia.org/wiki/Workflowy
+  - Book
+    - Do Way, Way More in WorkFlowy v2.0 by @frank-dg [ Frank Degenaar ]
+      > [https://www.productivitymashup.com/do-way-way-more-in-workflowy/](https://www.productivitymashup.com/do-way-way-more-in-workflowy/)
+  - YouTube
+    - Under the WorkFlowy Menu>HELP are several video tutorials
+    - @dan [ Daniel Wadsworth ]
+      - [https://www.youtube.com/channel/UCaxOpkiQCH4JC9uABylH9zw/videos](https://www.youtube.com/channel/UCaxOpkiQCH4JC9uABylH9zw/videos)
+      - 1. Speed Run
+        - [https://youtu.be/2ejMJMh2mpk](https://youtu.be/2ejMJMh2mpk)
+      - 2. Shared Calendar
+        - [https://www.youtube.com/watch?v=lE1ZDy7yoH0](https://www.youtube.com/watch?v=lE1ZDy7yoH0)
+      - 3. Zettelkasten Like a Ninja
+        - [https://www.youtube.com/watch?v=B7ud965dqnw](https://www.youtube.com/watch?v=B7ud965dqnw)
+    - @cafe655 [ David Clark ]
+      - [https://www.youtube.com/playlist?list=PL8pCAZvJIBvJnW-f4tO3hXjIxZnVMNb13](https://www.youtube.com/playlist?list=PL8pCAZvJIBvJnW-f4tO3hXjIxZnVMNb13)
+    - @jessep [ Jesse Patel ]
+      - [https://www.youtube.com/user/workflowy/videos](https://www.youtube.com/user/workflowy/videos)
+    - @frank-dg [ Frank Degenaar ]
+      - [https://www.youtube.com/channel/UCHWzydbnYLWSgK4L6WjuUdQ/videos](https://www.youtube.com/channel/UCHWzydbnYLWSgK4L6WjuUdQ/videos)
+    - @garybacon [ Gary Bacon ]
+      - [https://www.youtube.com/channel/UCvzDpE0fSGv4mkgng9ycdqA/about](https://www.youtube.com/channel/UCvzDpE0fSGv4mkgng9ycdqA/about)
+  - Courses
+    > Tutorials
+    - WorkFlowy Academy by @frank-dg [ Frank Degenaar ]
+      > https://www.productivitymashup.com/workflowy-academy
+  - Maps
+    - [WorkFlowy User Group Members](https://www.google.com/maps/d/edit?mid=12dVTohvENYM8oZQDux_rUHPJyNk5050l&ll=3.997792387511204%2C0&z=2) @Jim-karwisch
+  - Support
+    - ==WorkFlowy Zendesk==
+      > https://workflowy.zendesk.com/hc/en-us
+    - WorkFlowy Forum
+      > [https://workflowy.zendesk.com/hc/en-us/community/topics](https://workflowy.zendesk.com/hc/en-us/community/topics)
+    - ==Workflowy subReddit==
+      > [https://www.reddit.com/r/Workflowy/](https://www.reddit.com/r/Workflowy/)
+  - ==Social Media==
+    - WorkFlowy | Facebook
+      > https://www.facebook.com/workflowy/
+    - WorkFlowy | Instagram
+      > [https://www.instagram.com/workflowy/?hl=en](https://www.instagram.com/workflowy/?hl=en)
+    - WorkFlowy | Twitter
+      > https://twitter.com/WorkFlowy
+  - @rawbytz WorkFlowy Blog
+    > https://rawbytz.wordpress.com/software/
+  - ==WorkFlowy Blog==
+    > [https://blog.workflowy.com/](https://blog.workflowy.com/)
+  - WorkFlowy Extension API
+    > [https://workflowy.com/s/B.dY94qOYbiG](https://workflowy.com/s/B.dY94qOYbiG)
+  - WorkFlowy User Group Slack
+    > [https://join.slack.com/t/workflowyusergroup/shared_invite/zt-6txcd7xe-AICCrIU2KxYuuXX2Vm9nRQ](https://join.slack.com/t/workflowyusergroup/shared_invite/zt-6txcd7xe-AICCrIU2KxYuuXX2Vm9nRQ)
+  - [WorkFlowy Roadmap (unofficial)](https://workflowy.com/s/workflowy-roadmap-un/Js2TKGdmbNpRzRC6)
+- 3rd Party WorkFlowy Products
+  - Send to Workflowy
+  - ==Clip to WorkFlowy==
+    > by @rawbytz
+    - Browser Extension
+      - Google Chrome
+        - [https://chrome.google.com/webstore/detail/clip-to-workflowy/cfifjihfoegnccifkcdomdookdckhaah](https://chrome.google.com/webstore/detail/clip-to-workflowy/cfifjihfoegnccifkcdomdookdckhaah)
+  - DropFlowy
+    > by @rawbytz
+    - Browser Extension
+      - Google Chrome
+        - [https://chrome.google.com/webstore/detail/dropflowy/djkbkkooilijfnobeedgikcbpnmhkbde](https://chrome.google.com/webstore/detail/dropflowy/djkbkkooilijfnobeedgikcbpnmhkbde)
+  - HandyFlowy
+    > [https://blog.workflowy.com/2016/04/21/handyflowy-workflowy/](https://blog.workflowy.com/2016/04/21/handyflowy-workflowy/)
+    - Website: [https://www.nap.jp/michi/ios/HandyFlowy/handyflowy-en.html](https://www.nap.jp/michi/ios/HandyFlowy/handyflowy-en.html)
+    - iOS: [https://apps.apple.com/us/app/handyflowy/id1080279196](https://apps.apple.com/us/app/handyflowy/id1080279196)
+    - Android: [https://play.google.com/store/apps/details?id=jp.nap.app.handyflowy](https://play.google.com/store/apps/details?id=jp.nap.app.handyflowy)
+  - Migrate from Trello to WorkFlowy
+    > [https://workflowy.zendesk.com/hc/en-us/community/posts/360062538251-Migrating-from-Trello-to-Workflowy-boards](https://workflowy.zendesk.com/hc/en-us/community/posts/360062538251-Migrating-from-Trello-to-Workflowy-boards)
+    - Go to your trello board, click Show Menu, More..., Print and Export, Export as JSON
+    - This will take you to a new page showing the JSON export of your trello board. Select all and copy to the clipboard.
+    - Go to [https://jqplay.org/](https://jqplay.org/) and paste it into the left column saying "JSON"
+    - Copy and paste the filter shown below and paste it into the "filter" line at the top left
+      - ([.lists[] | {key: .id, value: .name}] | from_entries) as $lists | (reduce (.actions[] | select(.type == "commentCard")) as $comment ( {}; .[$[comment.data.card.id](http://comment.data.card.id/)] |= (. // []) + [$comment.data.text])) as $comments | [.cards[] | [$lists[.idList], .name, .desc] + $comments[.id]] | reduce .[] as $item ({}; .[$item[0]] |= (. // []) + [$item[1:]]) | to_entries[] | .key, ( .value[] | "    \(.[0])", (.[1:][] | select(.) | split("\n")[] | "        \(.)"))
+    - Check the box that says "Raw Output"
+    - It should show you a nicely formatted export on the right hand side
+    - Copy and paste this into workflowy
+    - Change the view in workflowy to 'board'
+    - The jq script will attempt to grab descriptions and comments from cards, and mirror the boards you have in place, but you will want to go through and make sure everything looks ok.
+  - mivok/workflowy-userscripts
+    > [https://github.com/mivok/workflowy-userscripts](https://github.com/mivok/workflowy-userscripts)
+    - Collection of miscellaneous user scripts for use with workflowy
+  - ==WFx PowerPack==
+    > by @rawbytz
+    - [https://gumroad.com/l/WFxPowerPack](https://gumroad.com/l/WFxPowerPack)
+    - Browser Extension
+      - Google Chrome
+        - [https://chrome.google.com/webstore/detail/](https://chrome.google.com/webstore/detail/wfx-for-workflowy/jbehgpdjkcconnaagjhddddfdajbpfhi)[wfx](https://chrome.google.com/webstore/detail/wfx-for-workflowy/jbehgpdjkcconnaagjhddddfdajbpfhi)[-for-workflowy/jbehgpdjkcconnaagjhddddfdajbpfhi](https://chrome.google.com/webstore/detail/wfx-for-workflowy/jbehgpdjkcconnaagjhddddfdajbpfhi)
+    - WFX - ctrl . wfs > shortcut | wfo > options
+    - How to install bookmarklets on mobile
+      - How to use WFx Scripts on iOS, via bookmarklet
+        - ✎ Note: I know it works in Safari. Don't know about other mobile browsers.
+        - **Scripts with `#_setup` in the name**
+          - 1. Setup Code
+            - Copy the powerpack script
+            - add *javascript:* to the beginning
+            - manually enter the option values in the code. For example, here's a how I setup a 'copyTemplate' bookmarklet. Added "javascript:" to the beginning and hard-coded the answers
+              > Notice: In the first line I replaced **_wID_** and **_includeParent_** variables with the actual values
+              - Original code
+                > (function copyTemplate_1_6(wID='"_wID_"',includeParent='_includeParent_'){if(typeof includeParent!=="boolean")includeParent=true;function toastMsg(str,sec,err){WF.showMessage(str,err);setTimeout(WF.hideMessage,(sec||2)*1e3)}function copyThat(str){const t=document.createElement("textarea");t.value=str;document.body.appendChild(t);t.select();const success=document.execCommand("copy");document.body.removeChild(t);return success}function copyAndToast(str,message){if(copyThat(str))return void toastMsg(message,2);str.length<2001?prompt("\nCopy failed.\n\nManually copy this selection: (Ctrl+C)",str):toastMsg("Copy failed! Try again.",3,true)}function convertWidToItem(str,homeNotOption){const match=str.match(/[a-f0-9]{12}/);if(match)return WF.getItemById(WF.shortIdToId(match[0]));return!homeNotOption&&str===""?WF.rootItem():null}const focus=WF.focusedItem();const current=WF.currentItem();const parent=convertWidToItem(wID,true);if(!parent)return void toastMsg("Template ID not found.",5,true);const template=includeParent?[parent]:parent.getChildren();copyAndToast(WF.exportOPML(template),`${parent.getNameInPlainText()} copied!`);WF.editItemName(focus||current.getVisibleChildren()[0]||current)})();
+              - Edited code
+                > javascript:(function copyTemplate_1_6(wID='"[https://workflowy.com/#/5fe970a00d0e](https://workflowy.com/#/5fe970a00d0e)"',includeParent='true'){if(typeof includeParent!=="boolean")includeParent=true;function toastMsg(str,sec,err){WF.showMessage(str,err);setTimeout(WF.hideMessage,(sec||2)*1e3)}function copyThat(str){const t=document.createElement("textarea");t.value=str;document.body.appendChild(t);t.select();const success=document.execCommand("copy");document.body.removeChild(t);return success}function copyAndToast(str,message){if(copyThat(str))return void toastMsg(message,2);str.length<2001?prompt("\nCopy failed.\n\nManually copy this selection: (Ctrl+C)",str):toastMsg("Copy failed! Try again.",3,true)}function convertWidToItem(str,homeNotOption){const match=str.match(/[a-f0-9]{12}/);if(match)return WF.getItemById(WF.shortIdToId(match[0]));return!homeNotOption&&str===""?WF.rootItem():null}const focus=WF.focusedItem();const current=WF.currentItem();const parent=convertWidToItem(wID,true);if(!parent)return void toastMsg("Template ID not found.",5,true);const template=includeParent?[parent]:parent.getChildren();copyAndToast(WF.exportOPML(template),`${parent.getNameInPlainText()} copied!`);WF.editItemName(focus||current.getVisibleChildren()[0]||current)})();
+          - 2. Setup Bookmarklet
+            - copy the edited code
+            - create a bookmark
+            - edit the name and URL, pasting the edited code into the URL field
+        - **Script without setup**
+          - just copy the code and add *javascript:* to the beginning
+            > See [2. Setup Bookmarklet](https://workflowy.com/#/3cd5f8549ec5)
+  - WorkFlowy to Google Calendar
+    > by @rawbytz
+    - Browser Extension
+      - Google Chrome
+        - [https://chrome.google.com/webstore/detail/workflowy-to-google-calen/jgcnopjghjlddcncaiohpbchlojdhgde](https://chrome.google.com/webstore/detail/workflowy-to-google-calen/jgcnopjghjlddcncaiohpbchlojdhgde)
+  - ==WorkFlowy Web Clipper==
+    > by @workflowy
+    - Browser Extension
+      - Google Chrome / MS Edge
+        - [https://chrome.google.com/webstore/detail/workflowy-web-clipper/jgapgnoonjgchibeajphaejhabcnklbn](https://chrome.google.com/webstore/detail/workflowy-web-clipper/jgapgnoonjgchibeajphaejhabcnklbn)
+- WorkFlowy Mechanics
+  > NOTE: This is supposed to be a list of core WorkFlowy features (not use cases)
+  - any node can be moved anywhere
+  - at-tag mentioning node members
+  - backlinks
+    - [https://blog.workflowy.com/links-version-2/](https://blog.workflowy.com/links-version-2/)
+    - [https://blog.workflowy.com/backlinks-2/](https://blog.workflowy.com/backlinks-2/)
+  - board view
+  - Commenting/replying/read update
+  - copy internal link
+  - create new backlink
+  - dashboard view
+  - dates
+    - language based/tab input
+  - duplicate/copy nodes
+  - each node is a URL
+  - embedded external links/rename links
+  - expand/collapse
+  - indentation
+  - inline youtube videos
+  - left-side bar
+  - mirrors
+    - [https://blog.workflowy.com/mirrors-create-live-copies-of-any-bullet/](https://blog.workflowy.com/mirrors-create-live-copies-of-any-bullet/)
+    - [https://workflowy.com/feature/mirrors/?utm_source=blog&utm_medium=post&utm_campaign=Mirrors%3A%20A%20New%20Organization%20Paradigm](https://workflowy.com/feature/mirrors/?utm_source=blog&utm_medium=post&utm_campaign=Mirrors%3A%20A%20New%20Organization%20Paradigm)
+  - no embedded structure (allowing for flexible structure building by users)
+  - nodes
+  - notes
+  - paragraphs and headings
+  - quick-search by tags
+  - search
+    - click tag to search
+    - search at current node hierarchy
+    - is:
+    - jump to menu
+    - date...
+    - changed:time
+    - changed by me/others
+  - select/move easily
+  - sharing
+    - editable
+    - view only
+    - can share
+  - slash commands: "/" brings up drop down menu, start typing to isolate options
+  - starred searches
+  - switching between view options (list/board)
+  - tags
+    - searchable
+    - exploding with alt click
+  - templates
+  - to-do
+  -
+  -
+  -
+  -
+  - change image setting size
+  - colors
+    - drop down to change all instances of a tag
+    - letter colors
+    - highlighted colors
+    - to highlight multiple nodes with the same highlight or color
+      - First make sure you’ve got the default color/ highlight you want
+      - Highlight all the lists you want
+      - Hit Ctrl/Cmnd+Shift+H
+    - [https://blog.workflowy.com/text-and-tag-colors-are-now-available/](https://blog.workflowy.com/text-and-tag-colors-are-now-available/)
+  - cross-platform
+  - daily backup feature (pro)
+  - export
+    - plain text
+    - formatted text
+    - OPML
+  - font options
+  - images
+  - information caching once each session, then speed
+  - inline tweets
+  - left side bar navigation
+  - list view
+  - offline-accessible
+  - read/unread updates
+  - simple formatting (bold/underline/italics)
+  - skeletal api options
+  - text simplicity/speed
+  - theme and font options
+  - trash/recovery
+  - Tweet embed
+  - upload files
+  - WFx
+  - WFx PowerPack
+  - Youtube embed
+- Use-Case Catalog
+  - aka. How To Do It?
+  - Basic Presentation Flow
+    > @stef-rausch - Reference: Blog Post [Idea: WorkFlowy Presentations](https://blog.workflowy.com/2015/11/23/idea-workflowy-presentations/)
+    - Available Options
+      > Zoom into the respective list, and follow the suggestions. The first technique works only with the web application and not on touch devices.
+      - The Cycling Through Siblings Technique
+        > Zoom into the first child and jump to the next / previous slide with the SHIFT + CTRL + 0 / 9 keys.
+        - How can a smoother transition from slide to slide be achieved?
+        - The 2 Alternatives
+          - Cycling Through Siblings
+            > Best audience / reader experience. Needs ahead planning and is available with the ( not touch ) web application only.
+          - Internal Linking
+            > Easiest / Fastest way to create an adhoc presentation. Clicks / Taps action can be experienced as a disruption of the flow.
+        - Your Thoughts?
+      - The Internal Linking Technique
+        > Zoom into the first child and click / tap on the next / previous ( internal ) link in the note section. Alternatively you can use a ( separate ) dedicated list item.
+        - How can a smoother transition from slide to slide be achieved?
+          > Slide 1 » [Slide 2](https://workflowy.com/#/088057dd101a)
+        - As you will see, adding additional list items does not interfere with the presentation as such.
+        - The 2 Alternatives
+          > [Slide 1](https://workflowy.com/#/2775b3e74392) » Slide 2 » [Slide 3](https://workflowy.com/#/6c635f445359)
+          - Cycling Through Siblings
+            > Best audience / reader experience. Needs ahead planning and is available with the ( not touch ) web application only.
+          - Internal Linking
+            > Easiest / Fastest way to create an adhoc presentation. Clicks / Taps action can be experienced as a disruption of the flow.
+        - Does it work? Just try it out!
+        - Your Thoughts?
+          > [Slide 2](https://workflowy.com/#/088057dd101a) » Slide 3
+  - Comparison clones
+    > Compare and edit distant bullets - by @dareman
+    - Scenario - You want to compare and modify 4 bullets, but they're scattered throughout your outline. You could temporarily tag them and filter for the tags, but their distant locations might make it impossible to keep all their children in view simultaneously
+    - Solution
+      - 1. Clone each of the bullets to compare
+      - 2. Move the clones under a new temporary parent bullet
+      - 3. Make the parent bullet a board
+      - 4. Compare and edit the clones
+      - 5. When finished, delete the clones
+      - The original bullets stay where they were and they saved all the edits you made to the clones
+  - Kanban Calendar
+    - [https://www.productivitymashup.com/blog/2014/8/17/kanban-calendar-workflowy](https://www.productivitymashup.com/blog/2014/8/17/kanban-calendar-workflowy)
+  - How to grab the text from an online article and put it into WorkFlowy  (from @rawbytz)
+    - Here's what I do... This requires:
+      - Google Chrome
+      - Instapaper acct
+      - Open in Instapaper Text Extension (OIT)
+        - [https://chrome.google.com/webstore/detail/open-in-instapaper-text/lkdmfkbmdklogdfgcbcgdfhkmanmbhih](https://chrome.google.com/webstore/detail/open-in-instapaper-text/lkdmfkbmdklogdfgcbcgdfhkmanmbhih)
+      - Clip To WorkFlowy Extension (C2W)
+        - [https://chrome.google.com/webstore/detail/clip-to-workflowy/cfifjihfoegnccifkcdomdookdckhaah](https://chrome.google.com/webstore/detail/clip-to-workflowy/cfifjihfoegnccifkcdomdookdckhaah)
+    - Steps
+      - You can activate OIT either while viewing the article or right click an article link. OIT doesn't add the article to your Instapaper acct, it only opens it in a clean view. But you do need to be logged in to IP for it to work.
+      - Ctrl+A to select all text
+      - Alt+C (my keyboard shortcut for C2W) This copies the clip and jumps to your WorkFlowy tab (or opens one if none is found)
+      - Paste into a new bullet
+    - What you end up with is the Article name is the bullet title. The note contains the link followed by the article.
+  - Individual Sprints
+    - [https://blog.workflowy.com/2018/10/04/sprints](https://blog.workflowy.com/2018/10/04/sprints/)  
+- CSS Styles Catalog
+  - It's just an unsorted list of CSS Styles that can be used with Stylus/Stylish to alter Workflowy to your own wishes/needs.
+  - Cursor Focus Background ("borrowed" from @rawbytz)
+    > /* Cursor Focus Background */
+    > .content:focus {
+    >   background-color: whitesmoke;
+    >   border-radius: 5px;
+    > }
+  - Mirror Parent Diamonds
+    > /* Mirror Parent Diamonds */
+    > svg > path[d="M9 4 L4 9 L9 14 L14 9"] {
+    >     /* color: #0080ff  */
+    >     color: your_color
+    > }
+  - Mirror Children
+    > /* Mirror Children */
+    > a.bullet[href^="/#/v_"] {
+    >     /* color: #0080ff  */
+    >     color: your_color;
+    > }
+  - CSS for Kanban Boards
+    >   .boardCard { background-color: #b64a4a !important; }
+    >   .board { background-color: #b64a4a !important; }
+    >   .boardColumn { background-color: #b64a4a !important; }
+  - And you can also find predefined CSS styles on [userstyles.org](http://userstyles.org/)
+    > [https://userstyles.org/styles/browse?search_terms=workflowy.com&type=false](https://userstyles.org/styles/browse?search_terms=workflowy.com&type=false)
+  - CSS remove bullet icon
+    > * This will hide the bullet icon and leave the text.
+    > * This example hides two different bullets.
+    > * The bullet is defined between the quotes, and is copied from the bullet's URL, aka internal link
+    >
+    > a[href="/#/159fb0651ad0"].bullet,
+    > a[href="/#/6ec6c9b40d1a"].bullet
+    > {
+    > display:none;
+    > }
+  - CSS Change font to [Anonymous Pro](https://fonts.google.com/specimen/Anonymous+Pro)
+    > body {
+    >     font-family: "Anonymous Pro";
+    >     font-size: 16px;
+    >     font-style: normal;
+    >     font-variant: normal;
+    >     font-weight: 400;
+    >     line-height: 23px;
+    > }
+    > h3 {
+    >     font-family: "Anonymous Pro";
+    >     font-size: 17px;
+    >     font-style: normal;
+    >     font-variant: normal;
+    >     font-weight: 700;
+    >     line-height: 23px;
+    > }
+    > p {
+    >     font-family: "Anonymous Pro";
+    >     font-size: 14px;
+    >     font-style: normal;
+    >     font-variant: normal;
+    >     font-weight: 400;
+    >     line-height: 23px;
+    > }
+    > blockquote {
+    >     font-family: "Anonymous Pro";
+    >     font-size: 17px;
+    >     font-style: normal;
+    >     font-variant: normal;
+    >     font-weight: 400;
+    >     line-height: 23px;
+    > }
+    > pre {
+    >     font-family: "Anonymous Pro";
+    >     font-size: 11px;
+    >     font-style: normal;
+    >     font-variant: normal;
+    >     font-weight: 400;
+    >     line-height: 23px;
+    > }
+  - Link to Stylus extension from Chrome Store
+    - Stylus - Chrome Web Store
+      - [https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en-US](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en-US)
+    - Stylus (beta) - Chrome Web Store
+      - [https://chrome.google.com/webstore/detail/stylus-beta/apmmpaebfobifelkijhaljbmpcgbjbdo?hl=en-US](https://chrome.google.com/webstore/detail/stylus-beta/apmmpaebfobifelkijhaljbmpcgbjbdo?hl=en-US)
+- Templates
+  - Use Cases
+    > Examples
+    - @stef-rausch
+      - Contact
+        - Templates
+          - Access #template
+            - Phone
+            - E-Mail
+            - Address
+          - Private Details #template
+            - Access #use-template:8e3503d6faa1
+              -
+            - Birthday
+            - Interests
+            - Names
+              - Maiden
+              - Middle
+              - Nick
+            - Relationships
+            - Skills
+          - Work Details #template
+            - Organisation
+              - Sector
+              - Company
+              - Department
+              - Role
+              - Title
+        - ---
+        - CONTACT #template
+          - KEYWORDS
+            - UID
+          - Private Details #use-template:10001f841e5f
+            -
+          - Work Details #use-template:c572e1834918
+            -
+        -
+        - ---
+        - Template Execution
+          - Step 1
+            - CONTACT
+              - KEYWORDS
+                - UID
+              - Private Details #use-template:10001f841e5f
+                -
+              - Work Details #use-template:c572e1834918
+                -
+          - Step 2
+            - CONTACT
+              - riends
+                - @ -20200602182337
+              - Private Details #use-template:10001f841e5f
+                -
+              - Private Details
+                - Access #use-template:8e3503d6faa1
+                  -
+                - Birthday
+                - Interests
+                - Names
+                  - Maiden
+                  - Middle
+                  - Nick
+                - Relationships
+                - Skills
+              - Work Details #use-template:c572e1834918
+                -
+          - Step 3
+            - CONTACT
+              - riends
+                - @-20200602182337
+              - Private Details
+                - Access #use-template:8e3503d6faa1
+                  -
+                - Access
+                  - Phone
+                  - E-Mail
+                  - Address
+                - Birthday
+                - Interests
+                - Names
+                  - Maiden
+                  - Middle
+                  - Nick
+                - Relationships
+                - Skills
+              - Work Details #use-template:c572e1834918
+                -
+          - Step 4
+            - CONTACT
+              - riends
+                - @-20200602182337
+              - Private Details
+                - Access
+                  - Phone
+                  - E-Mail
+                  - Address
+                - Birthday
+                - Interests
+                - Names
+                  - Maiden
+                  - Middle
+                  - Nick
+                - Relationships
+                - Skills
+              - Work Details #use-template:c572e1834918
+                -
+          - Step 5
+            - CONTACT
+              - riends
+                - @-20200602182337
+              - Private Details
+                - Access
+                  - Phone
+                  - E-Mail
+                  - Address
+                - Birthday
+                - Interests
+                - Names
+                  - Maiden
+                  - Middle
+                  - Nick
+                - Relationships
+                - Skills
+              - Work Details #use-template:c572e1834918
+                -
+              - Work Details
+                - Access #use-template:8e3503d6faa1
+                  -
+                - Organisation
+                  - Sector
+                  - Company
+                  - Department
+                  - Role
+                  - Title
+          - Step 6
+            - CONTACT
+              - riends
+                - @-20200602182337
+              - Private Details
+                - Access
+                  - Phone
+                  - E-Mail
+                  - Address
+                - Birthday
+                - Interests
+                - Names
+                  - Maiden
+                  - Middle
+                  - Nick
+                - Relationships
+                - Skills
+              - Work Details #use-template:c572e1834918
+                -
+              - Work Details
+                - Access #use-template:8e3503d6faa1
+                  -
+                - Access
+                  - Phone
+                  - E-Mail
+                  - Address
+                - Organisation
+                  - Sector
+                  - Company
+                  - Department
+                  - Role
+                  - Title
+          - Step 7
+            - CONTACT
+              - riends
+                - @-20200602182337
+              - Private Details
+                - Access
+                  - Phone
+                  - E-Mail
+                  - Address
+                - Birthday
+                - Interests
+                - Names
+                  - Maiden
+                  - Middle
+                  - Nick
+                - Relationships
+                - Skills
+              - Work Details
+                - Access
+                  - Phone
+                  - E-Mail
+                  - Address
+                - Organisation
+                  - Sector
+                  - Company
+                  - Department
+                  - Role
+                  - Title
+      - Perpetual Calendar
+        - The Genius "Forever Calendar" Template – Never Manually Create Calendar Lists in WorkFlowy Again. Ever.
+          - [https://blog.workflowy.com/2016/10/27/workflowy-forever-calendar](https://blog.workflowy.com/2016/10/27/workflowy-forever-calendar/)
+          - A huge shout-out to Christiano Lima Santos from Brazil for sharing this genius solution.
+        - Month Starting on Weekday
+          - MONDAY
+            - 01 - MON
+            - 02 - TUE
+            - 03 - WED
+            - 04 - THU
+            - 05 - FRI
+            - 06 - SAT
+            - 07 - SUN
+            - 08 - MON
+            - 09 - TUE
+            - 10 - WED
+            - 11 - THU
+            - 12 - FRI
+            - 13 - SAT
+            - 14 - SUN
+            - 15 - MON
+            - 16 - TUE
+            - 17 - WED
+            - 18 - THU
+            - 19 - FRI
+            - 20 - SAT
+            - 21 - SUN
+            - 22 - MON
+            - 23 - TUE
+            - 24 - WED
+            - 25 - THU
+            - 26 - FRI
+            - 27 - SAT
+            - 28 - SUN
+            - 29 - MON
+            - 30 - TUE
+            - 31 - WED
+          - TUESDAY
+            - 01 - TUE
+            - 02 - WED
+            - 03 - THU
+            - 04 - FRI
+            - 05 - SAT
+            - 06 - SUN
+            - 07 - MON
+            - 08 - TUE
+            - 09 - WED
+            - 10 - THU
+            - 11 - FRI
+            - 12 - SAT
+            - 13 - SUN
+            - 14 - MON
+            - 15 - TUE
+            - 16 - WED
+            - 17 - THU
+            - 18 - FRI
+            - 19 - SAT
+            - 20 - SUN
+            - 21 - MON
+            - 22 - TUE
+            - 23 - WED
+            - 24 - THU
+            - 25 - FRI
+            - 26 - SAT
+            - 27 - SUN
+            - 28 - MON
+            - 29 - TUE
+            - 30 - WED
+            - 31 - THU
+          - WEDNESDAY
+            - 01 - WED
+            - 02 - THU
+            - 03 - FRI
+            - 04 - SAT
+            - 05 - SUN
+            - 06 - MON
+            - 07 - TUE
+            - 08 - WED
+            - 09 - THU
+            - 10 - FRI
+            - 11 - SAT
+            - 12 - SUN
+            - 13 - MON
+            - 14 - TUE
+            - 15 - WED
+            - 16 - THU
+            - 17 - FRI
+            - 18 - SAT
+            - 19 - SUN
+            - 20 - MON
+            - 21 - TUE
+            - 22 - WED
+            - 23 - THU
+            - 24 - FRI
+            - 25 - SAT
+            - 26 - SUN
+            - 27 - MON
+            - 28 - TUE
+            - 29 - WED
+            - 30 - THU
+            - 31 - FRI
+          - THURSDAY
+            - 01 - THU
+            - 02 - FRI
+            - 03 - SAT
+            - 04 - SUN
+            - 05 - MON
+            - 06 - TUE
+            - 07 - WED
+            - 08 - THU
+            - 09 - FRI
+            - 10 - SAT
+            - 11 - SUN
+            - 12 - MON
+            - 13 - TUE
+            - 14 - WED
+            - 15 - THU
+            - 16 - FRI
+            - 17 - SAT
+            - 18 - SUN
+            - 19 - MON
+            - 20 - TUE
+            - 21 - WED
+            - 22 - THU
+            - 23 - FRI
+            - 24 - SAT
+            - 25 - SUN
+            - 26 - MON
+            - 27 - TUE
+            - 28 - WED
+            - 29 - THU
+            - 30 - FRI
+            - 31 - SAT
+          - FRIDAY
+            - 01 - FRI
+            - 02 - SAT
+            - 03 - SUN
+            - 04 - MON
+            - 05 - TUE
+            - 06 - WED
+            - 07 - THU
+            - 08 - FRI
+            - 09 - SAT
+            - 10 - SUN
+            - 11 - MON
+            - 12 - TUE
+            - 13 - WED
+            - 14 - THU
+            - 15 - FRI
+            - 16 - SAT
+            - 17 - SUN
+            - 18 - MON
+            - 19 - TUE
+            - 20 - WED
+            - 21 - THU
+            - 22 - FRI
+            - 23 - SAT
+            - 24 - SUN
+            - 25 - MON
+            - 26 - TUE
+            - 27 - WED
+            - 28 - THU
+            - 29 - FRI
+            - 30 - SAT
+            - 31 - SUN
+          - SATURDAY
+            - 01 - SAT
+            - 02 - SUN
+            - 03 - MON
+            - 04 - TUE
+            - 05 - WED
+            - 06 - THU
+            - 07 - FRI
+            - 08 - SAT
+            - 09 - SUN
+            - 10 - MON
+            - 11 - TUE
+            - 12 - WED
+            - 13 - THU
+            - 14 - FRI
+            - 15 - SAT
+            - 16 - SUN
+            - 17 - MON
+            - 18 - TUE
+            - 19 - WED
+            - 20 - THU
+            - 21 - FRI
+            - 22 - SAT
+            - 23 - SUN
+            - 24 - MON
+            - 25 - TUE
+            - 26 - WED
+            - 27 - THU
+            - 28 - FRI
+            - 29 - SAT
+            - 30 - SUN
+            - 31 - MON
+          - SUNDAY
+            - 01 - SUN
+            - 02 - MON
+            - 03 - TUE
+            - 04 - WED
+            - 05 - THU
+            - 06 - FRI
+            - 07 - SAT
+            - 08 - SUN
+            - 09 - MON
+            - 10 - TUE
+            - 11 - WED
+            - 12 - THU
+            - 13 - FRI
+            - 14 - SAT
+            - 15 - SUN
+            - 16 - MON
+            - 17 - TUE
+            - 18 - WED
+            - 19 - THU
+            - 20 - FRI
+            - 21 - SAT
+            - 22 - SUN
+            - 23 - MON
+            - 24 - TUE
+            - 25 - WED
+            - 26 - THU
+            - 27 - FRI
+            - 28 - SAT
+            - 29 - SUN
+            - 30 - MON
+            - 31 - TUE
+        - ---
+        - Templates
+          - MONDAY #template
+            - 01 - MON
+            - 02 - TUE
+            - 03 - WED
+            - 04 - THU
+            - 05 - FRI
+            - 06 - SAT
+            - 07 - SUN
+            - 08 - MON
+            - 09 - TUE
+            - 10 - WED
+            - 11 - THU
+            - 12 - FRI
+            - 13 - SAT
+            - 14 - SUN
+            - 15 - MON
+            - 16 - TUE
+            - 17 - WED
+            - 18 - THU
+            - 19 - FRI
+            - 20 - SAT
+            - 21 - SUN
+            - 22 - MON
+            - 23 - TUE
+            - 24 - WED
+            - 25 - THU
+            - 26 - FRI
+            - 27 - SAT
+            - 28 - SUN
+            - 29 - MON
+            - 30 - TUE
+            - 31 - WED
+          - TUESDAY #template
+            - 01 - TUE
+            - 02 - WED
+            - 03 - THU
+            - 04 - FRI
+            - 05 - SAT
+            - 06 - SUN
+            - 07 - MON
+            - 08 - TUE
+            - 09 - WED
+            - 10 - THU
+            - 11 - FRI
+            - 12 - SAT
+            - 13 - SUN
+            - 14 - MON
+            - 15 - TUE
+            - 16 - WED
+            - 17 - THU
+            - 18 - FRI
+            - 19 - SAT
+            - 20 - SUN
+            - 21 - MON
+            - 22 - TUE
+            - 23 - WED
+            - 24 - THU
+            - 25 - FRI
+            - 26 - SAT
+            - 27 - SUN
+            - 28 - MON
+            - 29 - TUE
+            - 30 - WED
+            - 31 - THU
+          - WEDNESDAY #template
+            - 01 - WED
+            - 02 - THU
+            - 03 - FRI
+            - 04 - SAT
+            - 05 - SUN
+            - 06 - MON
+            - 07 - TUE
+            - 08 - WED
+            - 09 - THU
+            - 10 - FRI
+            - 11 - SAT
+            - 12 - SUN
+            - 13 - MON
+            - 14 - TUE
+            - 15 - WED
+            - 16 - THU
+            - 17 - FRI
+            - 18 - SAT
+            - 19 - SUN
+            - 20 - MON
+            - 21 - TUE
+            - 22 - WED
+            - 23 - THU
+            - 24 - FRI
+            - 25 - SAT
+            - 26 - SUN
+            - 27 - MON
+            - 28 - TUE
+            - 29 - WED
+            - 30 - THU
+            - 31 - FRI
+          - THURSDAY #template
+            - 01 - THU
+            - 02 - FRI
+            - 03 - SAT
+            - 04 - SUN
+            - 05 - MON
+            - 06 - TUE
+            - 07 - WED
+            - 08 - THU
+            - 09 - FRI
+            - 10 - SAT
+            - 11 - SUN
+            - 12 - MON
+            - 13 - TUE
+            - 14 - WED
+            - 15 - THU
+            - 16 - FRI
+            - 17 - SAT
+            - 18 - SUN
+            - 19 - MON
+            - 20 - TUE
+            - 21 - WED
+            - 22 - THU
+            - 23 - FRI
+            - 24 - SAT
+            - 25 - SUN
+            - 26 - MON
+            - 27 - TUE
+            - 28 - WED
+            - 29 - THU
+            - 30 - FRI
+            - 31 - SAT
+          - FRIDAY #template
+            - 01 - FRI
+            - 02 - SAT
+            - 03 - SUN
+            - 04 - MON
+            - 05 - TUE
+            - 06 - WED
+            - 07 - THU
+            - 08 - FRI
+            - 09 - SAT
+            - 10 - SUN
+            - 11 - MON
+            - 12 - TUE
+            - 13 - WED
+            - 14 - THU
+            - 15 - FRI
+            - 16 - SAT
+            - 17 - SUN
+            - 18 - MON
+            - 19 - TUE
+            - 20 - WED
+            - 21 - THU
+            - 22 - FRI
+            - 23 - SAT
+            - 24 - SUN
+            - 25 - MON
+            - 26 - TUE
+            - 27 - WED
+            - 28 - THU
+            - 29 - FRI
+            - 30 - SAT
+            - 31 - SUN
+          - SATURDAY #template
+            - 01 - SAT
+            - 02 - SUN
+            - 03 - MON
+            - 04 - TUE
+            - 05 - WED
+            - 06 - THU
+            - 07 - FRI
+            - 08 - SAT
+            - 09 - SUN
+            - 10 - MON
+            - 11 - TUE
+            - 12 - WED
+            - 13 - THU
+            - 14 - FRI
+            - 15 - SAT
+            - 16 - SUN
+            - 17 - MON
+            - 18 - TUE
+            - 19 - WED
+            - 20 - THU
+            - 21 - FRI
+            - 22 - SAT
+            - 23 - SUN
+            - 24 - MON
+            - 25 - TUE
+            - 26 - WED
+            - 27 - THU
+            - 28 - FRI
+            - 29 - SAT
+            - 30 - SUN
+            - 31 - MON
+          - SUNDAY #template
+            - 01 - SUN
+            - 02 - MON
+            - 03 - TUE
+            - 04 - WED
+            - 05 - THU
+            - 06 - FRI
+            - 07 - SAT
+            - 08 - SUN
+            - 09 - MON
+            - 10 - TUE
+            - 11 - WED
+            - 12 - THU
+            - 13 - FRI
+            - 14 - SAT
+            - 15 - SUN
+            - 16 - MON
+            - 17 - TUE
+            - 18 - WED
+            - 19 - THU
+            - 20 - FRI
+            - 21 - SAT
+            - 22 - SUN
+            - 23 - MON
+            - 24 - TUE
+            - 25 - WED
+            - 26 - THU
+            - 27 - FRI
+            - 28 - SAT
+            - 29 - SUN
+            - 30 - MON
+            - 31 - TUE
+        - ---
+        - MONTH #template
+          - TUESDAY #use-template:1fdad957f1a7
+            -
+          - WEDNESDAY #use-template:d7bbf0e87c83
+            -
+          - THURSDAY #use-template:83757716f73e
+            -
+          - FRIDAY #use-template:99f176e58117
+            -
+          - SATURDAY #use-template:c8b0dbbfa48e
+            -
+          - SUNDAY #use-template:ecf8084c970c
+            -
+        - MONTH
+          - TUESDAY #use-template:1fdad957f1a7
+            -
+          - TUESDAY
+            - 01 - TUE
+            - 02 - WED
+            - 03 - THU
+            - 04 - FRI
+            - 05 - SAT
+            - 06 - SUN
+            - 07 - MON
+            - 08 - TUE
+            - 09 - WED
+            - 10 - THU
+            - 11 - FRI
+            - 12 - SAT
+            - 13 - SUN
+            - 14 - MON
+            - 15 - TUE
+            - 16 - WED
+            - 17 - THU
+            - 18 - FRI
+            - 19 - SAT
+            - 20 - SUN
+            - 21 - MON
+            - 22 - TUE
+            - 23 - WED
+            - 24 - THU
+            - 25 - FRI
+            - 26 - SAT
+            - 27 - SUN
+            - 28 - MON
+            - 29 - TUE
+            - 30 - WED
+            - 31 - THU
+          - WEDNESDAY #use-template:d7bbf0e87c83
+            -
+          - THURSDAY #use-template:83757716f73e
+            -
+          - FRIDAY #use-template:99f176e58117
+            -
+          - SATURDAY #use-template:c8b0dbbfa48e
+            -
+          - SUNDAY #use-template:ecf8084c970c
+            -
+        - ---
+        - Template Execution
+          - Step 1
+            - June 2020
+              - MONDAY #use-template:2faa36146956
+                -
+              - TUESDAY #use-template:1fdad957f1a7
+                -
+              - WEDNESDAY #use-template:d7bbf0e87c83
+                -
+              - THURSDAY #use-template:83757716f73e
+                -
+              - FRIDAY #use-template:99f176e58117
+                -
+              - SATURDAY #use-template:c8b0dbbfa48e
+                -
+              - SUNDAY #use-template:ecf8084c970c
+                -
+          - Step 2
+            - June 2020
+              - MONDAY #use-template:2faa36146956
+                -
+              - MONDAY
+                - 01 - MON
+                - 02 - TUE
+                - 03 - WED
+                - 04 - THU
+                - 05 - FRI
+                - 06 - SAT
+                - 07 - SUN
+                - 08 - MON
+                - 09 - TUE
+                - 10 - WED
+                - 11 - THU
+                - 12 - FRI
+                - 13 - SAT
+                - 14 - SUN
+                - 15 - MON
+                - 16 - TUE
+                - 17 - WED
+                - 18 - THU
+                - 19 - FRI
+                - 20 - SAT
+                - 21 - SUN
+                - 22 - MON
+                - 23 - TUE
+                - 24 - WED
+                - 25 - THU
+                - 26 - FRI
+                - 27 - SAT
+                - 28 - SUN
+                - 29 - MON
+                - 30 - TUE
+                - 31 - WED
+              - TUESDAY #use-template:1fdad957f1a7
+                -
+              - WEDNESDAY #use-template:d7bbf0e87c83
+                -
+              - THURSDAY #use-template:83757716f73e
+                -
+              - FRIDAY #use-template:99f176e58117
+                -
+              - SATURDAY #use-template:c8b0dbbfa48e
+                -
+              - SUNDAY #use-template:ecf8084c970c
+                -
+          - Step 3
+            - June 2020
+              - MONDAY #use-template:2faa36146956
+                -
+              - 01 - MON
+              - 02 - TUE
+              - 03 - WED
+              - 04 - THU
+              - 05 - FRI
+              - 06 - SAT
+              - 07 - SUN
+              - 08 - MON
+              - 09 - TUE
+              - 10 - WED
+              - 11 - THU
+              - 12 - FRI
+              - 13 - SAT
+              - 14 - SUN
+              - 15 - MON
+              - 16 - TUE
+              - 17 - WED
+              - 18 - THU
+              - 19 - FRI
+              - 20 - SAT
+              - 21 - SUN
+              - 22 - MON
+              - 23 - TUE
+              - 24 - WED
+              - 25 - THU
+              - 26 - FRI
+              - 27 - SAT
+              - 28 - SUN
+              - 29 - MON
+              - 30 - TUE
+              - 31 - WED
+              - TUESDAY #use-template:1fdad957f1a7
+                -
+              - WEDNESDAY #use-template:d7bbf0e87c83
+                -
+              - THURSDAY #use-template:83757716f73e
+                -
+              - FRIDAY #use-template:99f176e58117
+                -
+              - SATURDAY #use-template:c8b0dbbfa48e
+                -
+              - SUNDAY #use-template:ecf8084c970c
+                -
+          - Step 4
+            - June 2020
+              - 01 - MON
+              - 02 - TUE
+              - 03 - WED
+              - 04 - THU
+              - 05 - FRI
+              - 06 - SAT
+              - 07 - SUN
+              - 08 - MON
+              - 09 - TUE
+              - 10 - WED
+              - 11 - THU
+              - 12 - FRI
+              - 13 - SAT
+              - 14 - SUN
+              - 15 - MON
+              - 16 - TUE
+              - 17 - WED
+              - 18 - THU
+              - 19 - FRI
+              - 20 - SAT
+              - 21 - SUN
+              - 22 - MON
+              - 23 - TUE
+              - 24 - WED
+              - 25 - THU
+              - 26 - FRI
+              - 27 - SAT
+              - 28 - SUN
+              - 29 - MON
+              - 30 - TUE
+    - @dareman
+      - Golf Scorecard #template
+        >
+        > #h01  #h02  #h03  #h04  #h05  #h06
+        > #h07  #h08  #h09  #h10  #h11  #h12
+        > #h13  #h14  #h15  #h16  #h17  #h18
+        - ✎ Read Me
+          - 1. Add golfers with *New Golfer* template
+          - 2. Delete *New Golfer* template
+          - 3. Delete this *Read Me* note [optional]
+        - PAR
+          - ⛳️ #h01 -
+          - ⛳️ #h02 -
+          - ⛳️ #h03 -
+          - ⛳️ #h04 -
+          - ⛳️ #h05 -
+          - ⛳️ #h06 -
+          - ⛳️ #h07 -
+          - ⛳️ #h08 -
+          - ⛳️ #h09 -
+          - ⛳️ #h10 -
+          - ⛳️ #h11 -
+          - ⛳️ #h12 -
+          - ⛳️ #h13 -
+          - ⛳️ #h14 -
+          - ⛳️ #h15 -
+          - ⛳️ #h16 -
+          - ⛳️ #h17 -
+          - ⛳️ #h18 -
+        - ............................................
+        - Golfer #template
+          - #h01 -
+          - #h02 -  
+          - #h03 -
+          - #h04 -
+          - #h05 -
+          - #h06 -
+          - #h07 -
+          - #h08 -
+          - #h09 -
+          - #h10 -
+          - #h11 -
+          - #h12 -
+          - #h13 -
+          - #h14 -
+          - #h15 -
+          - #h16 -
+          - #h17 -
+          - #h18 -
+      - Golf Scorecard  
+        >
+        > #h01  #h02  #h03  #h04  #h05  #h06
+        > #h07  #h08  #h09  #h10  #h11  #h12
+        > #h13  #h14  #h15  #h16  #h17  #h18
+        - ✎ Read Me
+          - 1. Add golfers with *New Golfer* template
+          - 2. Delete *New Golfer* template
+          - 3. Delete this *Read Me* note [optional]
+        - PAR
+          - ⛳️ #h01 -
+          - ⛳️ #h02 -
+          - ⛳️ #h03 -
+          - ⛳️ #h04 -
+          - ⛳️ #h05 -
+          - ⛳️ #h06 -
+          - ⛳️ #h07 -
+          - ⛳️ #h08 -
+          - ⛳️ #h09 -
+          - ⛳️ #h10 -
+          - ⛳️ #h11 -
+          - ⛳️ #h12 -
+          - ⛳️ #h13 -
+          - ⛳️ #h14 -
+          - ⛳️ #h15 -
+          - ⛳️ #h16 -
+          - ⛳️ #h17 -
+          - ⛳️ #h18 -
+        - ............................................
+        - Golfer #template
+          - #h01 -
+          - #h02 -  
+          - #h03 -
+          - #h04 -
+          - #h05 -
+          - #h06 -
+          - #h07 -
+          - #h08 -
+          - #h09 -
+          - #h10 -
+          - #h11 -
+          - #h12 -
+          - #h13 -
+          - #h14 -
+          - #h15 -
+          - #h16 -
+          - #h17 -
+          - #h18 -
+        - Golfer
+          - #h01 -
+          - #h02 -  
+          - #h03 -
+          - #h04 -
+          - #h05 -
+          - #h06 -
+          - #h07 -
+          - #h08 -
+          - #h09 -
+          - #h10 -
+          - #h11 -
+          - #h12 -
+          - #h13 -
+          - #h14 -
+          - #h15 -
+          - #h16 -
+          - #h17 -
+          - #h18 -
+- Just For Fun
+  - WorkFlowy-based role playing game
+    > [https://workflowy.com/s/hello-friends/I8O72snhwNiyGX8C](https://workflowy.com/s/hello-friends/I8O72snhwNiyGX8C)
+- WorkFlowy Timeline
+  - ﻿﻿Invalid date﻿ - WorkFlowy Web Clipper
+    - [https://blog.workflowy.com/2020/07/20/workflowy-web-clipper-a-smoother-way-to-research/](https://blog.workflowy.com/2020/07/20/workflowy-web-clipper-a-smoother-way-to-research/)
+  - ﻿﻿Invalid date﻿ - Dates and Sidebar
+    - Dates in WorkFlowy: Try It Out
+      - [https://blog.workflowy.com/2019/12/30/](https://blog.workflowy.com/2019/12/30/dates-in-workflowy-try-it-out/)[dates](https://blog.workflowy.com/2019/12/30/dates-in-workflowy-try-it-out/)[-in-workflowy-try-it-out](https://blog.workflowy.com/2019/12/30/dates-in-workflowy-try-it-out/)
+    - WorkFlowy Has A Fancy New Left Bar
+      - [https://blog.workflowy.com/2019/12/30/workflowy-has-a-fancy-new-left-bar](https://blog.workflowy.com/2019/12/30/workflowy-has-a-fancy-new-left-bar/)
+  - ﻿﻿Invalid date﻿ - Search Dialog Box
+    - A Faster Way to Jump Around WorkFlowy
+      - [https://blog.workflowy.com/2019/04/24/a-faster-way-to-jump-around-workflowy](https://blog.workflowy.com/2019/04/24/a-faster-way-to-jump-around-workflowy/)
+  - ﻿﻿Invalid date﻿ - Boards
+    - Fractal Boards: A New Way to Organize
+      - [https://blog.workflowy.com/2020/06/10/fractal-boards-a-new-way-to-organize](https://blog.workflowy.com/2020/06/10/fractal-boards-a-new-way-to-organize/)
+  - Thu, Mar 3, 2022 - Created a roadmap page to show where they are going
+- …and now, The News
+  - Sat, May 5, 2018  - At top of WorkFlowy founder’s to-do list: Keeping his app’s cult-like following happy - GeekWire       
+    > https://www.geekwire.com/2018/workflowly-founder-new-list-update-popular-app-keeping-purists-happy/
+  - Thu, Nov 16, 2017 - The Story of WorkFlowy: From $0 to $800,000 a Year with Jesse Patel - Indie Hackers - Podcast & Transcript  
+    > [https://www.indiehackers.com/podcast/037-jesse-patel-of-workflowy](https://www.indiehackers.com/podcast/037-jesse-patel-of-workflowy)
+  - Thu, Aug 2, 2012 - Everything Is a List - Slate
+    > [https://slate.com/technology/2012/08/workflowy-the-note-taking-app-that-changed-the-way-i-organize-my-life.html](https://slate.com/technology/2012/08/workflowy-the-note-taking-app-that-changed-the-way-i-organize-my-life.html)
+    -
+  - Thu, Nov 4, 2010 - Turn Your Entire Life Into A List With Workflowy - Techcrunch  
+    > [https://techcrunch.com/2010/11/04/workflow/](https://techcrunch.com/2010/11/04/workflow/)
+-

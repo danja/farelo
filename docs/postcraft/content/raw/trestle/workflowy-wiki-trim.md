@@ -1,0 +1,84 @@
+## Features
+
+- any node can be moved anywhere
+- markdown format is supported
+
+- copy internal link
+- create new backlink
+- dashboard view
+- dates
+  - language based/tab input
+- duplicate/copy nodes
+- each node is a URL
+- embedded external links/rename links
+- expand/collapse
+- indentation
+- inline youtube videos
+- left-side bar
+- mirrors
+  - [https://blog.workflowy.com/mirrors-create-live-copies-of-any-bullet/](https://blog.workflowy.com/mirrors-create-live-copies-of-any-bullet/)
+  - [https://workflowy.com/feature/mirrors/?utm_source=blog&utm_medium=post&utm_campaign=Mirrors%3A%20A%20New%20Organization%20Paradigm](https://workflowy.com/feature/mirrors/?utm_source=blog&utm_medium=post&utm_campaign=Mirrors%3A%20A%20New%20Organization%20Paradigm)
+- no embedded structure (allowing for flexible structure building by users)
+- nodes
+- notes
+- paragraphs and headings
+- quick-search by tags
+- search
+  - click tag to search
+  - search at current node hierarchy
+  - is:
+  - jump to menu
+  - date...
+  - changed:time
+  - changed by me/others
+- select/move easily
+- sharing
+  - editable
+  - view only
+  - can share
+- slash commands: "/" brings up drop down menu, start typing to isolate options
+- starred searches
+- switching between view options (list/board)
+- tags
+  - searchable
+  - exploding with alt click
+- templates
+- to-do
+-
+-
+-
+-
+- change image setting size
+- colors
+  - drop down to change all instances of a tag
+  - letter colors
+  - highlighted colors
+  - to highlight multiple nodes with the same highlight or color
+    - First make sure you’ve got the default color/ highlight you want
+    - Highlight all the lists you want
+    - Hit Ctrl/Cmnd+Shift+H
+  - [https://blog.workflowy.com/text-and-tag-colors-are-now-available/](https://blog.workflowy.com/text-and-tag-colors-are-now-available/)
+- cross-platform
+- daily backup feature (pro)
+- export
+  - plain text
+  - formatted text
+  - OPML
+- font options
+- images
+- information caching once each session, then speed
+- inline tweets
+- left side bar navigation
+- list view
+- offline-accessible
+- read/unread updates
+- simple formatting (bold/underline/italics)
+- skeletal api options
+- text simplicity/speed
+- theme and font options
+- trash/recovery
+- Tweet embed
+- upload files
+- WFx
+- WFx PowerPack
+- Youtube embed
