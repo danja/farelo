@@ -48,7 +48,7 @@ export class TrestleView {
 
         // Render the tree
         const rootUl = document.createElement('ul')
-        rootUl.className = 'ts-root'
+        rootUl.className = 'tr-root'
         this.rootElement.appendChild(rootUl)
 
         // Render each child of the root
@@ -114,11 +114,11 @@ export class TrestleView {
         li.appendChild(dropzone)
 
         // Clone entry template
-        const entry = this.template.content.cloneNode(true).querySelector('.ts-entry')
+        const entry = this.template.content.cloneNode(true).querySelector('.tr-entry')
         entry.id = nodeId
 
         // Set node title
-        const titleElement = entry.querySelector('.ts-title')
+        const titleElement = entry.querySelector('.tr-title')
         titleElement.textContent = node.title || ''
 
         // Set created date (hidden)
@@ -135,13 +135,13 @@ export class TrestleView {
         if (node.children && node.children.length > 0) {
             const ul = document.createElement('ul')
             li.appendChild(ul)
-            li.classList.add('ts-open')
+            li.classList.add('tr-open')
 
             for (const childId of node.children) {
                 this.renderNode(childId, ul, nodesMap)
             }
         } else {
-            li.classList.add('ts-closed')
+            li.classList.add('tr-closed')
         }
 
         // Append to parent
@@ -172,30 +172,30 @@ export class TrestleView {
         const target = event.target
 
         // Handle expander clicks
-        if (target.classList.contains('ts-expander')) {
+        if (target.classList.contains('tr-expander')) {
             const li = target.closest('li')
-            li.classList.toggle('ts-closed')
-            li.classList.toggle('ts-open')
+            li.classList.toggle('tr-closed')
+            li.classList.toggle('tr-open')
             event.stopPropagation()
             return
         }
 
         // Handle action button clicks
-        if (target.classList.contains('ts-card')) {
-            this.showCard(target.closest('.ts-entry').id)
+        if (target.classList.contains('tr-card')) {
+            this.showCard(target.closest('.tr-entry').id)
             event.stopPropagation()
             return
         }
 
-        if (target.classList.contains('ts-addChild')) {
-            const entryId = target.closest('.ts-entry').id
+        if (target.classList.contains('tr-addChild')) {
+            const entryId = target.closest('.tr-entry').id
             this.eventBus.publish('view:addChild', { parentId: entryId })
             event.stopPropagation()
             return
         }
 
-        if (target.classList.contains('ts-delete')) {
-            const entryId = target.closest('.ts-entry').id
+        if (target.classList.contains('tr-delete')) {
+            const entryId = target.closest('.tr-entry').id
             if (confirm('Are you sure you want to delete this item and all its children?')) {
                 this.eventBus.publish('view:deleteNode', { nodeId: entryId })
             }
@@ -204,8 +204,8 @@ export class TrestleView {
         }
 
         // Handle entry selection
-        if (target.classList.contains('ts-entry') || target.classList.contains('ts-title')) {
-            const entry = target.classList.contains('ts-entry') ? target : target.closest('.ts-entry')
+        if (target.classList.contains('tr-entry') || target.classList.contains('tr-title')) {
+            const entry = target.classList.contains('tr-entry') ? target : target.closest('.tr-entry')
             this.selectNode(entry.id)
             event.stopPropagation()
             return
@@ -220,7 +220,7 @@ export class TrestleView {
         const target = event.target
 
         // Make title editable on double-click
-        if (target.classList.contains('ts-title')) {
+        if (target.classList.contains('tr-title')) {
             target.contentEditable = true
             target.focus()
 
@@ -243,7 +243,7 @@ export class TrestleView {
         // Only handle events on editable elements
         if (!event.target.isContentEditable) return
 
-        const entry = event.target.closest('.ts-entry')
+        const entry = event.target.closest('.tr-entry')
         if (!entry) return
 
         switch (event.key) {
@@ -305,8 +305,8 @@ export class TrestleView {
      * @param {FocusEvent} event - The focus event
      */
     handleFocus(event) {
-        if (event.target.classList.contains('ts-title')) {
-            const entry = event.target.closest('.ts-entry')
+        if (event.target.classList.contains('tr-title')) {
+            const entry = event.target.closest('.tr-entry')
             this.selectNode(entry.id)
         }
     }
@@ -316,11 +316,11 @@ export class TrestleView {
      * @param {FocusEvent} event - The blur event
      */
     handleBlur(event) {
-        if (event.target.classList.contains('ts-title') && event.target.isContentEditable) {
+        if (event.target.classList.contains('tr-title') && event.target.isContentEditable) {
             // Save changes when focus is lost
             // danny  event.target.contentEditable = false
 
-            const entry = event.target.closest('.ts-entry')
+            const entry = event.target.closest('.tr-entry')
             const nodeId = entry.id
             const newTitle = event.target.textContent.trim()
 
@@ -333,7 +333,7 @@ export class TrestleView {
      */
     initDragAndDrop() {
         // Add drag start event to handles
-        const handles = this.rootElement.querySelectorAll('.ts-handle')
+        const handles = this.rootElement.querySelectorAll('.tr-handle')
         handles.forEach(handle => {
             handle.addEventListener('mousedown', this.handleDragStart.bind(this))
             handle.setAttribute('draggable', 'true')
@@ -360,7 +360,7 @@ export class TrestleView {
      * @param {DragEvent} event - The dragstart event
      */
     handleDragStart(event) {
-        const entry = event.target.closest('.ts-entry')
+        const entry = event.target.closest('.tr-entry')
         if (!entry) return
 
         // Set dragged node
@@ -385,7 +385,7 @@ export class TrestleView {
         }
 
         // Add dragging class
-        entry.classList.add('ts-dragging')
+        entry.classList.add('tr-dragging')
 
         // Select the node
         this.selectNode(entry.id)
@@ -429,7 +429,7 @@ export class TrestleView {
         this.dragTarget = li
 
         // Highlight the potential parent
-        li.classList.add('ts-highlight')
+        li.classList.add('tr-highlight')
 
         // Cancel any existing timers
         if (this.dragEnterTimer) {
@@ -438,9 +438,9 @@ export class TrestleView {
 
         // Set a delay to open the node if hovered
         this.dragEnterTimer = setTimeout(() => {
-            if (li.classList.contains('ts-closed')) {
-                li.classList.remove('ts-closed')
-                li.classList.add('ts-open')
+            if (li.classList.contains('tr-closed')) {
+                li.classList.remove('tr-closed')
+                li.classList.add('tr-open')
             }
         }, 700) // 700ms delay to open
     }
@@ -497,8 +497,8 @@ export class TrestleView {
             if (!childUl) {
                 childUl = document.createElement('ul')
                 targetLi.appendChild(childUl)
-                targetLi.classList.remove('ts-closed')
-                targetLi.classList.add('ts-open')
+                targetLi.classList.remove('tr-closed')
+                targetLi.classList.add('tr-open')
             }
 
             // Add to end of children
@@ -514,11 +514,11 @@ export class TrestleView {
 
         // Clean up
         this.draggedNodeId = null
-        draggedLi.classList.remove('ts-dragging')
+        draggedLi.classList.remove('tr-dragging')
 
         // Remove all highlights
-        document.querySelectorAll('.ts-highlight').forEach(el => {
-            el.classList.remove('ts-highlight')
+        document.querySelectorAll('.tr-highlight').forEach(el => {
+            el.classList.remove('tr-highlight')
         })
     }
 
@@ -531,10 +531,10 @@ export class TrestleView {
         if (this.selectedNodeId) {
             const prevSelected = document.getElementById(this.selectedNodeId)
             if (prevSelected) {
-                prevSelected.classList.remove('ts-selected')
+                prevSelected.classList.remove('tr-selected')
 
                 // Make title not editable
-                const prevTitle = prevSelected.querySelector('.ts-title')
+                const prevTitle = prevSelected.querySelector('.tr-title')
                 if (prevTitle) {
                     // danny     prevTitle.contentEditable = false
                 }
@@ -545,7 +545,7 @@ export class TrestleView {
         this.selectedNodeId = nodeId
         const entry = document.getElementById(nodeId)
         if (entry) {
-            entry.classList.add('ts-selected')
+            entry.classList.add('tr-selected')
         }
     }
 
@@ -562,18 +562,18 @@ export class TrestleView {
 
         if (prevLi) {
             // If previous has children and is open, navigate to last child recursively
-            while (prevLi.classList.contains('ts-open') && prevLi.querySelector('ul')?.lastElementChild) {
+            while (prevLi.classList.contains('tr-open') && prevLi.querySelector('ul')?.lastElementChild) {
                 prevLi = prevLi.querySelector('ul').lastElementChild
             }
 
             // Select the previous item
-            const prevId = prevLi.querySelector('.ts-entry').id
+            const prevId = prevLi.querySelector('.tr-entry').id
             this.selectNode(prevId)
         } else {
             // No previous sibling, go to parent
             const parentLi = currentLi.parentElement.closest('li')
             if (parentLi) {
-                const parentId = parentLi.querySelector('.ts-entry').id
+                const parentId = parentLi.querySelector('.tr-entry').id
                 this.selectNode(parentId)
             }
         }
@@ -588,10 +588,10 @@ export class TrestleView {
         if (!currentLi) return
 
         // If current node has children and is open, go to first child
-        if (currentLi.classList.contains('ts-open')) {
+        if (currentLi.classList.contains('tr-open')) {
             const firstChild = currentLi.querySelector('ul > li')
             if (firstChild) {
-                const childId = firstChild.querySelector('.ts-entry').id
+                const childId = firstChild.querySelector('.tr-entry').id
                 this.selectNode(childId)
                 return
             }
@@ -600,7 +600,7 @@ export class TrestleView {
         // Try to find next sibling
         let nextLi = currentLi.nextElementSibling
         if (nextLi) {
-            const nextId = nextLi.querySelector('.ts-entry').id
+            const nextId = nextLi.querySelector('.tr-entry').id
             this.selectNode(nextId)
             return
         }
@@ -610,7 +610,7 @@ export class TrestleView {
         while (parent) {
             const parentNext = parent.nextElementSibling
             if (parentNext) {
-                const nextId = parentNext.querySelector('.ts-entry').id
+                const nextId = parentNext.querySelector('.tr-entry').id
                 this.selectNode(nextId)
                 return
             }
@@ -628,7 +628,7 @@ export class TrestleView {
         if (!entry) return
 
         // Get node data
-        const title = entry.querySelector('.ts-title').textContent
+        const title = entry.querySelector('.tr-title').textContent
         const date = entry.querySelector('.date').textContent
 
         // Get description from model via event
@@ -684,8 +684,8 @@ export class TrestleView {
             if (!ul) {
                 ul = document.createElement('ul')
                 parentLi.appendChild(ul)
-                parentLi.classList.remove('ts-closed')
-                parentLi.classList.add('ts-open')
+                parentLi.classList.remove('tr-closed')
+                parentLi.classList.add('tr-open')
             }
 
             parentElement = ul
@@ -700,7 +700,7 @@ export class TrestleView {
 
         // Select and focus the new node
         if (newNodeElement) {
-            const titleElement = newNodeElement.querySelector('.ts-title')
+            const titleElement = newNodeElement.querySelector('.tr-title')
             this.selectNode(node.id)
 
             // Make the title editable and focus it
@@ -732,7 +732,7 @@ export class TrestleView {
 
         // Update title if changed
         if (properties.title !== undefined) {
-            const titleElement = nodeEntry.querySelector('.ts-title')
+            const titleElement = nodeEntry.querySelector('.tr-title')
             titleElement.textContent = properties.title
         }
 

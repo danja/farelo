@@ -39,7 +39,7 @@ function setupUIListeners(controller) {
     const addButton = document.getElementById('addButton')
     const shortcutsButton = document.getElementById('shortcutsButton')
     const cardClose = document.getElementById('card-close')
-    const shortcutsText = document.getElementById('shortcuts-text')
+    const shortcutsText = document.getElementById('shortcutr-text')
 
     // Button actions
     saveButton.addEventListener('click', () => controller.saveData())
