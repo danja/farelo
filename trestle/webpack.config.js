@@ -1,38 +1,62 @@
-import path from 'path';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
+import path from 'path'
+import { fileURLToPath } from 'url'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+
+// Get the directory name of the current module
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default {
-    entry: './src/main.js', // Corrected the entry point to match the actual file location
+    entry: './src/main.js', // Entry point remains the same
     resolve: {
         extensions: ['.js', '.json'],
         alias: {
-            '@': path.resolve(process.cwd(), 'src/js') // Adjusted alias to match project layout
+            '@': path.resolve(__dirname, 'src') // Alias '@' points to the src directory
         }
     },
     output: {
-        filename: '[name].js',
-        path: path.resolve(process.cwd(), 'dist/public/js'), // Changed output path to dist/public
+        filename: '[name].bundle.js', // Added .bundle for clarity
+        path: path.resolve(__dirname, 'dist/public'), // Output directly to dist/public
+        publicPath: '/', // Serve assets from the root
+        clean: true, // Clean the output directory before build
     },
     devServer: {
         static: {
-            directory: path.resolve(process.cwd(), 'dist/public') // Serve from dist/public
+            directory: path.resolve(__dirname, 'dist/public') // Serve static files from dist/public
         },
-        port: 9090, // Changed the development server port to 9090
-        open: true // Automatically open the browser on server start
+        port: 9090,
+        open: true,
+        // History API fallback might be needed for single-page applications
+        // historyApiFallback: true, 
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src/html/index.html'), // Path to your template
+            filename: 'index.html', // Output filename
+            inject: 'body' // Inject scripts into the body
+        }),
         new CopyWebpackPlugin({
             patterns: [
-                // { from: 'src/html/index.html', to: 'dist/public/index.html' },
+                // HTML copying is now handled by HtmlWebpackPlugin
+                // {
+                //     // Copy HTML files from src/html to dist/public
+                //     from: path.resolve(__dirname, 'src/html'),
+                //     to: path.resolve(__dirname, 'dist/public'),
+                //     globOptions: {
+                //         ignore: ['**/.*'], // Example: ignore dotfiles
+                //     },
+                // },
                 {
-                    from: "./src/html/**/*",
-                    to: "./dist/public/",
-                },
-                {
-                    from: './src/css/**/*',
-                    to: './dist/public/css/'
-                } // Copy CSS file to dist/public/css
+                    // Copy CSS files from src/css to dist/public/css
+                    from: path.resolve(__dirname, 'src/css'),
+                    to: path.resolve(__dirname, 'dist/public/css'),
+                    globOptions: {
+                        ignore: ['**/.*'], // Example: ignore dotfiles
+                    },
+                }
             ]
         })
-    ]
-};
+    ],
+    mode: 'development', // Set mode (development or production)
+    devtool: 'inline-source-map', // Add source maps for easier debugging
+}
