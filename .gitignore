@@ -1,3 +1,7 @@
+trestle/docs 
+trestle/node_modules
+**/*repomix*.md
+
 # Logs
 logs
 *.log
