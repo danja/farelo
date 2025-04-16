@@ -7,7 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default {
-    entry: './src/main.js', // Entry point remains the same
+    entry: './src/js/main.js', // Entry point remains the same
     resolve: {
         extensions: ['.js', '.json'],
         alias: {

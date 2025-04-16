@@ -12,9 +12,24 @@
 <body>
     <header id="header-outer">
         <div id="header">Trestle</div>
+        
+        <!-- Desktop Navigation -->
+        <div class="top-navbar">
+            <div class="toolbar">
+                <ul>
+                    <li><button id="saveButton">Save</button></li>
+                    <li><button id="addButton">Add Root Item</button></li>
+                    <li><button id="shortcutsButton">Shortcuts</button></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Mobile Hamburger Menu -->
+        <button class="hamburger-menu" aria-label="Menu" id="hamburgerButton">☰</button>
     </header>
 
-    <div id="menu-box">
+    <!-- Mobile Menu -->
+    <div id="menu-box" class="hidden">
         <div class="toolbar">
             <ul>
                 <li><button id="saveButton">Save</button></li>
@@ -68,7 +83,6 @@
         </div>
     </template>
 
-    <!-- Load modules -->
     <script type="module" src="js/main.js"></script>
 </body>
 
