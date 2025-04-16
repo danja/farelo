@@ -1,8 +1,8 @@
 // test/integration/TrestleRDFIntegration.spec.js
 import { expect } from 'chai'
-import { EventBus } from '../../../src/js/utils/EventBus.js'
-import { TrestleModel } from '../../../src/js/model/TrestleModel.js'
-import RDFModel from '../../../src/domain/rdf/RDFModel.js'
+import { EventBus } from '../../src/js/utils/EventBus.js'
+import { TrestleModel } from '../../src/js/model/TrestleModel.js'
+import RDFModel from '../../src/domain/rdf/RDFModel.js'
 import { JSDOM } from 'jsdom'
 
 // Setup DOM environment
