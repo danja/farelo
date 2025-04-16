@@ -72,7 +72,7 @@ export class TrestleModel {
     async loadData() {
         try {
             const fURL = `${this.endpoint}?query=${encodeURIComponent(this.buildLoadQuery())}`
-            console.log(`fURL = ${decodeURI(fURL)}`)
+            //    console.log(`fURL = ${decodeURI(fURL)}`)
             const response = await fetch(fURL, {
                 method: 'GET',
                 headers: {
@@ -85,7 +85,7 @@ export class TrestleModel {
             }
 
             const data = await response.json()
-            console.log(`data = ${JSON.stringify(data)}`)
+            //    console.log(`data = ${JSON.stringify(data)}`)
             this.processLoadedData(data)
 
             return true
