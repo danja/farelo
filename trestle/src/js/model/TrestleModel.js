@@ -1,15 +1,10 @@
-/**
- * TrestleModel - Manages the data structure and SPARQL persistence
- */
+// src/js/model/TrestleModel.js
 import { Config } from '../config.js'
 import { generateID, generateDate } from '../utils/utils.js'
+import { TreeNodeOperations } from './TreeNodeOperations.js'
+import { AsyncOperations } from '../utils/AsyncOperations.js'
 
 export class TrestleModel {
-    /**
-     * @param {string} endpoint - SPARQL endpoint URL
-     * @param {string} baseUri - Base URI for RDF data
-     * @param {EventBus} eventBus - Event bus for component communication
-     */
     constructor(endpoint, baseUri, eventBus) {
         this.endpoint = endpoint
         this.baseUri = baseUri
@@ -17,34 +12,28 @@ export class TrestleModel {
         this.rootId = null
         this.nodes = new Map()
 
-        // Register event handlers
+        // Setup debounced save
+        this.debouncedSave = AsyncOperations.debounce(this.saveData.bind(this), 2000)
+
         this.eventBus.subscribe('node:updated', this.handleNodeUpdate.bind(this))
         this.eventBus.subscribe('node:moved', this.handleNodeMove.bind(this))
         this.eventBus.subscribe('node:deleted', this.handleNodeDelete.bind(this))
     }
 
-    /**
-     * Initialize the model and load data
-     */
     async initialize() {
         try {
             await this.loadData()
             this.eventBus.publish('model:loaded', { nodes: Array.from(this.nodes.values()) })
         } catch (error) {
             console.error('Failed to initialize model:', error)
-            // Create a new empty model if none exists
             this.createEmptyModel()
         }
     }
 
-    /**
-     * Creates a new, empty data model
-     */
     createEmptyModel() {
         const rootId = this.generateNodeId('root')
         this.rootId = rootId
 
-        // Create root node
         this.nodes.set(rootId, {
             id: rootId,
             type: 'RootNode',
@@ -57,22 +46,14 @@ export class TrestleModel {
         })
     }
 
-    /**
-     * Generate a unique node ID
-     * @param {string} prefix - Optional prefix for the ID
-     * @returns {string} - The generated ID
-     */
     generateNodeId(prefix = 'nid') {
         return `${prefix}-${generateID()}`
     }
 
-    /**
-     * Loads trestle data from SPARQL endpoint
-     */
     async loadData() {
         try {
             const fURL = `${this.endpoint}?query=${encodeURIComponent(this.buildLoadQuery())}`
-            //    console.log(`fURL = ${decodeURI(fURL)}`)
+
             const response = await fetch(fURL, {
                 method: 'GET',
                 headers: {
@@ -85,8 +66,11 @@ export class TrestleModel {
             }
 
             const data = await response.json()
-            //    console.log(`data = ${JSON.stringify(data)}`)
-            this.processLoadedData(data)
+
+            // Process data in chunks to avoid UI blocking
+            await AsyncOperations.deferOperation(() => {
+                this.processLoadedData(data)
+            })
 
             return true
         } catch (error) {
@@ -95,9 +79,6 @@ export class TrestleModel {
         }
     }
 
-    /**
-     * Build SPARQL query to load all data
-     */
     buildLoadQuery() {
         return `
             PREFIX dc: <${Config.PREFIXES.dc}>
@@ -109,30 +90,21 @@ export class TrestleModel {
                 OPTIONAL { ?node dc:created ?created } .
                 OPTIONAL { ?node ts:index ?index } .
                 OPTIONAL { ?node ts:parent ?parent } .
-             #   FILTER(STRSTARTS(STR(?type), "${Config.PREFIXES.ts}"))
             }
         `
     }
 
-    /**
-     * Process data loaded from SPARQL endpoint
-     * @param {Object} data - JSON data from SPARQL endpoint
-     */
     processLoadedData(data) {
-        // Reset current data
         this.nodes.clear()
         this.rootId = null
 
-        // Process all nodes
         const nodesMap = new Map()
 
-        // First pass: create all nodes
         for (const binding of data.results.bindings) {
             const nodeUri = binding.node.value
             const nodeId = this.extractLocalId(nodeUri)
             const type = this.extractLocalType(binding.type.value)
 
-            // Create or update node
             let node = nodesMap.get(nodeId) || { id: nodeId, children: [] }
             node.type = type
 
@@ -152,7 +124,6 @@ export class TrestleModel {
                 node.parent = this.extractLocalId(binding.parent.value)
             }
 
-            // Check if root node
             if (type === 'RootNode') {
                 this.rootId = nodeId
             }
@@ -160,61 +131,21 @@ export class TrestleModel {
             nodesMap.set(nodeId, node)
         }
 
-        // Second pass: build parent-child relationships
-        for (const [id, node] of nodesMap.entries()) {
-            if (node.parent) {
-                const parentNode = nodesMap.get(node.parent)
-                if (parentNode) {
-                    if (!parentNode.children) {
-                        parentNode.children = []
-                    }
-                    parentNode.children.push(id)
-                }
-            }
-        }
-
-        // Sort children by index
-        for (const node of nodesMap.values()) {
-            if (node.children && node.children.length > 0) {
-                node.children.sort((a, b) => {
-                    const nodeA = nodesMap.get(a)
-                    const nodeB = nodesMap.get(b)
-                    return (nodeA.index || 0) - (nodeB.index || 0)
-                })
-            }
-        }
-
-        // Set the nodes in our model
-        this.nodes = nodesMap
+        // Using TreeNodeOperations to build the tree structure efficiently
+        const treeStructure = TreeNodeOperations.buildTreeStructure(Array.from(nodesMap.values()), this.rootId)
+        this.nodes = treeStructure.nodes
     }
 
-    /**
-     * Extract local ID from full URI
-     * @param {string} uri - Full URI
-     * @returns {string} - Local ID portion
-     */
     extractLocalId(uri) {
         const parts = uri.split('/')
         return parts[parts.length - 1]
     }
 
-    /**
-     * Extract local type from full URI
-     * @param {string} uri - Full URI
-     * @returns {string} - Local type portion
-     */
     extractLocalType(uri) {
         const parts = uri.split('/')
         return parts[parts.length - 1]
     }
 
-    /**
-     * Add a new node to the model
-     * @param {string} parentId - Parent node ID
-     * @param {string} title - Node title
-     * @param {number} index - Position in parent's children
-     * @returns {Object} - New node object
-     */
     addNode(parentId, title, index) {
         const nodeId = this.generateNodeId()
         const now = generateDate()
@@ -222,7 +153,6 @@ export class TrestleModel {
         const newNode = {
             id: nodeId,
             type: 'Node',
-            // danny      title: title || 'New Item',
             title: title || '',
             created: now,
             parent: parentId,
@@ -242,23 +172,21 @@ export class TrestleModel {
 
             if (typeof index === 'number') {
                 parentNode.children.splice(index, 0, nodeId)
-
-                // Update indices for siblings
                 this.updateChildIndices(parentNode)
             } else {
-                // Add to end
                 newNode.index = parentNode.children.length
                 parentNode.children.push(nodeId)
             }
         }
 
+        // Trigger debounced save if auto-save is enabled
+        if (Config.AUTO_SAVE) {
+            this.debouncedSave()
+        }
+
         return newNode
     }
 
-    /**
-     * Update indices for all children of a node
-     * @param {Object} parentNode - Parent node
-     */
     updateChildIndices(parentNode) {
         if (parentNode.children) {
             parentNode.children.forEach((childId, index) => {
@@ -270,12 +198,6 @@ export class TrestleModel {
         }
     }
 
-    /**
-     * Move a node to a new parent or position
-     * @param {string} nodeId - ID of node to move
-     * @param {string} newParentId - ID of new parent
-     * @param {number} newIndex - New position in parent's children
-     */
     moveNode(nodeId, newParentId, newIndex) {
         const node = this.nodes.get(nodeId)
         if (!node) return
@@ -283,7 +205,6 @@ export class TrestleModel {
         const oldParentId = node.parent
         const oldParent = this.nodes.get(oldParentId)
 
-        // Remove from old parent
         if (oldParent && oldParent.children) {
             const oldIndex = oldParent.children.indexOf(nodeId)
             if (oldIndex !== -1) {
@@ -292,7 +213,6 @@ export class TrestleModel {
             }
         }
 
-        // Add to new parent
         const newParent = this.nodes.get(newParentId)
         if (newParent) {
             if (!newParent.children) {
@@ -306,157 +226,117 @@ export class TrestleModel {
                 newIndex = newParent.children.length - 1
             }
 
-            // Update node parent and index
             node.parent = newParentId
             node.index = newIndex
 
-            // Update indices for new siblings
             this.updateChildIndices(newParent)
         }
+
+        // Trigger debounced save if auto-save is enabled
+        if (Config.AUTO_SAVE) {
+            this.debouncedSave()
+        }
     }
 
-    /**
-     * Delete a node and its children
-     * @param {string} nodeId - ID of node to delete
-     */
+    // Using TreeNodeOperations for non-recursive deletion
     deleteNode(nodeId) {
-        const node = this.nodes.get(nodeId)
-        if (!node) return
+        const deletedIds = TreeNodeOperations.deleteNodeTree(this.nodes, nodeId)
 
-        // First recursively delete all children
-        if (node.children && node.children.length > 0) {
-            // Create a copy to avoid modifying during iteration
-            const childrenToDelete = [...node.children]
-            for (const childId of childrenToDelete) {
-                this.deleteNode(childId)
-            }
+        // Trigger debounced save if auto-save is enabled
+        if (Config.AUTO_SAVE && deletedIds.length > 0) {
+            this.debouncedSave()
         }
 
-        // Remove from parent's children array
-        const parentId = node.parent
-        if (parentId) {
-            const parent = this.nodes.get(parentId)
-            if (parent && parent.children) {
-                const index = parent.children.indexOf(nodeId)
-                if (index !== -1) {
-                    parent.children.splice(index, 1)
-                    this.updateChildIndices(parent)
-                }
-            }
-        }
-
-        // Remove from nodes map
-        this.nodes.delete(nodeId)
+        return deletedIds
     }
 
-    /**
-     * Update a node's properties
-     * @param {string} nodeId - ID of node to update
-     * @param {Object} properties - Properties to update
-     */
     updateNode(nodeId, properties) {
         const node = this.nodes.get(nodeId)
         if (!node) return
 
-        // Update properties
         Object.assign(node, properties)
+
+        // Trigger debounced save if auto-save is enabled
+        if (Config.AUTO_SAVE) {
+            this.debouncedSave()
+        }
     }
 
-    /**
-     * Update a node's description (stored in markdown)
-     * @param {string} nodeId - ID of node to update
-     * @param {string} description - Markdown description
-     */
     updateNodeDescription(nodeId, description) {
         const node = this.nodes.get(nodeId)
         if (!node) return
 
         node.description = description
+
+        // Trigger debounced save if auto-save is enabled
+        if (Config.AUTO_SAVE) {
+            this.debouncedSave()
+        }
     }
 
-    /**
-     * Get a node by ID
-     * @param {string} nodeId - Node ID
-     * @returns {Object|undefined} - Node object or undefined
-     */
     getNode(nodeId) {
         return this.nodes.get(nodeId)
     }
 
-    /**
-     * Get all nodes
-     * @returns {Array} - Array of node objects
-     */
     getAllNodes() {
         return Array.from(this.nodes.values())
     }
 
-    /**
-     * Get the root node
-     * @returns {Object|undefined} - Root node or undefined
-     */
     getRootNode() {
         return this.nodes.get(this.rootId)
     }
 
-    /**
-     * Convert model to Turtle format for saving
-     * @returns {string} - Turtle representation of the model
-     */
-    toTurtle() {
-        let turtle = `@prefix dc: <${Config.PREFIXES.dc}> .\n`
-        turtle += `@prefix ts: <${Config.PREFIXES.ts}> .\n\n`
+    // Using AsyncOperations to generate Turtle in chunks to avoid UI blocking
+    async toTurtle() {
+        // Defer to next tick to avoid blocking UI
+        return AsyncOperations.deferOperation(() => {
+            let turtle = `@prefix dc: <${Config.PREFIXES.dc}> .\n`
+            turtle += `@prefix ts: <${Config.PREFIXES.ts}> .\n\n`
 
-        // Add root node
-        const rootNode = this.nodes.get(this.rootId)
-        if (rootNode) {
-            turtle += `<${this.baseUri}${rootNode.id}> a ts:RootNode .\n`
-        }
+            const rootNode = this.nodes.get(this.rootId)
+            if (rootNode) {
+                turtle += `<${this.baseUri}${rootNode.id}> a ts:RootNode .\n`
+            }
 
-        // Add all other nodes
-        for (const [id, node] of this.nodes.entries()) {
-            // Skip root node, already added
-            if (id === this.rootId) continue
+            // Process nodes in chunks
+            const nodeIds = Array.from(this.nodes.keys()).filter(id => id !== this.rootId)
+            const chunkSize = 100
 
-            if (node.type === 'Node') {
-                turtle += `<${this.baseUri}${node.id}> a ts:Node;\n`
+            for (let i = 0; i < nodeIds.length; i += chunkSize) {
+                const chunk = nodeIds.slice(i, i + chunkSize)
 
-                // Add title if present
-                if (node.title) {
-                    turtle += `   dc:title "${this.escapeTurtle(node.title)}" ;\n`
-                }
+                for (const id of chunk) {
+                    const node = this.nodes.get(id)
+                    if (node && node.type === 'Node') {
+                        turtle += `<${this.baseUri}${node.id}> a ts:Node;\n`
 
-                // Add created date if present
-                if (node.created) {
-                    turtle += `   dc:created "${node.created}" ;\n`
-                }
+                        if (node.title) {
+                            turtle += `   dc:title "${this.escapeTurtle(node.title)}" ;\n`
+                        }
 
-                // Add index
-                turtle += `   ts:index "${node.index}" ;\n`
+                        if (node.created) {
+                            turtle += `   dc:created "${node.created}" ;\n`
+                        }
 
-                // Add parent
-                if (node.parent) {
-                    turtle += `   ts:parent <${this.baseUri}${node.parent}> .\n`
-                } else {
-                    // Fallback to root if no parent
-                    turtle += `   ts:parent <${this.baseUri}${this.rootId}> .\n`
-                }
+                        turtle += `   ts:index "${node.index}" ;\n`
 
-                // Add description if present (as a separate triple)
-                if (node.description) {
-                    turtle += `<${this.baseUri}${node.id}> dc:description """${this.escapeTurtle(node.description)}""" .\n`
+                        if (node.parent) {
+                            turtle += `   ts:parent <${this.baseUri}${node.parent}> .\n`
+                        } else {
+                            turtle += `   ts:parent <${this.baseUri}${this.rootId}> .\n`
+                        }
+
+                        if (node.description) {
+                            turtle += `<${this.baseUri}${node.id}> dc:description """${this.escapeTurtle(node.description)}""" .\n`
+                        }
+                    }
                 }
             }
-        }
 
-        return turtle
+            return turtle
+        })
     }
 
-    /**
-     * Escape special characters for Turtle format
-     * @param {string} text - Text to escape
-     * @returns {string} - Escaped text
-     */
     escapeTurtle(text) {
         if (!text) return ''
         return text
@@ -467,13 +347,13 @@ export class TrestleModel {
             .replace(/\t/g, '\\t')
     }
 
-    /**
-     * Save the current model to the SPARQL endpoint
-     * @returns {Promise<boolean>} - True if save successful
-     */
     async saveData() {
         try {
-            const turtle = this.toTurtle()
+            // Show saving indicator or notify user that save is in progress
+            this.eventBus.publish('model:saving', { message: 'Saving data...' })
+
+            // Generate Turtle asynchronously to avoid UI blocking
+            const turtle = await this.toTurtle()
 
             const response = await fetch(this.endpoint, {
                 method: 'PUT',
@@ -487,6 +367,8 @@ export class TrestleModel {
                 throw new Error(`Failed to save data: ${response.statusText}`)
             }
 
+            // Notify success
+            this.eventBus.publish('model:saved', { message: 'Data saved successfully' })
             return true
         } catch (error) {
             console.error('Error saving data:', error)
@@ -495,30 +377,16 @@ export class TrestleModel {
         }
     }
 
-    // Event handlers
-
-    /**
-     * Handle node update event
-     * @param {Object} data - Event data
-     */
     handleNodeUpdate(data) {
         const { nodeId, properties } = data
         this.updateNode(nodeId, properties)
     }
 
-    /**
-     * Handle node move event
-     * @param {Object} data - Event data
-     */
     handleNodeMove(data) {
         const { nodeId, newParentId, newIndex } = data
         this.moveNode(nodeId, newParentId, newIndex)
     }
 
-    /**
-     * Handle node delete event
-     * @param {Object} data - Event data
-     */
     handleNodeDelete(data) {
         const { nodeId } = data
         this.deleteNode(nodeId)

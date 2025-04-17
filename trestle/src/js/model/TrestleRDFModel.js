@@ -1,306 +1,441 @@
 // src/js/model/TrestleRDFModel.js
-import { TrestleModel } from './TrestleModel.js'
-import { Config } from '../config.js'
-import rdf from 'rdf-ext'
+import { TrestleModel } from "./TrestleModel.js"
+import { Config } from "../config.js"
+import rdf from "rdf-ext"
+import TurtleSerializer from "@rdfjs/serializer-turtle"
+import { TreeNodeOperations } from "./TreeNodeOperations.js"
+import { AsyncOperations } from "../utils/AsyncOperations.js"
 
-/**
- * Extension of TrestleModel that uses RDF-Ext for data representation
- */
 class TrestleRDFModel extends TrestleModel {
-    /**
-     * Creates a new TrestleRDFModel instance
-     * @param {string} endpoint - SPARQL endpoint URL
-     * @param {string} baseUri - Base URI for RDF resources
-     * @param {EventBus} eventBus - Event bus for communication
-     */
     constructor(endpoint, baseUri, eventBus) {
-        // Call parent constructor
         super(endpoint, baseUri, eventBus)
 
-        // Create empty RDF dataset
         this.rdfDataset = rdf.dataset()
-    }
 
-    /**
-     * Initialize the model by loading data or creating an empty structure
-     * Overrides parent method to add RDF functionality
-     */
-    async initialize() {
-        try {
-            // Call parent implementation
-            await super.initialize()
-
-            // Build RDF dataset from loaded nodes
-            this.buildRDFDataset()
-        } catch (error) {
-            console.error('Error in RDF initialization:', error)
-            // Parent already handles errors
+        // Status tracking
+        this.serializationStatus = {
+            inProgress: false,
+            lastRun: null,
+            quadCount: 0
         }
     }
 
-    /**
-     * Create an empty model structure with just a root node
-     * Overrides parent method to add RDF representation
-     */
-    createEmptyModel() {
-        // Call parent implementation first
-        super.createEmptyModel()
+    async initialize() {
+        try {
+            await super.initialize()
 
-        // Build RDF dataset
+            // Build RDF dataset using deferred operation to avoid UI blocking
+            await AsyncOperations.deferOperation(() => {
+                this.buildRDFDataset()
+            })
+        } catch (error) {
+            console.error("Error in RDF initialization:", error)
+        }
+    }
+
+    createEmptyModel() {
+        super.createEmptyModel()
         this.buildRDFDataset()
     }
 
-    /**
-     * Build RDF dataset from the current nodes
-     */
-    buildRDFDataset() {
-        // Clear existing dataset
+    async buildRDFDataset() {
         this.rdfDataset = rdf.dataset()
+        console.log(`dataset = \n${this.rdfDataset}`)
+        // Process nodes in chunks to avoid UI blocking
+        const nodeIds = Array.from(this.nodes.keys())
 
-        // Add all nodes to dataset
-        for (const [nodeId, node] of this.nodes.entries()) {
-            this.addNodeToRDF(node)
-        }
+        await AsyncOperations.processInChunks(
+            (nodeId) => {
+                const node = this.getNode(nodeId)
+                if (node) {
+                    this.addNodeToRDF(node)
+                }
+            },
+            nodeIds,
+            50, // Process 50 nodes per chunk
+            (progress) => {
+                if (progress.percentage % 20 === 0) {
+                    console.log(`Building RDF dataset: ${progress.percentage}% complete`)
+                }
+            }
+        )
     }
 
-    /**
-     * Add a node and its properties directly to the main RDF dataset
-     * @param {Object} node - Node object
-     */
     addNodeToRDF(node) {
         if (!node) return
 
-        // Define namespaces needed
         const ns = {
-            rdf: rdf.namespace(Config.PREFIXES.rdf || 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'),
+            rdf: rdf.namespace(
+                Config.PREFIXES.rdf || "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            ),
             dc: rdf.namespace(Config.PREFIXES.dc),
             ts: rdf.namespace(Config.PREFIXES.ts),
-            xsd: rdf.namespace(Config.PREFIXES.xsd || 'http://www.w3.org/2001/XMLSchema#') // Add xsd namespace
+            xsd: rdf.namespace(
+                Config.PREFIXES.xsd || "http://www.w3.org/2001/XMLSchema#"
+            ),
         }
         const subject = rdf.namedNode(`${this.baseUri}${node.id}`)
 
-        // Helper to add quads directly to this.rdfDataset
         const add = (p, o) => {
-            if (o !== undefined && o !== null) { // Only add if object exists
+            if (o !== undefined && o !== null) {
                 this.rdfDataset.add(rdf.quad(subject, p, o))
             }
         }
 
-        // Add type (ts:Node or ts:RootNode)
-        add(ns.rdf('type'), ns.ts(node.type))
+        add(ns.rdf("type"), ns.ts(node.type))
 
-        // Add title (dc:title)
         if (node.title !== undefined) {
-            add(ns.dc('title'), rdf.literal(node.title))
+            add(ns.dc("title"), rdf.literal(node.title))
         }
 
-        // Add creation date (dc:created) - Use node.created if available
         if (node.created) {
-            add(ns.dc('created'), rdf.literal(node.created, ns.xsd('dateTime'))) // Assume xsd in Config or add default
+            add(ns.dc("created"), rdf.literal(node.created, ns.xsd("dateTime")))
         } else {
-            // Fallback if TrestleModel didn't set it (should not happen ideally)
-            add(ns.dc('created'), rdf.literal(new Date().toISOString(), ns.xsd('dateTime')))
+            add(
+                ns.dc("created"),
+                rdf.literal(new Date().toISOString(), ns.xsd("dateTime"))
+            )
         }
 
-        // Add description (ts:description) - Use ts: namespace
         if (node.description !== undefined) {
-            add(ns.ts('description'), rdf.literal(node.description))
+            add(ns.ts("description"), rdf.literal(node.description))
         }
 
-        // Add parent (ts:parent) - Use ts: namespace
-        if (node.parent !== undefined && node.parent !== null) { // Check for null parent (root)
-            add(ns.ts('parent'), rdf.namedNode(`${this.baseUri}${node.parent}`))
+        if (node.parent !== undefined && node.parent !== null) {
+            add(ns.ts("parent"), rdf.namedNode(`${this.baseUri}${node.parent}`))
         }
 
-        // Add index (ts:index) - Use ts: namespace
         if (node.index !== undefined) {
-            add(ns.ts('index'), rdf.literal(node.index.toString())) // Ensure literal
+            add(ns.ts("index"), rdf.literal(node.index.toString()))
         }
     }
 
-    /**
-     * Add a new node
-     * Overrides parent method to add RDF representation
-     * @param {string} parentId - Parent node ID
-     * @param {string} title - Node title
-     * @param {number} index - Position in parent's children
-     * @returns {Object} The created node
-     */
     addNode(parentId, title, index) {
-        // Use parent implementation to create node
         const newNode = super.addNode(parentId, title, index)
-
-        // Add RDF representation
         this.addNodeToRDF(newNode)
-
         return newNode
     }
 
-    /**
-     * Update node properties
-     * Overrides parent method to update RDF representation
-     * @param {string} nodeId - Node ID
-     * @param {Object} properties - Properties to update
-     */
     updateNode(nodeId, properties) {
-        // Use parent implementation to update node
         super.updateNode(nodeId, properties)
 
-        // Update RDF representation
         const node = this.getNode(nodeId)
         if (node) {
-            // Remove existing quads for this node (original simple approach)
-            const quadsToRemove = this.rdfDataset.match(rdf.namedNode(`${this.baseUri}${nodeId}`))
-            for (const quad of quadsToRemove) {
-                this.rdfDataset.delete(quad)
-            }
+            // Use AsyncOperations to defer RDF processing
+            AsyncOperations.deferOperation(() => {
+                const quadsToRemove = this.rdfDataset.match(
+                    rdf.namedNode(`${this.baseUri}${nodeId}`)
+                )
+                for (const quad of quadsToRemove) {
+                    this.rdfDataset.delete(quad)
+                }
 
-            // Add updated node
-            this.addNodeToRDF(node)
+                this.addNodeToRDF(node)
+            })
         }
     }
 
-    /**
-     * Update node description
-     * Overrides parent method to update RDF representation
-     * @param {string} nodeId - Node ID
-     * @param {string} description - New description
-     */
     updateNodeDescription(nodeId, description) {
-        // Use parent implementation
         super.updateNodeDescription(nodeId, description)
 
-        // Update RDF representation
         const node = this.getNode(nodeId)
         if (node) {
-            // Remove existing description triples
-            const descQuads = this.rdfDataset.match(rdf.namedNode(`${this.baseUri}${nodeId}`), rdf.namespace(Config.PREFIXES.dc)('description'))
-            for (const quad of descQuads) {
-                this.rdfDataset.delete(quad)
-            }
-
-            // Add new description
-            if (description) {
-                this.rdfDataset.add(rdf.quad(
+            // Use AsyncOperations to defer RDF processing
+            AsyncOperations.deferOperation(() => {
+                const descQuads = this.rdfDataset.match(
                     rdf.namedNode(`${this.baseUri}${nodeId}`),
-                    rdf.namespace(Config.PREFIXES.dc)('description'),
-                    rdf.literal(description)
-                ))
-            }
+                    rdf.namespace(Config.PREFIXES.dc)("description")
+                )
+                for (const quad of descQuads) {
+                    this.rdfDataset.delete(quad)
+                }
+
+                if (description) {
+                    this.rdfDataset.add(
+                        rdf.quad(
+                            rdf.namedNode(`${this.baseUri}${nodeId}`),
+                            rdf.namespace(Config.PREFIXES.dc)("description"),
+                            rdf.literal(description)
+                        )
+                    )
+                }
+            })
         }
     }
 
-    /**
-     * Delete a node and all its children recursively
-     * Overrides parent method to update RDF representation
-     * @param {string} nodeId - Node ID to delete
-     */
     deleteNode(nodeId) {
-        // Get the node and all its descendants BEFORE deleting from the parent model
-        const allNodesToDelete = this.getAllDescendantIds(nodeId)
-        allNodesToDelete.push(nodeId) // Include the node itself
+        // Use TreeNodeOperations to get all descendants with iteration instead of recursion
+        const descendantIds = TreeNodeOperations.getAllDescendantIds(this.nodes, nodeId)
+        const allNodesToDelete = [nodeId, ...descendantIds]
 
-        // Use parent implementation to delete node and children from the in-memory model
+        // Call parent delete method
         super.deleteNode(nodeId)
 
-        // Remove all identified nodes from RDF dataset
-        for (const idToDelete of allNodesToDelete) {
-            this.removeNodeFromRDF(idToDelete)
-        }
+        // Remove nodes from RDF dataset in chunks to avoid UI blocking
+        AsyncOperations.processInChunks(
+            (idToDelete) => this.removeNodeFromRDF(idToDelete),
+            allNodesToDelete,
+            50
+        )
+
+        return allNodesToDelete
     }
 
-    /**
-     * Helper function to get all descendant IDs of a node
-     * @param {string} nodeId - The ID of the node
-     * @returns {string[]} - An array of descendant node IDs
-     */
+    // Non-recursive implementation using TreeNodeOperations
     getAllDescendantIds(nodeId) {
-        const node = this.getNode(nodeId)
-        if (!node || !node.children || node.children.length === 0) {
-            return []
-        }
-
-        let descendantIds = []
-        for (const childId of node.children) {
-            descendantIds.push(childId)
-            // Recursively get descendants of the child
-            descendantIds = descendantIds.concat(this.getAllDescendantIds(childId))
-        }
-        return descendantIds
+        return TreeNodeOperations.getAllDescendantIds(this.nodes, nodeId)
     }
 
-    /**
-     * Remove a node from the RDF dataset, including triples referencing it
-     * @param {string} nodeId - Node ID to remove
-     */
     removeNodeFromRDF(nodeId) {
         const subject = rdf.namedNode(`${this.baseUri}${nodeId}`)
 
-        // Collect quads to remove first to avoid modifying dataset while iterating
         const quadsToRemove = []
 
-        // Find quads where the node is the subject
         for (const quad of this.rdfDataset.match(subject)) {
             quadsToRemove.push(quad)
         }
 
-        // Find quads where the node is the object
         for (const quad of this.rdfDataset.match(null, null, subject)) {
             quadsToRemove.push(quad)
         }
 
-        // Now delete the collected quads
         for (const quad of quadsToRemove) {
             this.rdfDataset.delete(quad)
         }
     }
 
-    /**
-     * Move a node to a new parent or position
-     * Overrides parent method to update RDF representation
-     * @param {string} nodeId - Node to move
-     * @param {string} newParentId - New parent node ID
-     * @param {number} newIndex - Position in new parent's children
-     */
     moveNode(nodeId, newParentId, newIndex) {
-        // Use parent implementation to move node
         super.moveNode(nodeId, newParentId, newIndex)
 
-        // Update RDF representation for the moved node
-        const node = this.getNode(nodeId)
-        if (node) {
-            // Remove and recreate node's RDF representation
-            this.removeNodeFromRDF(nodeId)
-            this.addNodeToRDF(node)
+        AsyncOperations.deferOperation(() => {
+            const node = this.getNode(nodeId)
+            if (node) {
+                this.removeNodeFromRDF(nodeId)
+                this.addNodeToRDF(node)
+            }
+
+            const newParent = this.getNode(newParentId)
+            if (newParent && newParent.children) {
+                // Update children indices in RDF in chunks
+                AsyncOperations.processInChunks(
+                    (childId) => {
+                        const child = this.getNode(childId)
+                        if (child) {
+                            this.removeNodeFromRDF(childId)
+                            this.addNodeToRDF(child)
+                        }
+                    },
+                    newParent.children,
+                    10
+                )
+            }
+        })
+    }
+
+    async toTurtle() {
+        // If a serialization is already in progress, show status
+        if (this.serializationStatus.inProgress) {
+            return `// Serialization already in progress (${this.serializationStatus.quadCount} quads)
+// Started: ${this.serializationStatus.lastRun}
+// Please wait...`
         }
 
-        // Also update the order of other nodes that might have changed indices
-        const newParent = this.getNode(newParentId)
-        if (newParent && newParent.children) {
-            for (const childId of newParent.children) {
-                const child = this.getNode(childId)
-                if (child) { // Check if child exists (might have been the moved node)
-                    this.removeNodeFromRDF(childId)
-                    this.addNodeToRDF(child)
+        this.serializationStatus = {
+            inProgress: true,
+            lastRun: new Date().toISOString(),
+            quadCount: this.rdfDataset.size
+        }
+
+        this.eventBus.publish('model:serializing', {
+            started: this.serializationStatus.lastRun,
+            quadCount: this.serializationStatus.quadCount
+        })
+
+        return new Promise((resolve, reject) => {
+            if (!window.Worker) {
+                // Fallback for browsers without Worker support
+                try {
+                    // Break serialization into chunks to avoid UI blocking
+                    const chunkSize = 1000
+                    const totalQuads = this.rdfDataset.size
+                    let processedQuads = 0
+
+                    // Create a new dataset to hold processed quads
+                    let currentDataset = rdf.dataset()
+
+                    // Process dataset in chunks
+                    const processDatasetChunks = async () => {
+                        const serializer = new TurtleSerializer()
+                        let turtleString = ""
+
+                        // Process dataset in smaller chunks
+                        for (const quad of this.rdfDataset) {
+                            currentDataset.add(quad)
+                            processedQuads++
+
+                            if (processedQuads % chunkSize === 0 || processedQuads === totalQuads) {
+                                // Update status
+                                this.eventBus.publish('model:serializing', {
+                                    progress: Math.round((processedQuads / totalQuads) * 100),
+                                    processedQuads,
+                                    totalQuads
+                                })
+
+                                // Yield to UI thread
+                                await new Promise(resolve => setTimeout(resolve, 0))
+                            }
+                        }
+
+                        // Serialize the final dataset
+                        const input = currentDataset.toStream()
+                        const output = serializer.import(input)
+
+                        // Collect output chunks
+                        output.on("data", (chunk) => {
+                            turtleString += chunk.toString()
+                        })
+
+                        output.on("end", () => {
+                            this.serializationStatus.inProgress = false
+                            resolve(turtleString)
+
+                            this.eventBus.publish('model:serialized', {
+                                completed: new Date().toISOString(),
+                                quadCount: this.serializationStatus.quadCount
+                            })
+                        })
+
+                        output.on("error", (err) => {
+                            this.serializationStatus.inProgress = false
+                            reject(new Error(`Serialization error: ${err.message}`))
+
+                            this.eventBus.publish('model:error', {
+                                error: `Serialization error: ${err.message}`
+                            })
+                        })
+                    }
+
+                    // Start processing
+                    processDatasetChunks()
+                } catch (error) {
+                    this.serializationStatus.inProgress = false
+                    reject(new Error(`Serialization setup failed: ${error.message}`))
+
+                    this.eventBus.publish('model:error', {
+                        error: `Serialization setup failed: ${error.message}`
+                    })
+                }
+                return
+            }
+
+            // Create the worker with dynamic timeout based on dataset size
+            let worker
+            try {
+                worker = new Worker(
+                    new URL("../workers/turtleSerializer.js", import.meta.url),
+                    { type: "module" }
+                )
+            } catch (error) {
+                this.serializationStatus.inProgress = false
+                reject(new Error(`Failed to create worker: ${error.message}`))
+
+                this.eventBus.publish('model:error', {
+                    error: `Failed to create worker: ${error.message}`
+                })
+                return
+            }
+
+            console.log(JSON.stringify(this.rdfDataset))
+            // Calculate timeout based on dataset size - larger datasets get more time
+            // Use a base of 30 seconds plus 1 second per 1000 quads with a max of 5 minutes
+            const quadCount = this.rdfDataset.size
+            const baseTimeout = 30000 // 30 seconds base
+            const perQuadTime = quadCount / 1000 // 1ms per quad
+            const calculatedTimeout = Math.min(baseTimeout + (perQuadTime * 1000), 300000) // Cap at 5 minutes
+
+            console.log(`Serialization timeout set to ${Math.round(calculatedTimeout / 1000)} seconds for ${quadCount} quads`)
+
+            // Set a dynamic timeout to prevent hanging
+            const timeoutId = setTimeout(() => {
+                if (worker) {
+                    worker.terminate()
+                    this.serializationStatus.inProgress = false
+                    reject(new Error(`Serialization timeout after ${Math.round(calculatedTimeout / 1000)} seconds. Dataset may be too large for browser processing.`))
+
+                    this.eventBus.publish('model:error', {
+                        error: `Serialization timeout. Try with a smaller dataset or increase timeout.`,
+                        quadCount: quadCount
+                    })
+                }
+            }, calculatedTimeout)
+
+            // Handle worker messages
+            worker.onmessage = (event) => {
+                if (event.data.ready) {
+                    console.log("Turtle Serializer Worker ready.")
+                    try {
+                        const nquadsData = this.rdfDataset.toString()
+                        worker.postMessage(nquadsData)
+                    } catch (error) {
+                        clearTimeout(timeoutId)
+                        this.serializationStatus.inProgress = false
+                        reject(new Error(`Error sending data to worker: ${error.message}`))
+                        worker.terminate()
+
+                        this.eventBus.publish('model:error', {
+                            error: `Error sending data to worker: ${error.message}`
+                        })
+                    }
+                    return
+                }
+
+                // Handle progress updates
+                if (event.data.status) {
+                    this.eventBus.publish('model:serializing', event.data)
+                    return
+                }
+
+                clearTimeout(timeoutId)
+
+                if (event.data.error) {
+                    console.error("Worker reported an error:", event.data.error)
+                    this.serializationStatus.inProgress = false
+                    reject(new Error(event.data.error))
+                    worker.terminate()
+
+                    this.eventBus.publish('model:error', {
+                        error: event.data.error
+                    })
+                } else if (event.data.turtle) {
+                    this.serializationStatus.inProgress = false
+                    resolve(event.data.turtle)
+                    worker.terminate()
+
+                    // Report performance metrics
+                    if (event.data.performance) {
+                        this.eventBus.publish('model:serialized', {
+                            performance: event.data.performance,
+                            completed: new Date().toISOString()
+                        })
+                    }
                 }
             }
-        }
+
+            // Handle worker errors
+            worker.onerror = (error) => {
+                clearTimeout(timeoutId)
+                console.error("Worker error:", error)
+                this.serializationStatus.inProgress = false
+                reject(new Error(`Worker error: ${error.message}`))
+                worker.terminate()
+
+                this.eventBus.publish('model:error', {
+                    error: `Worker error: ${error.message}`
+                })
+            }
+        })
     }
 
-    /**
-     * Convert model to Turtle format
-     * Uses RDF dataset instead of manual string construction
-     * @returns {string} Turtle representation
-     */
-    toTurtle() {
-        // Fallback to parent (or implement RDF-Ext serialization later)
-        return super.toTurtle()
-    }
-
-    /**
-     * Export the RDF dataset
-     * @returns {Dataset} RDF dataset
-     */
     getRDFDataset() {
         return this.rdfDataset
     }

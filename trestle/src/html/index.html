@@ -12,7 +12,7 @@
 <body>
     <header id="header-outer">
         <div id="header">Trestle</div>
-        
+
         <!-- Desktop Navigation -->
         <div class="top-navbar">
             <div class="toolbar">
@@ -20,10 +20,11 @@
                     <li><button id="saveButton">Save</button></li>
                     <li><button id="addButton">Add Root Item</button></li>
                     <li><button id="shortcutsButton">Shortcuts</button></li>
+                    <li><button id="debugButton">Debug</button></li>
                 </ul>
             </div>
         </div>
-        
+
         <!-- Mobile Hamburger Menu -->
         <button class="hamburger-menu" aria-label="Menu" id="hamburgerButton">☰</button>
     </header>
@@ -35,6 +36,7 @@
                 <li><button id="saveButton">Save</button></li>
                 <li><button id="addButton">Add Root Item</button></li>
                 <li><button id="shortcutsButton">Shortcuts</button></li>
+                <li><button id="debugButton">Debug</button></li>
             </ul>
         </div>
     </div>
@@ -57,6 +59,13 @@
                 <div id="trestle-root" class="ts-root"></div>
             </div>
         </div>
+    </div>
+
+    <!-- Debug Output Area -->
+    <div id="debug-output" class="text-box hidden">
+        <h3>RDF Model (Turtle)</h3>
+        <textarea id="debug-output-area" rows="15" readonly style="width: 95%; font-family: monospace;"></textarea>
+        <button id="debug-close">Close</button>
     </div>
 
     <div id="card" class="hidden">
