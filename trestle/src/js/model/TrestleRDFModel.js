@@ -68,6 +68,7 @@ class TrestleRDFModel extends TrestleModel {
      * @param {Object} node - Node object
      */
     addNodeToRDF(node) {
+        console.log(`addNodeToRDF(node) = ${node}`)
         if (!node) return
 
         // Define namespaces needed
@@ -83,6 +84,8 @@ class TrestleRDFModel extends TrestleModel {
         const add = (p, o) => {
             if (o !== undefined && o !== null) { // Only add if object exists
                 this.rdfDataset.add(rdf.quad(subject, p, o))
+                console.log(`quad = ${rdf.quad(subject, p, o)}`)
+                console.log(`this.rdfDataset = ${JSON.stringify(this.rdfDataset)}`)
             }
         }
 

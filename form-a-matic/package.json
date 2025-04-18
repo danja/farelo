@@ -6,7 +6,7 @@
   "description": "A code/UI generator yielding simple HTML forms for RDF creation",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode development",
+    "dev": "webpack serve --mode development",
     "fam": "node src/index.js",
     "rp": "repomix -c repomix.config.json .",
     "test": "node test-runner.js",

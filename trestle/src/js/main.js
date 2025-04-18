@@ -1,4 +1,5 @@
 import { TrestleModel } from './model/TrestleModel.js'
+import TrestleRDFModel from './model/TrestleRDFModel.js'
 import { TrestleView } from './view/TrestleView.js'
 import { TrestleController } from './controller/TrestleController.js'
 import { Config } from './config.js'
@@ -9,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const eventBus = new EventBus()
 
     // Create model, view, and controller instances
-    const model = new TrestleModel(Config.SPARQL_ENDPOINT, Config.BASE_URI, eventBus)
+    // const model = new TrestleModel(Config.SPARQL_ENDPOINT, Config.BASE_URI, eventBus)
+    const model = new TrestleRDFModel(Config.SPARQL_ENDPOINT, Config.BASE_URI, eventBus)
     const view = new TrestleView(document.getElementById('trestle-root'), eventBus)
     const controller = new TrestleController(model, view, eventBus)
 
